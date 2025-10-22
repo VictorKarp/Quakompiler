@@ -7,6 +7,9 @@ func _ready() -> void:
 	%SelectLightPath.pressed.connect(_on_select_light_path_pressed)
 	%SelectGamePath.pressed.connect(_on_select_game_path_pressed)
 	%RunGame.pressed.connect(_on_run_game_pressed)
+	%BspHelp.pressed.connect(_on_bsp_help_pressed)
+	%VisHelp.pressed.connect(_on_vis_help_pressed)
+	%LightHelp.pressed.connect(_on_light_help_pressed)
 
 	%BspPath.text_changed.connect(_on_config_value_changed)
 	%BspSwitches.text_changed.connect(_on_config_value_changed)
@@ -107,7 +110,6 @@ func _on_run_game_pressed() -> void:
 
 
 func _on_compile_bsp_pressed() -> void:
-	_clear_console()
 	var output = []
 	var switches = _get_bsp_switches()
 	var args: PackedStringArray
@@ -118,12 +120,10 @@ func _on_compile_bsp_pressed() -> void:
 	else:
 		args = [_get_map_path(), _get_output_path()]
 	OS.execute(%BspPath.text, args, output)
-	for item in output:
-		%ConsoleOutput.text += item
+	_print_array_to_console(output, true, false)
 
 
 func _on_compile_vis_pressed() -> void:
-	_clear_console()
 	var output = []
 	var switches = _get_vis_switches()
 	var args: PackedStringArray
@@ -133,12 +133,10 @@ func _on_compile_vis_pressed() -> void:
 	else:
 		args = [_get_output_path()]
 	OS.execute(%VisPath.text, args, output)
-	for item in output:
-		%ConsoleOutput.text += item
+	_print_array_to_console(output, true, false)
 
 
 func _on_compile_light_pressed() -> void:
-	_clear_console()
 	var output = []
 	var switches = _get_light_switches()
 	var args: PackedStringArray
@@ -148,8 +146,7 @@ func _on_compile_light_pressed() -> void:
 	else:
 		args = [_get_output_path()] as PackedStringArray
 	OS.execute(%LightPath.text, args, output)
-	for item in output:
-		%ConsoleOutput.text += item
+	_print_array_to_console(output, true, false)
 
 
 func _get_map_path() -> String:
@@ -254,6 +251,35 @@ func _get_mod_name() -> String:
 
 func _set_mod_name(value: String) -> void:
 	%ModName.text = value
+
+
+func _on_bsp_help_pressed() -> void:
+	var output: Array
+	OS.execute(%BspPath.text, [], output)
+	_print_array_to_console(output, true, true)
+
+
+func _on_vis_help_pressed() -> void:
+	var output: Array
+	OS.execute(%VisPath.text, [], output)
+	_print_array_to_console(output, true, true)
+
+
+func _on_light_help_pressed() -> void:
+	var output: Array
+	OS.execute(%LightPath.text, [], output)
+	_print_array_to_console(output, true, true)
+
+
+func _print_array_to_console(array: Array, clear = true,
+		scroll_to_top = false) -> void:
+	if clear:
+		_clear_console()
+	for item in array:
+		%ConsoleOutput.text += item
+	if scroll_to_top:
+		%ConsoleOutput.call_deferred("scroll_to_line", 0)
+
 
 
 func _on_config_value_changed(_value) -> void:

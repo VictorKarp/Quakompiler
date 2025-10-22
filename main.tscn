@@ -59,6 +59,16 @@ display_mode = 1
 access = 2
 use_native_dialog = true
 
+[node name="SelectGameDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+size = Vector2i(772, 360)
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
@@ -115,19 +125,22 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "..."
 
-[node name="CompileBsp" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Compile BSP"
 
-[node name="BspSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
+[node name="BspSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "BSP switches"
+
+[node name="CompileBsp" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Compile"
 
 [node name="VIS" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -161,19 +174,22 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "..."
 
-[node name="VisSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VisSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "VIS switches"
 
-[node name="CompileVis" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+[node name="CompileVis" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Compile VIS"
+text = "Compile"
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -207,19 +223,22 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "..."
 
-[node name="LightSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LightSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Light switches"
 
-[node name="CompileLight" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="CompileLight" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Compile LIGHT"
+text = "Compile"
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -271,6 +290,57 @@ placeholder_text = "Enter output path"
 unique_name_in_owner = true
 layout_mode = 2
 text = "..."
+
+[node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Game executable"
+
+[node name="MapPath" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="GamePath" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/MapPath"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter game executable path"
+
+[node name="SelectGamePath" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/MapPath"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+
+[node name="Label5" type="Label" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Mod"
+
+[node name="OutputPath" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="ModName" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/OutputPath"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter mod name"
+
+[node name="RunGame" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/OutputPath"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Run game"
 
 [node name="RightPanel" type="Control" parent="HBoxContainer"]
 layout_mode = 2

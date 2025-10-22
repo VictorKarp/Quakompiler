@@ -5,6 +5,8 @@ func _ready() -> void:
 	%SelectBspPath.pressed.connect(_on_select_bsp_path_pressed)
 	%SelectVisPath.pressed.connect(_on_select_vis_path_pressed)
 	%SelectLightPath.pressed.connect(_on_select_light_path_pressed)
+	%SelectGamePath.pressed.connect(_on_select_game_path_pressed)
+	%RunGame.pressed.connect(_on_run_game_pressed)
 
 	%BspPath.text_changed.connect(_on_config_value_changed)
 	%BspSwitches.text_changed.connect(_on_config_value_changed)
@@ -14,6 +16,8 @@ func _ready() -> void:
 	%LightSwitches.text_changed.connect(_on_config_value_changed)
 	%MapPath.text_changed.connect(_on_config_value_changed)
 	%OutputPath.text_changed.connect(_on_config_value_changed)
+	%GamePath.text_changed.connect(_on_config_value_changed)
+	%ModName.text_changed.connect(_on_config_value_changed)
 
 	%SelectMapPath.pressed.connect(_on_select_map_path_pressed)
 	%SelectOutputFolder.pressed.connect(_on_select_output_folder_pressed)
@@ -24,6 +28,7 @@ func _ready() -> void:
 
 	%SelectMapDialog.file_selected.connect(_on_map_selected)
 	%SelectOutputDialog.dir_selected.connect(_on_output_selected)
+	%SelectGameDialog.file_selected.connect(_on_game_selected)
 
 	%CompileBsp.pressed.connect(_on_compile_bsp_pressed)
 	%CompileVis.pressed.connect(_on_compile_vis_pressed)
@@ -50,6 +55,10 @@ func _on_select_vis_path_pressed() -> void:
 
 func _on_select_light_path_pressed() -> void:
 	%SelectLightDialog.popup_centered()
+
+
+func _on_select_game_path_pressed() -> void:
+	%SelectGameDialog.popup_centered()
 
 
 func _on_select_map_path_pressed() -> void:
@@ -83,6 +92,18 @@ func _on_map_selected(path: String) -> void:
 func _on_output_selected(path: String) -> void:
 	%OutputPath.text = path
 	%OutputPath.text_changed.emit(path)
+
+
+func _on_game_selected(path: String) -> void:
+	%GamePath.text = path
+	%GamePath.text_changed.emit(path)
+
+
+func _on_run_game_pressed() -> void:
+	var basedir = _get_game_path().get_base_dir()
+	var map = _get_map_name()
+	OS.create_process(_get_game_path(), ["-basedir", basedir, "+game",
+			_get_mod_name(), "+map", map])
 
 
 func _on_compile_bsp_pressed() -> void:
@@ -219,6 +240,22 @@ func _set_light_switches(value: String) -> void:
 	%LightSwitches.text = value
 
 
+func _get_game_path() -> String:
+	return %GamePath.text
+
+
+func _set_game_path(value: String) -> void:
+	%GamePath.text = value
+
+
+func _get_mod_name() -> String:
+	return %ModName.text
+
+
+func _set_mod_name(value: String) -> void:
+	%ModName.text = value
+
+
 func _on_config_value_changed(_value) -> void:
 	_save_config()
 
@@ -230,9 +267,11 @@ func _save_config() -> void:
 	config.set_value("paths", "light_path", _get_light_path())
 	config.set_value("paths", "map_path", _get_map_path())
 	config.set_value("paths", "output_folder", _get_output_folder())
+	config.set_value("paths", "game_path", _get_game_path())
 	config.set_value("switches", "bsp", _get_bsp_switches_text())
 	config.set_value("switches", "vis", _get_vis_switches_text())
 	config.set_value("switches", "light", _get_light_switches_text())
+	config.set_value("launch", "mod_name", _get_mod_name())
 	config.save("config.ini")
 
 
@@ -251,3 +290,5 @@ func _load_config() -> void:
 		_set_light_switches(config.get_value("switches", "light"))
 		_set_map_path(config.get_value("paths", "map_path"))
 		_set_output_folder(config.get_value("paths", "output_folder"))
+		_set_game_path(config.get_value("paths", "game_path"))
+		_set_mod_name(config.get_value("launch", "mod_name"))

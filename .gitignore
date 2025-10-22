@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+/config.ini
+/light.log
+/vis.log
+/builds/*

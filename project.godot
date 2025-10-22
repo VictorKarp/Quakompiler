@@ -15,6 +15,10 @@ run/main_scene="uid://ctuy3wytylol"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/low_processor_mode=true
 
+[gui]
+
+theme/custom="uid://b0oqypotxwhel"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

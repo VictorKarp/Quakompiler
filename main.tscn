@@ -1,9 +1,322 @@
-[gd_scene format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=3 format=3 uid="uid://ctuy3wytylol"]
 
-[node name="Main" type="Control"]
-layout_mode = 3
+[ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://main.gd" id="1_ig7tw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+
+[node name="Main" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+script = ExtResource("1_ig7tw")
+
+[node name="SelectBspDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="SelectVisDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="SelectLightDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="SelectMapDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.map")
+use_native_dialog = true
+
+[node name="SelectOutputDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a Directory"
+file_mode = 2
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftPanel" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="BSP" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "BSP path"
+
+[node name="BspCompiler" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BspPath" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/BspCompiler"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter BSP compiler path"
+
+[node name="SelectBspPath" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/BspCompiler"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+
+[node name="CompileBsp" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Compile BSP"
+
+[node name="BspSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "BSP switches"
+
+[node name="VIS" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "VIS path"
+
+[node name="VisCompiler" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VisPath" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/VisCompiler"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter VIS compiler path"
+
+[node name="SelectVisPath" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/VisCompiler"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+
+[node name="VisSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "VIS switches"
+
+[node name="CompileVis" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Compile VIS"
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "LIGHT path"
+
+[node name="LightCompiler" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LightPath" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LightCompiler"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter LIGHT compiler path"
+
+[node name="SelectLightPath" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LightCompiler"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+
+[node name="LightSwitches" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Light switches"
+
+[node name="CompileLight" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Compile LIGHT"
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Map path"
+
+[node name="MapPath" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="MapPath" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/MapPath"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter map path"
+
+[node name="SelectMapPath" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/MapPath"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+
+[node name="Label5" type="Label" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Output folder"
+
+[node name="OutputPath" type="HBoxContainer" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="OutputPath" type="LineEdit" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/OutputPath"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter output path"
+
+[node name="SelectOutputFolder" type="Button" parent="HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/OutputPath"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "..."
+
+[node name="RightPanel" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/RightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/RightPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/RightPanel/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Console output"
+
+[node name="ClearConsole" type="Button" parent="HBoxContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Clear console"
+
+[node name="ConsoleOutput" type="RichTextLabel" parent="HBoxContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+scroll_following = true

@@ -1,4 +1,11 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b0oqypotxwhel"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b0oqypotxwhel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7bfs"]
+bg_color = Color(0.41960785, 0.41960785, 0.41960785, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0wp"]
 bg_color = Color(0.9019608, 0.9019608, 0.9019608, 1)
@@ -13,6 +20,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [resource]
+HSplitContainer/styles/split_bar_background = SubResource("StyleBoxFlat_e7bfs")
 Label/colors/font_color = Color(0.1, 0.1, 0.1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.09803922)
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_bp0wp")

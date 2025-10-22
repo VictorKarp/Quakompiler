@@ -6,14 +6,14 @@ func _ready() -> void:
 	%SelectVisPath.pressed.connect(_on_select_vis_path_pressed)
 	%SelectLightPath.pressed.connect(_on_select_light_path_pressed)
 
-	%BspPath.text_changed.connect(_on_bsp_path_changed)
-	%BspSwitches.text_changed.connect(_on_bsp_switches_changed)
-	%VisPath.text_changed.connect(_on_vis_path_changed)
-	%VisSwitches.text_changed.connect(_on_vis_switches_changed)
-	%LightPath.text_changed.connect(_on_light_path_changed)
-	%LightSwitches.text_changed.connect(_on_light_switches_changed)
-	%MapPath.text_changed.connect(_on_map_path_changed)
-	%OutputPath.text_changed.connect(_on_output_folder_changed)
+	%BspPath.text_changed.connect(_on_config_value_changed)
+	%BspSwitches.text_changed.connect(_on_config_value_changed)
+	%VisPath.text_changed.connect(_on_config_value_changed)
+	%VisSwitches.text_changed.connect(_on_config_value_changed)
+	%LightPath.text_changed.connect(_on_config_value_changed)
+	%LightSwitches.text_changed.connect(_on_config_value_changed)
+	%MapPath.text_changed.connect(_on_config_value_changed)
+	%OutputPath.text_changed.connect(_on_config_value_changed)
 
 	%SelectMapPath.pressed.connect(_on_select_map_path_pressed)
 	%SelectOutputFolder.pressed.connect(_on_select_output_folder_pressed)
@@ -219,35 +219,7 @@ func _set_light_switches(value: String) -> void:
 	%LightSwitches.text = value
 
 
-func _on_bsp_path_changed(_path: String) -> void:
-	_save_config()
-
-
-func _on_bsp_switches_changed(_switches) -> void:
-	_save_config()
-
-
-func _on_vis_path_changed(_path: String) -> void:
-	_save_config()
-
-
-func _on_vis_switches_changed(_switches) -> void:
-	_save_config()
-
-
-func _on_light_path_changed(_path: String) -> void:
-	_save_config()
-
-
-func _on_light_switches_changed(_switches) -> void:
-	_save_config()
-
-
-func _on_map_path_changed(_path: String) -> void:
-	_save_config()
-
-
-func _on_output_folder_changed(_path: String) -> void:
+func _on_config_value_changed(_value) -> void:
 	_save_config()
 
 

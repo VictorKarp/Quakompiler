@@ -2,10 +2,10 @@ extends Control
 
 
 func _ready() -> void:
-	%SelectBspPath.pressed.connect(_on_select_bsp_path_pressed)
-	%SelectVisPath.pressed.connect(_on_select_vis_path_pressed)
-	%SelectLightPath.pressed.connect(_on_select_light_path_pressed)
-	%SelectGamePath.pressed.connect(_on_select_game_path_pressed)
+	%SelectBspPath.pressed.connect(_show_bsp_browser)
+	%SelectVisPath.pressed.connect(_show_vis_browser)
+	%SelectLightPath.pressed.connect(_show_light_browser)
+	%SelectGamePath.pressed.connect(_show_game_browser)
 	%RunGame.pressed.connect(_on_run_game_pressed)
 	%BspHelp.pressed.connect(_on_bsp_help_pressed)
 	%VisHelp.pressed.connect(_on_vis_help_pressed)
@@ -22,20 +22,20 @@ func _ready() -> void:
 	%GamePath.text_changed.connect(_on_config_value_changed)
 	%ModName.text_changed.connect(_on_config_value_changed)
 
-	%SelectMapPath.pressed.connect(_on_select_map_path_pressed)
-	%SelectOutputFolder.pressed.connect(_on_select_output_folder_pressed)
+	%SelectMapPath.pressed.connect(_show_map_browser)
+	%SelectOutputFolder.pressed.connect(_show_output_browser)
 
-	%SelectBspDialog.file_selected.connect(_on_bsp_selected)
-	%SelectVisDialog.file_selected.connect(_on_vis_selected)
-	%SelectLightDialog.file_selected.connect(_on_light_selected)
+	%SelectBspDialog.file_selected.connect(_set_bsp_path)
+	%SelectVisDialog.file_selected.connect(_set_vis_path)
+	%SelectLightDialog.file_selected.connect(_set_light_path)
 
-	%SelectMapDialog.file_selected.connect(_on_map_selected)
-	%SelectOutputDialog.dir_selected.connect(_on_output_selected)
-	%SelectGameDialog.file_selected.connect(_on_game_selected)
+	%SelectMapDialog.file_selected.connect(_set_map_path)
+	%SelectOutputDialog.dir_selected.connect(_set_output_folder)
+	%SelectGameDialog.file_selected.connect(_set_game_path)
 
-	%CompileBsp.pressed.connect(_on_compile_bsp_pressed)
-	%CompileVis.pressed.connect(_on_compile_vis_pressed)
-	%CompileLight.pressed.connect(_on_compile_light_pressed)
+	%CompileBsp.pressed.connect(_compile_bsp)
+	%CompileVis.pressed.connect(_compile_vis)
+	%CompileLight.pressed.connect(_compile_light)
 
 	%ClearConsole.pressed.connect(_clear_console)
 
@@ -50,69 +50,39 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("compile_bsp"):
-		_on_compile_bsp_pressed()
+		_compile_bsp()
 	if event.is_action_pressed("compile_vis"):
-		_on_compile_vis_pressed()
+		_compile_vis()
 	if event.is_action_pressed("compile_light"):
-		_on_compile_light_pressed()
+		_compile_light()
 	if event.is_action_pressed("clear_console"):
 		_clear_console()
 	if event.is_action_pressed("run"):
 		_on_run_game_pressed()
 
 
-func _on_select_bsp_path_pressed() -> void:
+func _show_bsp_browser() -> void:
 	%SelectBspDialog.popup_centered()
 
 
-func _on_select_vis_path_pressed() -> void:
+func _show_vis_browser() -> void:
 	%SelectVisDialog.popup_centered()
 
 
-func _on_select_light_path_pressed() -> void:
+func _show_light_browser() -> void:
 	%SelectLightDialog.popup_centered()
 
 
-func _on_select_game_path_pressed() -> void:
+func _show_game_browser() -> void:
 	%SelectGameDialog.popup_centered()
 
 
-func _on_select_map_path_pressed() -> void:
+func _show_map_browser() -> void:
 	%SelectMapDialog.popup_centered()
 
 
-func _on_select_output_folder_pressed() -> void:
+func _show_output_browser() -> void:
 	%SelectOutputDialog.popup_centered()
-
-
-func _on_bsp_selected(path: String) -> void:
-	%BspPath.text = path
-	%BspPath.text_changed.emit(path)
-
-
-func _on_vis_selected(path: String) -> void:
-	%VisPath.text = path
-	%VisPath.text_changed.emit(path)
-
-
-func _on_light_selected(path: String) -> void:
-	%LightPath.text = path
-	%LightPath.text_changed.emit(path)
-
-
-func _on_map_selected(path: String) -> void:
-	%MapPath.text = path
-	%MapPath.text_changed.emit(path)
-
-
-func _on_output_selected(path: String) -> void:
-	%OutputPath.text = path
-	%OutputPath.text_changed.emit(path)
-
-
-func _on_game_selected(path: String) -> void:
-	%GamePath.text = path
-	%GamePath.text_changed.emit(path)
 
 
 func _on_run_game_pressed() -> void:
@@ -122,7 +92,7 @@ func _on_run_game_pressed() -> void:
 			_get_mod_name(), "+map", map])
 
 
-func _on_compile_bsp_pressed() -> void:
+func _compile_bsp() -> void:
 	var output = []
 	var switches = _get_bsp_switches()
 	var args: PackedStringArray
@@ -136,7 +106,7 @@ func _on_compile_bsp_pressed() -> void:
 	_print_array_to_console(output, true, false)
 
 
-func _on_compile_vis_pressed() -> void:
+func _compile_vis() -> void:
 	var output = []
 	var switches = _get_vis_switches()
 	var args: PackedStringArray
@@ -149,7 +119,7 @@ func _on_compile_vis_pressed() -> void:
 	_print_array_to_console(output, true, false)
 
 
-func _on_compile_light_pressed() -> void:
+func _compile_light() -> void:
 	var output = []
 	var switches = _get_light_switches()
 	var args: PackedStringArray
@@ -168,6 +138,7 @@ func _get_map_path() -> String:
 
 func _set_map_path(path: String) -> void:
 	%MapPath.text = path
+	%MapPath.text_changed.emit(path)
 
 
 func _get_map_name() -> String:
@@ -180,6 +151,7 @@ func _get_output_folder() -> String:
 
 func _set_output_folder(folder: String) -> void:
 	%OutputPath.text = folder
+	%OutputPath.text_changed.emit(folder)
 
 
 func _get_output_path() -> String:
@@ -196,6 +168,7 @@ func _get_bsp_path() -> String:
 
 func _set_bsp_path(value: String) -> void:
 	%BspPath.text = value
+	%BspPath.text_changed.emit(value)
 
 
 func _get_vis_path() -> String:
@@ -204,6 +177,7 @@ func _get_vis_path() -> String:
 
 func _set_vis_path(value: String) -> void:
 	%VisPath.text = value
+	%VisPath.text_changed.emit(value)
 
 
 func _get_light_path() -> String:
@@ -212,6 +186,7 @@ func _get_light_path() -> String:
 
 func _set_light_path(value: String) -> void:
 	%LightPath.text = value
+	%LightPath.text_changed.emit(value)
 
 
 func _get_bsp_switches():
@@ -256,6 +231,7 @@ func _get_game_path() -> String:
 
 func _set_game_path(value: String) -> void:
 	%GamePath.text = value
+	%GamePath.text_changed.emit(value)
 
 
 func _get_mod_name() -> String:
@@ -264,6 +240,7 @@ func _get_mod_name() -> String:
 
 func _set_mod_name(value: String) -> void:
 	%ModName.text = value
+	%ModName.text_changed.emit(value)
 
 
 func _on_bsp_help_pressed() -> void:

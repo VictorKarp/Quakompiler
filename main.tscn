@@ -57,6 +57,8 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+tooltip_text = "Selects if BSP should be compiled when \"Compile selected\" is pressed.
+If you just want to compile BSP, press the arrow button in this panel."
 toggle_mode = true
 text = "BSP"
 
@@ -64,12 +66,14 @@ text = "BSP"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter BSP compiler path"
+tooltip_text = "BSP compiler path."
+placeholder_text = "BSP compiler path"
 
 [node name="SelectBspPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+tooltip_text = "Locate your BSP compiler."
 text = "..."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer"]
@@ -83,12 +87,16 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+tooltip_text = "Show the BSP compiler's flags."
 text = "?"
 
 [node name="BspSwitches" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Enter additional BSP switches.
+Format switches like this:
+-bsp2 -subdivide 128  -splitsky"
 placeholder_text = "BSP switches"
 
 [node name="CompileBsp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -96,6 +104,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+tooltip_text = "Compile BSP."
 icon = ExtResource("2_0xm2m")
 icon_alignment = 1
 
@@ -119,6 +128,8 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+tooltip_text = "Selects if VIS should be compiled when \"Compile selected\" is pressed.
+If you just want to compile VIS, press the arrow button in this panel."
 toggle_mode = true
 text = "VIS"
 
@@ -126,12 +137,14 @@ text = "VIS"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter VIS compiler path"
+tooltip_text = "VIS compiler path."
+placeholder_text = "VIS compiler path"
 
 [node name="SelectVisPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+tooltip_text = "Locate your VIS compiler."
 text = "..."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer"]
@@ -145,12 +158,16 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+tooltip_text = "Show the VIS compiler's flags."
 text = "?"
 
 [node name="VisSwitches" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Enter additional VIS switches.
+Format switches like this:
+-v -fast  -threads 4"
 placeholder_text = "VIS switches"
 
 [node name="CompileVis" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -158,6 +175,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+tooltip_text = "Compile VIS."
 icon = ExtResource("2_0xm2m")
 icon_alignment = 1
 
@@ -181,6 +199,8 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+tooltip_text = "Selects if LIGHT should be compiled when \"Compile selected\" is pressed.
+If you just want to compile LIGHT, press the arrow button in this panel."
 toggle_mode = true
 text = "LIGHT"
 
@@ -188,12 +208,14 @@ text = "LIGHT"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter LIGHT compiler path"
+tooltip_text = "LIGHT compiler path"
+placeholder_text = "LIGHT compiler path"
 
 [node name="SelectLightPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+tooltip_text = "Locate your LIGHT compiler."
 text = "..."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer"]
@@ -207,12 +229,16 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+tooltip_text = "Show the LIGHT compiler's flags."
 text = "?"
 
 [node name="LightSwitches" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Enter additional LIGHT switches.
+Format switches like this:
+-threads 4 -dirt -bounce 1"
 placeholder_text = "Light switches"
 
 [node name="CompileLight" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -220,6 +246,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+tooltip_text = "Compile LIGHT."
 icon = ExtResource("2_0xm2m")
 icon_alignment = 1
 
@@ -238,6 +265,7 @@ layout_mode = 2
 
 [node name="MapPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2"]
 layout_mode = 2
+tooltip_text = "Locate your .map file."
 
 [node name="Label4" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/MapPath"]
 custom_minimum_size = Vector2(60, 0)
@@ -248,16 +276,19 @@ text = "Map"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter map path"
+mouse_filter = 1
+placeholder_text = "Map path"
 
 [node name="SelectMapPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/MapPath"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "..."
 
 [node name="OutputPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2"]
 layout_mode = 2
+tooltip_text = "Locate your output path. The compiled .bsp file will be saved there."
 
 [node name="Label5" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/OutputPath"]
 custom_minimum_size = Vector2(60, 0)
@@ -268,12 +299,14 @@ text = "Output"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter output path"
+mouse_filter = 1
+placeholder_text = "Output path"
 
 [node name="SelectOutputFolder" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/OutputPath"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "..."
 
 [node name="GameMod" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
@@ -286,49 +319,48 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer"]
 layout_mode = 2
 
-[node name="MapPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2"]
+[node name="GamePath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "Locate your Quake executable. If you are using a modern
+source port, point to the sourceport instead."
 
-[node name="Label4" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/MapPath"]
+[node name="Game" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/GamePath"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Game"
 
-[node name="GamePath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/MapPath"]
+[node name="GamePath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/GamePath"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter game executable path"
+mouse_filter = 1
+placeholder_text = "Game executable path"
 
-[node name="SelectGamePath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/MapPath"]
+[node name="SelectGamePath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/GamePath"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "..."
 
-[node name="OutputPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2"]
+[node name="ModPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "Enter a mod name. Leave empty to run regular Quake."
 
-[node name="Label5" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/OutputPath"]
+[node name="Mod" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/ModPath"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Mod"
 
-[node name="ModName" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/OutputPath"]
+[node name="ModName" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/ModPath"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Enter mod name"
-
-[node name="RunGame" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/OutputPath"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-icon = ExtResource("2_0xm2m")
-icon_alignment = 1
+mouse_filter = 1
+placeholder_text = "Mod name"
 
 [node name="Automation" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -340,26 +372,36 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer"]
 layout_mode = 2
+columns = 2
 
-[node name="Auto" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Automation"
-
-[node name="LaunchAfterCompile" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-toggle_mode = true
-text = "Launch after compile"
-
-[node name="CompileSelected" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/HBoxContainer"]
+[node name="CompileSelected" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Compile all selected stages.
+Select stages by toggling the BSP, VIS and LIGHT buttons."
 text = "Compile selected"
-icon = ExtResource("2_0xm2m")
+
+[node name="LaunchAfterCompile" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Run the map after \"Compile selected\" has finished."
+toggle_mode = true
+text = "Run game afterwards"
+
+[node name="RunGame" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Run the game and load your map.
+If you have entered a mod, the mod will be loaded as well."
+mouse_filter = 1
+text = "Run game"
 icon_alignment = 2
 
 [node name="Hotkeys" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
@@ -395,7 +437,7 @@ text = "F3: Compile Light"
 [node name="CompileSelected" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "F4: Compile selected (+launch)"
+text = "F4: Compile selected (and run)"
 
 [node name="RunGame" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
 layout_mode = 2

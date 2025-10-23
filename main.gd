@@ -302,15 +302,15 @@ func _load_config() -> void:
 		return
 
 	for section in config.get_sections():
-		_set_bsp_path(config.get_value("paths", "bsp_path"))
-		_set_bsp_switches(config.get_value("switches", "bsp"))
-		_set_vis_path(config.get_value("paths", "vis_path"))
-		_set_vis_switches(config.get_value("switches", "vis"))
-		_set_light_path(config.get_value("paths", "light_path"))
-		_set_light_switches(config.get_value("switches", "light"))
-		_set_map_path(config.get_value("paths", "map_path"))
-		_set_output_folder(config.get_value("paths", "output_folder"))
-		_set_game_path(config.get_value("paths", "game_path"))
-		_set_mod_name(config.get_value("launch", "mod_name"))
+		_set_bsp_path(config.get_value("paths", "bsp_path", ""))
+		_set_bsp_switches(config.get_value("switches", "bsp", ""))
+		_set_vis_path(config.get_value("paths", "vis_path", ""))
+		_set_vis_switches(config.get_value("switches", "vis", ""))
+		_set_light_path(config.get_value("paths", "light_path", ""))
+		_set_light_switches(config.get_value("switches", "light", ""))
+		_set_map_path(config.get_value("paths", "map_path", ""))
+		_set_output_folder(config.get_value("paths", "output_folder", ""))
+		_set_game_path(config.get_value("paths", "game_path", ""))
+		_set_mod_name(config.get_value("launch", "mod_name", ""))
 
 	_is_loading_config = false

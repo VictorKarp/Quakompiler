@@ -1,5 +1,7 @@
 extends Control
 
+var _is_loading_config := false
+
 
 func _ready() -> void:
 	%SelectBspPath.pressed.connect(_show_bsp_browser)
@@ -277,6 +279,8 @@ func _on_config_value_changed(_value) -> void:
 
 
 func _save_config() -> void:
+	if _is_loading_config:
+		return
 	var config := ConfigFile.new()
 	config.set_value("paths", "bsp_path", _get_bsp_path())
 	config.set_value("paths", "vis_path", _get_vis_path())
@@ -292,6 +296,7 @@ func _save_config() -> void:
 
 
 func _load_config() -> void:
+	_is_loading_config = true
 	var config = ConfigFile.new()
 	var error = config.load("config.ini")
 	if error != OK:
@@ -308,3 +313,5 @@ func _load_config() -> void:
 		_set_output_folder(config.get_value("paths", "output_folder"))
 		_set_game_path(config.get_value("paths", "game_path"))
 		_set_mod_name(config.get_value("launch", "mod_name"))
+
+	_is_loading_config = false

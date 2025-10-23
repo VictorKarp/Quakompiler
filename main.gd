@@ -55,6 +55,8 @@ func _input(event: InputEvent) -> void:
 		_on_compile_vis_pressed()
 	if event.is_action_pressed("compile_light"):
 		_on_compile_light_pressed()
+	if event.is_action_pressed("clear_console"):
+		_clear_console()
 	if event.is_action_pressed("run"):
 		_on_run_game_pressed()
 

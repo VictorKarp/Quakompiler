@@ -341,7 +341,8 @@ size_flags_vertical = 0
 text = "F1: Compile BSP
 F2: Compile VIS
 F3: Compile LIGHT
-F4: Run game"
+F4: Clear console
+F5: Run game"
 autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer"]

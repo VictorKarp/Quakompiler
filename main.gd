@@ -88,15 +88,15 @@ func _show_output_browser() -> void:
 
 
 func _run_game() -> void:
-	var basedir = _get_game_path().get_base_dir()
-	var map = _get_map_name()
+	var basedir := _get_game_path().get_base_dir()
+	var map := _get_map_name()
 	OS.create_process(_get_game_path(), ["-basedir", basedir, "+game",
 			_get_mod_name(), "+map", map])
 
 
 func _compile_bsp() -> void:
-	var output = []
-	var switches = _get_bsp_switches_array()
+	var output := []
+	var switches := _get_bsp_switches_array()
 	var args: PackedStringArray
 	if switches:
 		args = [_get_map_path()]
@@ -109,8 +109,8 @@ func _compile_bsp() -> void:
 
 
 func _compile_vis() -> void:
-	var output = []
-	var switches = _get_vis_switches_array()
+	var output := []
+	var switches := _get_vis_switches_array()
 	var args: PackedStringArray
 	if switches:
 		args = _get_vis_switches_array()
@@ -122,8 +122,8 @@ func _compile_vis() -> void:
 
 
 func _compile_light() -> void:
-	var output = []
-	var switches = _get_light_switches_array()
+	var output := []
+	var switches := _get_light_switches_array()
 	var args: PackedStringArray
 	if switches:
 		args = switches
@@ -191,7 +191,7 @@ func _set_light_path(value: String) -> void:
 	%LightPath.text_changed.emit(value)
 
 
-func _get_bsp_switches_array():
+func _get_bsp_switches_array() -> PackedStringArray:
 	return %BspSwitches.text.split(" ", false)
 
 
@@ -203,7 +203,7 @@ func _set_bsp_switches(value: String) -> void:
 	%BspSwitches.text = value
 
 
-func _get_vis_switches_array():
+func _get_vis_switches_array() -> PackedStringArray:
 	return %VisSwitches.text.split(" ", false)
 
 
@@ -215,7 +215,7 @@ func _set_vis_switches(value: String) -> void:
 	%VisSwitches.text = value
 
 
-func _get_light_switches_array():
+func _get_light_switches_array() -> PackedStringArray:
 	return %LightSwitches.text.split(" ", false)
 
 
@@ -246,19 +246,19 @@ func _set_mod_name(value: String) -> void:
 
 
 func _print_bsp_help() -> void:
-	var output: Array
+	var output: Array[String]
 	OS.execute(%BspPath.text, [], output)
 	_print_array_to_console(output, true, true)
 
 
 func _print_vis_help() -> void:
-	var output: Array
+	var output: Array[String]
 	OS.execute(%VisPath.text, [], output)
 	_print_array_to_console(output, true, true)
 
 
 func _print_light_help() -> void:
-	var output: Array
+	var output: Array[String]
 	OS.execute(%LightPath.text, [], output)
 	_print_array_to_console(output, true, true)
 
@@ -267,7 +267,7 @@ func _print_array_to_console(array: Array, clear_console = true,
 		scroll_to_top = false) -> void:
 	if clear_console:
 		_clear_console()
-	for item in array:
+	for item: String in array:
 		%ConsoleOutput.text += item
 	if scroll_to_top:
 		%ConsoleOutput.call_deferred("scroll_to_line", 0)

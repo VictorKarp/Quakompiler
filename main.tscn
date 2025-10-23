@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=4 format=3 uid="uid://ctuy3wytylol"]
 
 [ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="2_0xm2m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+bg_color = Color(0.4, 0.3338667, 0.276, 1)
 
 [node name="Main" type="PanelContainer"]
 anchors_preset = 15
@@ -13,338 +15,346 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
 script = ExtResource("1_ig7tw")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
-drag_area_margin_begin = 8
-drag_area_margin_end = 8
 
-[node name="LeftPanel" type="Control" parent="HSplitContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/LeftPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/LeftPanel/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer"]
+[node name="Bsp" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BSP" type="PanelContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "BSP path"
-
-[node name="BspCompiler" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
+[node name="BspCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BspPath" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/BspCompiler"]
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "BSP"
+
+[node name="BspPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Enter BSP compiler path"
 
-[node name="SelectBspPath" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/BspCompiler"]
+[node name="SelectBspPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="BspSwitches" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="BspHelp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "?"
+
+[node name="BspSwitches" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "BSP switches"
 
-[node name="BspHelp" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CompileBsp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-text = "?"
-
-[node name="CompileBsp" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/BSP/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Compile"
+icon = ExtResource("2_0xm2m")
+icon_alignment = 1
 
-[node name="VIS" type="PanelContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Vis" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "VIS path"
-
-[node name="VisCompiler" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+[node name="VisCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VisPath" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/VisCompiler"]
+[node name="Label2" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "VIS"
+
+[node name="VisPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Enter VIS compiler path"
 
-[node name="SelectVisPath" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/VisCompiler"]
+[node name="SelectVisPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VisSwitches" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="VisHelp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "?"
+
+[node name="VisSwitches" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "VIS switches"
 
-[node name="VisHelp" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CompileVis" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-text = "?"
-
-[node name="CompileVis" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/VIS/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Compile"
+icon = ExtResource("2_0xm2m")
+icon_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="Light" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "LIGHT path"
-
-[node name="LightCompiler" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="LightCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="LightPath" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LightCompiler"]
+[node name="Label3" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "LIGHT"
+
+[node name="LightPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Enter LIGHT compiler path"
 
-[node name="SelectLightPath" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LightCompiler"]
+[node name="SelectLightPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="LightSwitches" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="LightHelp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "?"
+
+[node name="LightSwitches" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Light switches"
 
-[node name="LightHelp" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CompileLight" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-text = "?"
-
-[node name="CompileLight" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Compile"
+icon = ExtResource("2_0xm2m")
+icon_alignment = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="MapOutput" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer"]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Map path"
-
-[node name="MapPath" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
+[node name="MapPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="MapPath" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/MapPath"]
+[node name="Label4" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/MapPath"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Map"
+
+[node name="MapPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/MapPath"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Enter map path"
 
-[node name="SelectMapPath" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/MapPath"]
+[node name="SelectMapPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/MapPath"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="Label5" type="Label" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Output folder"
-
-[node name="OutputPath" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2"]
+[node name="OutputPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="OutputPath" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/OutputPath"]
+[node name="Label5" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/OutputPath"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Output"
+
+[node name="OutputPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/OutputPath"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Enter output path"
 
-[node name="SelectOutputFolder" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/OutputPath"]
+[node name="SelectOutputFolder" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/OutputPath"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="PanelContainer3" type="PanelContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer"]
+[node name="GameMod" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer"]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Game executable"
-
-[node name="MapPath" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
+[node name="MapPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="GamePath" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/MapPath"]
+[node name="Label4" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/MapPath"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Game"
+
+[node name="GamePath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/MapPath"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Enter game executable path"
 
-[node name="SelectGamePath" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/MapPath"]
+[node name="SelectGamePath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/MapPath"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="Label5" type="Label" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
+[node name="OutputPath" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/OutputPath"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Mod"
 
-[node name="OutputPath" type="HBoxContainer" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="ModName" type="LineEdit" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/OutputPath"]
+[node name="ModName" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/OutputPath"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Enter mod name"
 
-[node name="RunGame" type="Button" parent="HSplitContainer/LeftPanel/ScrollContainer/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer2/OutputPath"]
+[node name="RunGame" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer2/OutputPath"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-text = "Run game"
+icon = ExtResource("2_0xm2m")
+icon_alignment = 1
 
-[node name="RightPanel" type="Control" parent="HSplitContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/RightPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/RightPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/RightPanel/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HSplitContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HSplitContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HSplitContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Console output"
 text_overrun_behavior = 1
 
-[node name="ClearConsole" type="Button" parent="HSplitContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="ClearConsole" type="Button" parent="MarginContainer/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Clear console"
 
-[node name="ConsoleOutput" type="RichTextLabel" parent="HSplitContainer/RightPanel/MarginContainer/PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="ConsoleOutput" type="RichTextLabel" parent="MarginContainer/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

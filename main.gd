@@ -8,10 +8,10 @@ func _ready() -> void:
 	%SelectVisPath.pressed.connect(_show_vis_browser)
 	%SelectLightPath.pressed.connect(_show_light_browser)
 	%SelectGamePath.pressed.connect(_show_game_browser)
-	%RunGame.pressed.connect(_on_run_game_pressed)
-	%BspHelp.pressed.connect(_on_bsp_help_pressed)
-	%VisHelp.pressed.connect(_on_vis_help_pressed)
-	%LightHelp.pressed.connect(_on_light_help_pressed)
+	%RunGame.pressed.connect(_run_game)
+	%BspHelp.pressed.connect(_print_bsp_help)
+	%VisHelp.pressed.connect(_print_vis_help)
+	%LightHelp.pressed.connect(_print_light_help)
 
 	%BspPath.text_changed.connect(_on_config_value_changed)
 	%BspSwitches.text_changed.connect(_on_config_value_changed)
@@ -60,7 +60,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("clear_console"):
 		_clear_console()
 	if event.is_action_pressed("run"):
-		_on_run_game_pressed()
+		_run_game()
 
 
 func _show_bsp_browser() -> void:
@@ -87,7 +87,7 @@ func _show_output_browser() -> void:
 	%SelectOutputDialog.popup_centered()
 
 
-func _on_run_game_pressed() -> void:
+func _run_game() -> void:
 	var basedir = _get_game_path().get_base_dir()
 	var map = _get_map_name()
 	OS.create_process(_get_game_path(), ["-basedir", basedir, "+game",
@@ -96,7 +96,7 @@ func _on_run_game_pressed() -> void:
 
 func _compile_bsp() -> void:
 	var output = []
-	var switches = _get_bsp_switches()
+	var switches = _get_bsp_switches_array()
 	var args: PackedStringArray
 	if switches:
 		args = [_get_map_path()]
@@ -110,10 +110,10 @@ func _compile_bsp() -> void:
 
 func _compile_vis() -> void:
 	var output = []
-	var switches = _get_vis_switches()
+	var switches = _get_vis_switches_array()
 	var args: PackedStringArray
 	if switches:
-		args = _get_vis_switches()
+		args = _get_vis_switches_array()
 		args.append(_get_output_path())
 	else:
 		args = [_get_output_path()]
@@ -123,7 +123,7 @@ func _compile_vis() -> void:
 
 func _compile_light() -> void:
 	var output = []
-	var switches = _get_light_switches()
+	var switches = _get_light_switches_array()
 	var args: PackedStringArray
 	if switches:
 		args = switches
@@ -191,7 +191,7 @@ func _set_light_path(value: String) -> void:
 	%LightPath.text_changed.emit(value)
 
 
-func _get_bsp_switches():
+func _get_bsp_switches_array():
 	return %BspSwitches.text.split(" ", false)
 
 
@@ -203,7 +203,7 @@ func _set_bsp_switches(value: String) -> void:
 	%BspSwitches.text = value
 
 
-func _get_vis_switches():
+func _get_vis_switches_array():
 	return %VisSwitches.text.split(" ", false)
 
 
@@ -215,7 +215,7 @@ func _set_vis_switches(value: String) -> void:
 	%VisSwitches.text = value
 
 
-func _get_light_switches():
+func _get_light_switches_array():
 	return %LightSwitches.text.split(" ", false)
 
 
@@ -245,33 +245,32 @@ func _set_mod_name(value: String) -> void:
 	%ModName.text_changed.emit(value)
 
 
-func _on_bsp_help_pressed() -> void:
+func _print_bsp_help() -> void:
 	var output: Array
 	OS.execute(%BspPath.text, [], output)
 	_print_array_to_console(output, true, true)
 
 
-func _on_vis_help_pressed() -> void:
+func _print_vis_help() -> void:
 	var output: Array
 	OS.execute(%VisPath.text, [], output)
 	_print_array_to_console(output, true, true)
 
 
-func _on_light_help_pressed() -> void:
+func _print_light_help() -> void:
 	var output: Array
 	OS.execute(%LightPath.text, [], output)
 	_print_array_to_console(output, true, true)
 
 
-func _print_array_to_console(array: Array, clear = true,
+func _print_array_to_console(array: Array, clear_console = true,
 		scroll_to_top = false) -> void:
-	if clear:
+	if clear_console:
 		_clear_console()
 	for item in array:
 		%ConsoleOutput.text += item
 	if scroll_to_top:
 		%ConsoleOutput.call_deferred("scroll_to_line", 0)
-
 
 
 func _on_config_value_changed(_value) -> void:

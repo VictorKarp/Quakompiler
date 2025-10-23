@@ -48,6 +48,17 @@ func _ready() -> void:
 	_load_config()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("compile_bsp"):
+		_on_compile_bsp_pressed()
+	if event.is_action_pressed("compile_vis"):
+		_on_compile_vis_pressed()
+	if event.is_action_pressed("compile_light"):
+		_on_compile_light_pressed()
+	if event.is_action_pressed("run"):
+		_on_run_game_pressed()
+
+
 func _on_select_bsp_path_pressed() -> void:
 	%SelectBspDialog.popup_centered()
 

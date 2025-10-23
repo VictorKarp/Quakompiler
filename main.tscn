@@ -35,6 +35,7 @@ horizontal_scroll_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Bsp" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -322,6 +323,26 @@ custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 icon = ExtResource("2_0xm2m")
 icon_alignment = 1
+
+[node name="Hotkeys" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "F1: Compile BSP
+F2: Compile VIS
+F3: Compile LIGHT
+F4: Run game"
+autowrap_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer"]
 layout_mode = 2

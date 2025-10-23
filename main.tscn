@@ -53,9 +53,11 @@ layout_mode = 2
 [node name="BspCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
+[node name="UseBsp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+toggle_mode = true
 text = "BSP"
 
 [node name="BspPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
@@ -73,7 +75,7 @@ text = "..."
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
@@ -113,9 +115,11 @@ layout_mode = 2
 [node name="VisCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
+[node name="UseVis" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+toggle_mode = true
 text = "VIS"
 
 [node name="VisPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
@@ -173,9 +177,11 @@ layout_mode = 2
 [node name="LightCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
+[node name="UseLight" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+toggle_mode = true
 text = "LIGHT"
 
 [node name="LightPath" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
@@ -324,6 +330,38 @@ layout_mode = 2
 icon = ExtResource("2_0xm2m")
 icon_alignment = 1
 
+[node name="Automation" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer"]
+layout_mode = 2
+
+[node name="Auto" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Automation"
+
+[node name="LaunchAfterCompile" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Launch after compile"
+
+[node name="CompileSelected" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Automation/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "Compile selected"
+icon = ExtResource("2_0xm2m")
+icon_alignment = 2
+
 [node name="Hotkeys" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -335,15 +373,39 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 0
-text = "F1: Compile BSP
-F2: Compile VIS
-F3: Compile LIGHT
-F4: Clear console
-F5: Run game"
-autowrap_mode = 2
+columns = 2
+
+[node name="CompileBSP" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F1: Compile BSP"
+
+[node name="CompileVIS" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F2: Compile VIS"
+
+[node name="CompileLight" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F3: Compile Light"
+
+[node name="CompileSelected" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F4: Compile selected (+launch)"
+
+[node name="RunGame" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F5: Run game"
+
+[node name="ClearConsole" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Hotkeys/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "F12: Clear console"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HSplitContainer"]
 layout_mode = 2

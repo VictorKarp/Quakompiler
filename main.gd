@@ -38,6 +38,12 @@ func _ready() -> void:
 	%CompileBsp.pressed.connect(_compile_bsp)
 	%CompileVis.pressed.connect(_compile_vis)
 	%CompileLight.pressed.connect(_compile_light)
+	%CompileSelected.pressed.connect(_compile_selected)
+
+	%UseBsp.toggled.connect(_set_use_bsp)
+	%UseVis.toggled.connect(_set_use_vis)
+	%UseLight.toggled.connect(_set_use_light)
+	%LaunchAfterCompile.toggled.connect(_set_launch_after_compile)
 
 	%ClearConsole.pressed.connect(_clear_console)
 
@@ -57,6 +63,8 @@ func _input(event: InputEvent) -> void:
 		_compile_vis()
 	if event.is_action_pressed("compile_light"):
 		_compile_light()
+	if event.is_action_pressed("compile_selected"):
+		_compile_selected()
 	if event.is_action_pressed("clear_console"):
 		_clear_console()
 	if event.is_action_pressed("run"):
@@ -94,7 +102,7 @@ func _run_game() -> void:
 			_get_mod_name(), "+map", map])
 
 
-func _compile_bsp() -> void:
+func _compile_bsp():
 	var output := []
 	var switches := _get_bsp_switches_array()
 	var args: PackedStringArray
@@ -108,7 +116,7 @@ func _compile_bsp() -> void:
 	_print_array_to_console(output, true, false)
 
 
-func _compile_vis() -> void:
+func _compile_vis():
 	var output := []
 	var switches := _get_vis_switches_array()
 	var args: PackedStringArray
@@ -121,7 +129,7 @@ func _compile_vis() -> void:
 	_print_array_to_console(output, true, false)
 
 
-func _compile_light() -> void:
+func _compile_light():
 	var output := []
 	var switches := _get_light_switches_array()
 	var args: PackedStringArray
@@ -132,6 +140,17 @@ func _compile_light() -> void:
 		args = [_get_output_path()] as PackedStringArray
 	OS.execute(%LightPath.text, args, output)
 	_print_array_to_console(output, true, false)
+
+
+func _compile_selected() -> void:
+	if _get_use_bsp():
+		_compile_bsp()
+	if _get_use_vis():
+		_compile_vis()
+	if _get_use_light():
+		_compile_light()
+	if _get_launch_after_compile():
+		_run_game()
 
 
 func _get_map_path() -> String:
@@ -263,6 +282,41 @@ func _print_light_help() -> void:
 	_print_array_to_console(output, true, true)
 
 
+func _get_use_bsp() -> bool:
+	return %UseBsp.is_pressed()
+
+
+func _set_use_bsp(value: bool) -> void:
+	%UseBsp.set_pressed_no_signal(value)
+
+
+func _get_use_vis() -> bool:
+	return %UseVis.is_pressed()
+
+
+func _set_use_vis(value: bool) -> void:
+	%UseVis.set_pressed_no_signal(value)
+	_save_config()
+
+
+func _get_use_light() -> bool:
+	return %UseLight.is_pressed()
+
+
+func _set_use_light(value: bool) -> void:
+	%UseLight.set_pressed_no_signal(value)
+	_save_config()
+
+
+func _get_launch_after_compile() -> bool:
+	return %LaunchAfterCompile.is_pressed()
+
+
+func _set_launch_after_compile(value: bool) -> void:
+	%LaunchAfterCompile.set_pressed_no_signal(value)
+	_save_config()
+
+
 func _print_array_to_console(array: Array, clear_console = true,
 		scroll_to_top = false) -> void:
 	if clear_console:
@@ -291,6 +345,10 @@ func _save_config() -> void:
 	config.set_value("switches", "vis", _get_vis_switches_text())
 	config.set_value("switches", "light", _get_light_switches_text())
 	config.set_value("launch", "mod_name", _get_mod_name())
+	config.set_value("flags", "use_bsp", _get_use_bsp())
+	config.set_value("flags", "use_vis", _get_use_vis())
+	config.set_value("flags", "use_light", _get_use_light())
+	config.set_value("flags", "launch_after_compile", _get_launch_after_compile())
 	config.save("config.ini")
 
 
@@ -312,5 +370,9 @@ func _load_config() -> void:
 		_set_output_folder(config.get_value("paths", "output_folder", ""))
 		_set_game_path(config.get_value("paths", "game_path", ""))
 		_set_mod_name(config.get_value("launch", "mod_name", ""))
+		_set_use_bsp(config.get_value("flags", "use_bsp", false))
+		_set_use_vis(config.get_value("flags", "use_vis", false))
+		_set_use_light(config.get_value("flags", "use_light", false))
+		_set_launch_after_compile(config.get_value("flags", "launch_after_compile", false))
 
 	_is_loading_config = false

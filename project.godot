@@ -20,6 +20,10 @@ run/low_processor_mode=true
 
 Config="*res://config/config.tscn"
 
+[display]
+
+window/size/viewport_height=670
+
 [gui]
 
 theme/custom="uid://b0oqypotxwhel"

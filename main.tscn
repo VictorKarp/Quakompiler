@@ -53,7 +53,7 @@ layout_mode = 2
 [node name="BspCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UseBsp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
+[node name="BspEnabled" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -68,6 +68,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "BSP compiler path."
 placeholder_text = "BSP compiler path"
+caret_blink = true
 
 [node name="SelectBspPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/BspCompiler"]
 unique_name_in_owner = true
@@ -98,6 +99,7 @@ tooltip_text = "Enter additional BSP switches.
 Format switches like this:
 -bsp2 -subdivide 128  -splitsky"
 placeholder_text = "BSP switches"
+caret_blink = true
 
 [node name="CompileBsp" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -124,7 +126,7 @@ layout_mode = 2
 [node name="VisCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UseVis" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
+[node name="VisEnabled" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -139,6 +141,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "VIS compiler path."
 placeholder_text = "VIS compiler path"
+caret_blink = true
 
 [node name="SelectVisPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/VisCompiler"]
 unique_name_in_owner = true
@@ -169,6 +172,7 @@ tooltip_text = "Enter additional VIS switches.
 Format switches like this:
 -v -fast  -threads 4"
 placeholder_text = "VIS switches"
+caret_blink = true
 
 [node name="CompileVis" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -195,7 +199,7 @@ layout_mode = 2
 [node name="LightCompiler" type="HBoxContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UseLight" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
+[node name="LightEnabled" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -210,6 +214,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "LIGHT compiler path"
 placeholder_text = "LIGHT compiler path"
+caret_blink = true
 
 [node name="SelectLightPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/LightCompiler"]
 unique_name_in_owner = true
@@ -240,6 +245,7 @@ tooltip_text = "Enter additional LIGHT switches.
 Format switches like this:
 -threads 4 -dirt -bounce 1"
 placeholder_text = "Light switches"
+caret_blink = true
 
 [node name="CompileLight" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/Light/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -278,6 +284,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 placeholder_text = "Map path"
+caret_blink = true
 
 [node name="SelectMapPath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/MapPath"]
 unique_name_in_owner = true
@@ -301,6 +308,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 placeholder_text = "Output path"
+caret_blink = true
 
 [node name="SelectOutputFolder" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/MapOutput/MarginContainer/VBoxContainer2/OutputPath"]
 unique_name_in_owner = true
@@ -338,6 +346,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 placeholder_text = "Game executable path"
+caret_blink = true
 
 [node name="SelectGamePath" type="Button" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/GamePath"]
 unique_name_in_owner = true
@@ -350,17 +359,18 @@ text = "..."
 layout_mode = 2
 tooltip_text = "Enter a mod name. Leave empty to run regular Quake."
 
-[node name="Mod" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/ModPath"]
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/ModPath"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Mod"
 
-[node name="ModName" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/ModPath"]
+[node name="Mod" type="LineEdit" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/GameMod/MarginContainer/VBoxContainer/ModPath"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 placeholder_text = "Mod name"
+caret_blink = true
 
 [node name="Automation" type="PanelContainer" parent="MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2

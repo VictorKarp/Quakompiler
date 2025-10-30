@@ -1,59 +1,65 @@
 extends Control
 
-var _is_loading_config := false
+
+func _init() -> void:
+	Config.config_value_changed.connect(_on_config_value_changed)
 
 
 func _ready() -> void:
+	# File browsers
 	%SelectBspPath.pressed.connect(_show_bsp_browser)
 	%SelectVisPath.pressed.connect(_show_vis_browser)
 	%SelectLightPath.pressed.connect(_show_light_browser)
-	%SelectGamePath.pressed.connect(_show_game_browser)
-	%RunGame.pressed.connect(_run_game)
-	%BspHelp.pressed.connect(_print_bsp_help)
-	%VisHelp.pressed.connect(_print_vis_help)
-	%LightHelp.pressed.connect(_print_light_help)
-
-	%BspPath.text_changed.connect(_on_config_value_changed)
-	%BspSwitches.text_changed.connect(_on_config_value_changed)
-	%VisPath.text_changed.connect(_on_config_value_changed)
-	%VisSwitches.text_changed.connect(_on_config_value_changed)
-	%LightPath.text_changed.connect(_on_config_value_changed)
-	%LightSwitches.text_changed.connect(_on_config_value_changed)
-	%MapPath.text_changed.connect(_on_config_value_changed)
-	%OutputPath.text_changed.connect(_on_config_value_changed)
-	%GamePath.text_changed.connect(_on_config_value_changed)
-	%ModName.text_changed.connect(_on_config_value_changed)
-
 	%SelectMapPath.pressed.connect(_show_map_browser)
 	%SelectOutputFolder.pressed.connect(_show_output_browser)
+	%SelectGamePath.pressed.connect(_show_game_browser)
 
+	# Paths
+	%BspPath.text_changed.connect(_set_bsp_path)
+	%VisPath.text_changed.connect(_set_vis_path)
+	%LightPath.text_changed.connect(_set_light_path)
+	%MapPath.text_changed.connect(_set_map_path)
+	%OutputPath.text_changed.connect(_set_output_path)
+	%GamePath.text_changed.connect(_set_game_path)
+	%Mod.text_changed.connect(_set_mod)
+
+	# Switches
+	%BspEnabled.toggled.connect(_on_bsp_enabled)
+	%VisEnabled.toggled.connect(_on_vis_enabled)
+	%LightEnabled.toggled.connect(_on_light_enabled)
+
+	# Switch values
+	%BspSwitches.text_changed.connect(_set_bsp_switches)
+	%VisSwitches.text_changed.connect(_set_vis_switches)
+	%LightSwitches.text_changed.connect(_set_light_switches)
+
+	# Dialogues
 	%SelectBspDialog.file_selected.connect(_set_bsp_path)
 	%SelectVisDialog.file_selected.connect(_set_vis_path)
 	%SelectLightDialog.file_selected.connect(_set_light_path)
-
 	%SelectMapDialog.file_selected.connect(_set_map_path)
-	%SelectOutputDialog.dir_selected.connect(_set_output_folder)
+	%SelectOutputDialog.dir_selected.connect(_set_output_path)
 	%SelectGameDialog.file_selected.connect(_set_game_path)
 
+	# Compiling
 	%CompileBsp.pressed.connect(_compile_bsp)
 	%CompileVis.pressed.connect(_compile_vis)
 	%CompileLight.pressed.connect(_compile_light)
 	%CompileSelected.pressed.connect(_compile_selected)
 
-	%UseBsp.toggled.connect(_set_use_bsp)
-	%UseVis.toggled.connect(_set_use_vis)
-	%UseLight.toggled.connect(_set_use_light)
-	%LaunchAfterCompile.toggled.connect(_set_launch_after_compile)
+	# Running
+	%LaunchAfterCompile.toggled.connect(_on_launch_after_compile_toggled)
+	%RunGame.pressed.connect(_run_game)
 
+	# Help
+	%BspHelp.pressed.connect(_print_bsp_help)
+	%VisHelp.pressed.connect(_print_vis_help)
+	%LightHelp.pressed.connect(_print_light_help)
+
+	# Console
 	%ClearConsole.pressed.connect(_clear_console)
 
-	%SelectBspDialog.current_path = _get_bsp_path()
-	%SelectVisDialog.current_path = _get_vis_path()
-	%SelectLightDialog.current_path = _get_light_path()
-	%SelectMapDialog.current_path = _get_map_path()
-	%SelectOutputDialog.current_path = _get_output_folder()
-
-	_load_config()
+	Config.load_config()
 
 
 func _input(event: InputEvent) -> void:
@@ -69,6 +75,108 @@ func _input(event: InputEvent) -> void:
 		_clear_console()
 	if event.is_action_pressed("run"):
 		_run_game()
+
+
+func _on_config_value_changed(game, key, value) -> void:
+	match game:
+		"q1":
+			match key:
+				"bsp_path":
+					%BspPath.text = value
+					%BspPath.caret_column = %BspPath.text.length()
+				"vis_path":
+					%VisPath.text = value
+					%VisPath.caret_column = %VisPath.text.length()
+				"light_path":
+					%LightPath.text = value
+					%LightPath.caret_column = %LightPath.text.length()
+				"bsp_switches":
+					%BspSwitches.text = value
+					%BspSwitches.caret_column = %BspSwitches.text.length()
+				"vis_switches":
+					%VisSwitches.text = value
+					%VisSwitches.caret_column = %VisSwitches.text.length()
+				"light_switches":
+					%LightSwitches.text = value
+					%LightSwitches.caret_column = %LightSwitches.text.length()
+				"map_path":
+					%MapPath.text = value
+					%MapPath.caret_column = %MapPath.text.length()
+				"output_path":
+					%OutputPath.text = value
+					%OutputPath.caret_column = %OutputPath.text.length()
+				"game_path":
+					%GamePath.text = value
+					%GamePath.caret_column = %GamePath.text.length()
+				"mod":
+					%Mod.text = value
+					%Mod.caret_column = %Mod.text.length()
+				"bsp_enabled":
+					%BspEnabled.set_pressed_no_signal(value)
+				"vis_enabled":
+					%VisEnabled.set_pressed_no_signal(value)
+				"light_enabled":
+					%LightEnabled.set_pressed_no_signal(value)
+				"launch_after_compile":
+					%LaunchAfterCompile.set_pressed_no_signal(value)
+		_:
+			pass
+
+
+func _set_bsp_path(path: String) -> void:
+	Config.set_config_value("q1", "bsp_path", path)
+
+
+func _set_vis_path(path: String) -> void:
+	Config.set_config_value("q1", "vis_path", path)
+
+
+func _set_light_path(path: String) -> void:
+	Config.set_config_value("q1", "light_path", path)
+
+
+func _set_map_path(path: String) -> void:
+	Config.set_config_value("q1", "map_path", path)
+
+
+func _set_output_path(path: String) -> void:
+	Config.set_config_value("q1", "output_path", path)
+
+
+func _set_game_path(path: String) -> void:
+	Config.set_config_value("q1", "game_path", path)
+
+
+func _set_mod(path: String) -> void:
+	Config.set_config_value("q1", "mod", path)
+
+
+func _set_bsp_switches(value) -> void:
+	Config.set_config_value("q1", "bsp_switches", value)
+
+
+func _set_vis_switches(value) -> void:
+	Config.set_config_value("q1", "vis_switches", value)
+
+
+func _set_light_switches(value) -> void:
+	Config.set_config_value("q1", "light_switches", value)
+
+
+func _on_bsp_enabled(enabled: bool) -> void:
+	Config.set_config_value("q1", "bsp_enabled", enabled)
+
+
+func _on_vis_enabled(enabled: bool) -> void:
+	Config.set_config_value("q1", "vis_enabled", enabled)
+
+
+func _on_light_enabled(enabled: bool) -> void:
+	Config.set_config_value("q1", "light_enabled", enabled)
+
+
+func _on_launch_after_compile_toggled(value: bool) -> void:
+	Config.set_config_value("q1", "launch_after_compile", value)
 
 
 func _show_bsp_browser() -> void:
@@ -96,172 +204,70 @@ func _show_output_browser() -> void:
 
 
 func _run_game() -> void:
-	var basedir := _get_game_path().get_base_dir()
-	var map := _get_map_name()
-	OS.create_process(_get_game_path(), ["-basedir", basedir, "+game",
-			_get_mod_name(), "+map", map])
+	var game_path: String = Config.get_config_value("q1", "game_path")
+	var map: String = Config.get_config_value("q1", "map_path").get_file().rstrip(".map")
+	var basedir: String = Config.get_config_value("q1", "game_path").get_base_dir()
+	var mod: String = Config.get_config_value("q1", "mod")
+	OS.create_process(game_path, ["-basedir", basedir, "+game", mod, "+map", map])
 
 
 func _compile_bsp():
 	var output := []
-	var switches := _get_bsp_switches_array()
+	var switches: PackedStringArray = Config.get_config_value("q1", "bsp_switches").split(" ", false)
+	var map_path = Config.get_config_value("q1", "map_path")
+	var output_path = Config.get_output_path("q1")
 	var args: PackedStringArray
 	if switches:
-		args = [_get_map_path()]
+		args = [map_path]
 		args.append_array(switches)
-		args.append(_get_output_path())
+		args.append(output_path)
 	else:
-		args = [_get_map_path(), _get_output_path()]
+		args = [map_path, output_path]
 	OS.execute(%BspPath.text, args, output)
 	_print_array_to_console(output, true, false)
 
 
 func _compile_vis():
 	var output := []
-	var switches := _get_vis_switches_array()
+	var switches: PackedStringArray = Config.get_config_value("q1", "vis_switches").split(" ", false)
+	var output_path: String = Config.get_output_path("q1")
 	var args: PackedStringArray
 	if switches:
-		args = _get_vis_switches_array()
-		args.append(_get_output_path())
+		args = switches
+		args.append(output_path)
 	else:
-		args = [_get_output_path()]
+		args = [output_path]
 	OS.execute(%VisPath.text, args, output)
 	_print_array_to_console(output, true, false)
 
 
 func _compile_light():
 	var output := []
-	var switches := _get_light_switches_array()
+	var switches: PackedStringArray = Config.get_config_value("q1", "light_switches").split(" ", false)
+	var output_path = Config.get_output_path("q1")
 	var args: PackedStringArray
 	if switches:
 		args = switches
-		args.append(_get_output_path())
+		args.append(output_path)
 	else:
-		args = [_get_output_path()] as PackedStringArray
+		args = [output_path] as PackedStringArray
 	OS.execute(%LightPath.text, args, output)
 	_print_array_to_console(output, true, false)
 
 
 func _compile_selected() -> void:
-	if _get_use_bsp():
+	if Config.get_config_value("q1", "bsp_enabled"):
 		_compile_bsp()
-	if _get_use_vis():
+	if Config.get_config_value("q1", "vis_enabled"):
 		_compile_vis()
-	if _get_use_light():
+	if Config.get_config_value("q1", "light_enabled"):
 		_compile_light()
-	if _get_launch_after_compile():
+	if Config.get_config_value("q1", "launch_after_compile"):
 		_run_game()
-
-
-func _get_map_path() -> String:
-	return %MapPath.text
-
-
-func _set_map_path(path: String) -> void:
-	%MapPath.text = path
-	%MapPath.text_changed.emit(path)
-
-
-func _get_map_name() -> String:
-	return _get_map_path().get_file().rstrip(".map")
-
-
-func _get_output_folder() -> String:
-	return %OutputPath.text
-
-
-func _set_output_folder(folder: String) -> void:
-	%OutputPath.text = folder
-	%OutputPath.text_changed.emit(folder)
-
-
-func _get_output_path() -> String:
-	return _get_output_folder() + "/" + _get_map_name() + ".bsp"
 
 
 func _clear_console() -> void:
 	%ConsoleOutput.text = ""
-
-
-func _get_bsp_path() -> String:
-	return %BspPath.text
-
-
-func _set_bsp_path(value: String) -> void:
-	%BspPath.text = value
-	%BspPath.text_changed.emit(value)
-
-
-func _get_vis_path() -> String:
-	return %VisPath.text
-
-
-func _set_vis_path(value: String) -> void:
-	%VisPath.text = value
-	%VisPath.text_changed.emit(value)
-
-
-func _get_light_path() -> String:
-	return %LightPath.text
-
-
-func _set_light_path(value: String) -> void:
-	%LightPath.text = value
-	%LightPath.text_changed.emit(value)
-
-
-func _get_bsp_switches_array() -> PackedStringArray:
-	return %BspSwitches.text.split(" ", false)
-
-
-func _get_bsp_switches_text() -> String:
-	return %BspSwitches.text
-
-
-func _set_bsp_switches(value: String) -> void:
-	%BspSwitches.text = value
-
-
-func _get_vis_switches_array() -> PackedStringArray:
-	return %VisSwitches.text.split(" ", false)
-
-
-func _get_vis_switches_text() -> String:
-	return %VisSwitches.text
-
-
-func _set_vis_switches(value: String) -> void:
-	%VisSwitches.text = value
-
-
-func _get_light_switches_array() -> PackedStringArray:
-	return %LightSwitches.text.split(" ", false)
-
-
-func _get_light_switches_text() -> String:
-	return %LightSwitches.text
-
-
-func _set_light_switches(value: String) -> void:
-	%LightSwitches.text = value
-
-
-func _get_game_path() -> String:
-	return %GamePath.text
-
-
-func _set_game_path(value: String) -> void:
-	%GamePath.text = value
-	%GamePath.text_changed.emit(value)
-
-
-func _get_mod_name() -> String:
-	return %ModName.text
-
-
-func _set_mod_name(value: String) -> void:
-	%ModName.text = value
-	%ModName.text_changed.emit(value)
 
 
 func _print_bsp_help() -> void:
@@ -282,41 +288,6 @@ func _print_light_help() -> void:
 	_print_array_to_console(output, true, true)
 
 
-func _get_use_bsp() -> bool:
-	return %UseBsp.is_pressed()
-
-
-func _set_use_bsp(value: bool) -> void:
-	%UseBsp.set_pressed_no_signal(value)
-
-
-func _get_use_vis() -> bool:
-	return %UseVis.is_pressed()
-
-
-func _set_use_vis(value: bool) -> void:
-	%UseVis.set_pressed_no_signal(value)
-	_save_config()
-
-
-func _get_use_light() -> bool:
-	return %UseLight.is_pressed()
-
-
-func _set_use_light(value: bool) -> void:
-	%UseLight.set_pressed_no_signal(value)
-	_save_config()
-
-
-func _get_launch_after_compile() -> bool:
-	return %LaunchAfterCompile.is_pressed()
-
-
-func _set_launch_after_compile(value: bool) -> void:
-	%LaunchAfterCompile.set_pressed_no_signal(value)
-	_save_config()
-
-
 func _print_array_to_console(array: Array, clear_console = true,
 		scroll_to_top = false) -> void:
 	if clear_console:
@@ -325,54 +296,3 @@ func _print_array_to_console(array: Array, clear_console = true,
 		%ConsoleOutput.text += item
 	if scroll_to_top:
 		%ConsoleOutput.call_deferred("scroll_to_line", 0)
-
-
-func _on_config_value_changed(_value) -> void:
-	_save_config()
-
-
-func _save_config() -> void:
-	if _is_loading_config:
-		return
-	var config := ConfigFile.new()
-	config.set_value("paths", "bsp_path", _get_bsp_path())
-	config.set_value("paths", "vis_path", _get_vis_path())
-	config.set_value("paths", "light_path", _get_light_path())
-	config.set_value("paths", "map_path", _get_map_path())
-	config.set_value("paths", "output_folder", _get_output_folder())
-	config.set_value("paths", "game_path", _get_game_path())
-	config.set_value("switches", "bsp", _get_bsp_switches_text())
-	config.set_value("switches", "vis", _get_vis_switches_text())
-	config.set_value("switches", "light", _get_light_switches_text())
-	config.set_value("launch", "mod_name", _get_mod_name())
-	config.set_value("flags", "use_bsp", _get_use_bsp())
-	config.set_value("flags", "use_vis", _get_use_vis())
-	config.set_value("flags", "use_light", _get_use_light())
-	config.set_value("flags", "launch_after_compile", _get_launch_after_compile())
-	config.save("config.ini")
-
-
-func _load_config() -> void:
-	_is_loading_config = true
-	var config = ConfigFile.new()
-	var error = config.load("config.ini")
-	if error != OK:
-		return
-
-	for section in config.get_sections():
-		_set_bsp_path(config.get_value("paths", "bsp_path", ""))
-		_set_bsp_switches(config.get_value("switches", "bsp", ""))
-		_set_vis_path(config.get_value("paths", "vis_path", ""))
-		_set_vis_switches(config.get_value("switches", "vis", ""))
-		_set_light_path(config.get_value("paths", "light_path", ""))
-		_set_light_switches(config.get_value("switches", "light", ""))
-		_set_map_path(config.get_value("paths", "map_path", ""))
-		_set_output_folder(config.get_value("paths", "output_folder", ""))
-		_set_game_path(config.get_value("paths", "game_path", ""))
-		_set_mod_name(config.get_value("launch", "mod_name", ""))
-		_set_use_bsp(config.get_value("flags", "use_bsp", false))
-		_set_use_vis(config.get_value("flags", "use_vis", false))
-		_set_use_light(config.get_value("flags", "use_light", false))
-		_set_launch_after_compile(config.get_value("flags", "launch_after_compile", false))
-
-	_is_loading_config = false

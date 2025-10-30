@@ -180,26 +180,32 @@ func _on_launch_after_compile_toggled(value: bool) -> void:
 
 
 func _show_bsp_browser() -> void:
+	%SelectBspDialog.current_path = Config.get_config_value("q1", "bsp_path")
 	%SelectBspDialog.popup_centered()
 
 
 func _show_vis_browser() -> void:
+	%SelectVisDialog.current_path = Config.get_config_value("q1", "vis_path")
 	%SelectVisDialog.popup_centered()
 
 
 func _show_light_browser() -> void:
+	%SelectLightDialog.current_path = Config.get_config_value("q1", "light_path")
 	%SelectLightDialog.popup_centered()
 
 
 func _show_game_browser() -> void:
+	%SelectGameDialog.current_path = Config.get_config_value("q1", "game_path")
 	%SelectGameDialog.popup_centered()
 
 
 func _show_map_browser() -> void:
+	%SelectMapDialog.current_path = Config.get_config_value("q1", "map_path")
 	%SelectMapDialog.popup_centered()
 
 
 func _show_output_browser() -> void:
+	%SelectOutputDialog.current_path = Config.get_config_value("q1", "output_path") + "/"
 	%SelectOutputDialog.popup_centered()
 
 

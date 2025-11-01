@@ -218,47 +218,47 @@ func _run_game() -> void:
 
 
 func _compile_bsp():
-	var output := []
-	var switches: PackedStringArray = Config.get_config_value("q1", "bsp_switches").split(" ", false)
-	var map_path = Config.get_config_value("q1", "map_path")
-	var output_path = Config.get_output_path("q1")
-	var args: PackedStringArray
+	var map_path: String = Config.get_config_value("q1", "map_path")
+	var bsp_path: String = Config.get_config_value("q1", "bsp_path")
+	var output_path: String = Config.get_output_path("q1")
+	var switches: String = Config.get_config_value("q1", "bsp_switches")
+	var args: String
+	args = bsp_path + " " + map_path
 	if switches:
-		args = [map_path]
-		args.append_array(switches)
-		args.append(output_path)
-	else:
-		args = [map_path, output_path]
-	OS.execute(%BspPath.text, args, output)
-	_print_array_to_console(output, true, false)
+		args += " " + switches
+	args += " " + output_path
+	_run_compiler(args)
 
 
 func _compile_vis():
-	var output := []
-	var switches: PackedStringArray = Config.get_config_value("q1", "vis_switches").split(" ", false)
+	var vis_path: String = Config.get_config_value("q1", "vis_path")
+	var switches: String = Config.get_config_value("q1", "vis_switches")
 	var output_path: String = Config.get_output_path("q1")
-	var args: PackedStringArray
+	var args := vis_path
 	if switches:
-		args = switches
-		args.append(output_path)
-	else:
-		args = [output_path]
-	OS.execute(%VisPath.text, args, output)
-	_print_array_to_console(output, true, false)
+		args += " " + switches
+	args += " " + output_path
+	_run_compiler(args)
 
 
 func _compile_light():
-	var output := []
-	var switches: PackedStringArray = Config.get_config_value("q1", "light_switches").split(" ", false)
-	var output_path = Config.get_output_path("q1")
-	var args: PackedStringArray
+	var light_path: String = Config.get_config_value("q1", "light_path")
+	var switches: String = Config.get_config_value("q1", "light_switches")
+	var output_path: String = Config.get_output_path("q1")
+	var args := light_path
 	if switches:
-		args = switches
-		args.append(output_path)
-	else:
-		args = [output_path] as PackedStringArray
-	OS.execute(%LightPath.text, args, output)
-	_print_array_to_console(output, true, false)
+		args += " " + switches
+	args += " " + output_path
+	_run_compiler(args)
+
+
+func _run_compiler(args) -> void:
+	if OS.get_name() == "Linux":
+		#args += "; sleep 2" # Wait for x secs before auto-closing
+		#args += "; exec bash" # Keep terminal open
+		OS.create_process("gnome-terminal", ["--", "bash", "-c", args])
+	elif OS.get_name() == "Windows":
+		OS.create_process("CMD.exe", ["/C", args])
 
 
 func _compile_selected() -> void:

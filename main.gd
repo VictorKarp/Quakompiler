@@ -267,7 +267,9 @@ func _run_compiler(args) -> void:
 		#args += "; read" # Keep terminal open until Enter is pressed
 		OS.create_process(selected_terminal, ["--", "bash", "-c", args])
 	elif OS.get_name() == "Windows":
-		OS.create_process("CMD.exe", ["/C", args])
+		var args_array = args.split(" ", false) as Array
+		var exe = args_array.pop_front()
+		OS.create_process(exe, args_array, true)
 
 
 func _compile_selected() -> void:

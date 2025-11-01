@@ -254,9 +254,18 @@ func _compile_light():
 
 func _run_compiler(args) -> void:
 	if OS.get_name() == "Linux":
+		var terminals: Array[String] = ["gnome-terminal", "xfce4-terminal", "konsole",
+				"guake", "yakuake", "terminator", "tilix", "kitty", "xterm"]
+		var selected_terminal: String
+		for terminal in terminals:
+			var exit_code = OS.execute("command", ["-v", terminal], [], true, false)
+			if exit_code == 0:
+				selected_terminal = terminal
+				break
 		#args += "; sleep 2" # Wait for x secs before auto-closing
 		#args += "; exec bash" # Keep terminal open
-		OS.create_process("gnome-terminal", ["--", "bash", "-c", args])
+		#args += "; read" # Keep terminal open until Enter is pressed
+		OS.create_process(selected_terminal, ["--", "bash", "-c", args])
 	elif OS.get_name() == "Windows":
 		OS.create_process("CMD.exe", ["/C", args])
 

@@ -36,17 +36,16 @@ func save_config() -> void:
 
 
 func load_config() -> void:
-	_is_loading_config = true
 	var config = ConfigFile.new()
 	var error = config.load("config.ini")
 	if error != OK:
 		return
 
+	_is_loading_config = true
 	for section in config.get_sections():
 		for key in config.get_section_keys(section):
 			var value = config.get_value(section, key)
 			set_config_value(section, key, value)
-
 	_is_loading_config = false
 
 

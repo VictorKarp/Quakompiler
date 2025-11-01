@@ -59,9 +59,10 @@ func _ready() -> void:
 	%BspHelp.pressed.connect(_print_bsp_help)
 	%VisHelp.pressed.connect(_print_vis_help)
 	%LightHelp.pressed.connect(_print_light_help)
+	%CloseHelp.pressed.connect(_close_help)
 
 	# Console
-	%ClearConsole.pressed.connect(_clear_console)
+	%ClearConsole.pressed.connect(_clear_help)
 
 	# Timers
 	%CompilerRunCheck.timeout.connect(_on_compiler_run_check_timeout)
@@ -79,7 +80,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("compile_selected"):
 		_compile_selected()
 	if event.is_action_pressed("clear_console"):
-		_clear_console()
+		_clear_help()
 	if event.is_action_pressed("run"):
 		_run_game()
 
@@ -312,36 +313,47 @@ func _start_next_queued_action() -> void:
 				_run_game()
 
 
-func _clear_console() -> void:
+func _clear_help() -> void:
 	%ConsoleOutput.text = ""
 
 
 func _print_bsp_help() -> void:
 	var output: Array[String]
 	OS.execute(%BspPath.text, [], output)
-	_print_array_to_console(output, true, true)
+	_set_help_text(output)
+	%HelpPanel.show()
+	%ButtonsPanel.hide()
 
 
 func _print_vis_help() -> void:
 	var output: Array[String]
 	OS.execute(%VisPath.text, [], output)
-	_print_array_to_console(output, true, true)
+	_set_help_text(output)
+	%HelpPanel.show()
+	%ButtonsPanel.hide()
 
 
 func _print_light_help() -> void:
 	var output: Array[String]
 	OS.execute(%LightPath.text, [], output)
-	_print_array_to_console(output, true, true)
+	_set_help_text(output)
+	%HelpPanel.show()
+	%ButtonsPanel.hide()
 
 
-func _print_array_to_console(array: Array, clear_console = true,
-		scroll_to_top = false) -> void:
-	if clear_console:
-		_clear_console()
-	for item: String in array:
-		%ConsoleOutput.text += item
-	if scroll_to_top:
-		%ConsoleOutput.call_deferred("scroll_to_line", 0)
+func _close_help() -> void:
+	%HelpPanel.hide()
+	%ButtonsPanel.show()
+
+
+func _set_help_text(text) -> void:
+	_clear_help()
+	if text is String:
+		%ConsoleOutput.text = text
+	if text is Array:
+		for line in text:
+			%ConsoleOutput.text += line
+	%ConsoleOutput.scroll_to_line(0)
 
 
 func _on_compiler_run_check_timeout() -> void:

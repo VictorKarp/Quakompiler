@@ -13,8 +13,9 @@ config_version=5
 config/name="Victor Karp's Quake Compile GUI"
 run/main_scene="uid://ctuy3wytylol"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-run/max_fps=30
+run/max_fps=60
 run/low_processor_mode=true
+run/low_processor_mode_sleep_usec=20700
 
 [autoload]
 
@@ -22,7 +23,8 @@ Config="*res://config/config.tscn"
 
 [display]
 
-window/size/viewport_height=670
+window/size/viewport_width=1000
+window/size/viewport_height=520
 
 [gui]
 

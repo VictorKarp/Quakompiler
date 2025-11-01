@@ -407,34 +407,66 @@ help_text = "Pressing one of these buttons will compile the respective stage. If
 
 [i]Vis[/i] (visibility) is for performance optimization. Compiles visibility (which parts of your map can be seen from which position - things that can't be  seen aren't rendered) and automatically generates ambient sounds. Only works if your map doesn't have a leak.
 
-[i]Light[/i] compiles lights and shadows."
+[i]Light[/i] compiles lights and shadows.
 
-[node name="FlowContaine" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
+[i]Keep open[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+columns = 4
 
-[node name="CompileBsp" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/FlowContaine"]
+[node name="CompileBsp" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "BSP"
-icon_alignment = 1
+icon = ExtResource("2_0xm2m")
+icon_alignment = 2
 
-[node name="CompileVis" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/FlowContaine"]
+[node name="CompileVis" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Vis"
-icon_alignment = 1
+icon = ExtResource("2_0xm2m")
+icon_alignment = 2
 
-[node name="CompileLight" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/FlowContaine"]
+[node name="CompileLight" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Light"
-icon_alignment = 1
+icon = ExtResource("2_0xm2m")
+icon_alignment = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PauseAfterSingle" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Keep open"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Automation" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel"]
 layout_mode = 2
@@ -466,7 +498,9 @@ script = ExtResource("3_lquwl")
 topic = "Batching"
 help_text = "Batching allows you to chain-compile multiple stages. Select the stages you want to compile, then press [i]Start[/i].
 
-Enable [i]Run[/i] if you want the GUI to launch your map after compilation has finished."
+Enable [i]Run[/i] if you want the GUI to launch your map after compilation has finished.
+
+[i]Keep open[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -506,6 +540,15 @@ text = "Run"
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="PauseAfterBatch" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Keep open"
+icon_alignment = 1
+
 [node name="CompileSelected" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
@@ -520,10 +563,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Control2" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control3" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 

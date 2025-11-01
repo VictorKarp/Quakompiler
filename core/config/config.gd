@@ -17,6 +17,8 @@ var config_q1 := {
 	"output_path" = "",
 	"mod" = "",
 	"launch_after_compile" = false,
+	"pause_after_single" = false,
+	"pause_after_batch" = false,
 }
 
 var _is_loading_config := false

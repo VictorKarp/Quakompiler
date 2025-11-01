@@ -1,7 +1,8 @@
 extends Control
 
 var _compiler_pid: int
-var _is_compiling := false
+var _is_compiling_single := false
+var _is_compiling_batch := false
 var _compilation_queue: Array[String]
 
 
@@ -46,29 +47,35 @@ func _ready() -> void:
 	%SelectGameDialog.file_selected.connect(_set_game_path)
 
 	# Compiling
-	%CompileBsp.pressed.connect(_compile_bsp)
-	%CompileVis.pressed.connect(_compile_vis)
-	%CompileLight.pressed.connect(_compile_light)
+	var bsp_single = _compile_bsp.bind(Enums.compile_mode.SINGLE)
+	var vis_single = _compile_vis.bind(Enums.compile_mode.SINGLE)
+	var light_single = _compile_light.bind(Enums.compile_mode.SINGLE)
+	%CompileBsp.pressed.connect(bsp_single)
+	%CompileVis.pressed.connect(vis_single)
+	%CompileLight.pressed.connect(light_single)
 	%CompileSelected.pressed.connect(_compile_selected)
 
 	# Running
 	%LaunchAfterCompile.toggled.connect(_on_launch_after_compile_toggled)
 	%RunGame.pressed.connect(_run_game)
 
-
 	# Timers
 	%CompilerRunCheck.timeout.connect(_on_compiler_run_check_timeout)
+
+	# Pauses
+	%PauseAfterSingle.toggled.connect(_on_pause_after_single_toggled)
+	%PauseAfterBatch.toggled.connect(_on_pause_after_batch_toggled)
 
 	Config.load_config()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("compile_bsp"):
-		_compile_bsp()
+		_compile_bsp(Enums.compile_mode.SINGLE)
 	if event.is_action_pressed("compile_vis"):
-		_compile_vis()
+		_compile_vis(Enums.compile_mode.SINGLE)
 	if event.is_action_pressed("compile_light"):
-		_compile_light()
+		_compile_light(Enums.compile_mode.SINGLE)
 	if event.is_action_pressed("compile_selected"):
 		_compile_selected()
 	if event.is_action_pressed("run"):
@@ -117,6 +124,10 @@ func _on_config_value_changed(game, key, value) -> void:
 					%LightEnabled.set_pressed_no_signal(value)
 				"launch_after_compile":
 					%LaunchAfterCompile.set_pressed_no_signal(value)
+				"pause_after_single":
+					%PauseAfterSingle.set_pressed_no_signal(value)
+				"pause_after_batch":
+					%PauseAfterBatch.set_pressed_no_signal(value)
 		_:
 			pass
 
@@ -215,7 +226,7 @@ func _run_game() -> void:
 	OS.create_process(game_path, ["-basedir", basedir, "+game", mod, "+map", map])
 
 
-func _compile_bsp():
+func _compile_bsp(compile_mode: Enums.compile_mode):
 	var map_path: String = Config.get_config_value("q1", "map_path")
 	var bsp_path: String = Config.get_config_value("q1", "bsp_path")
 	var output_path: String = Config.get_output_path("q1")
@@ -225,10 +236,10 @@ func _compile_bsp():
 	if switches:
 		args += " " + switches
 	args += " " + output_path
-	_run_compiler(args)
+	_run_compiler(args, compile_mode)
 
 
-func _compile_vis():
+func _compile_vis(compile_mode: Enums.compile_mode):
 	var vis_path: String = Config.get_config_value("q1", "vis_path")
 	var switches: String = Config.get_config_value("q1", "vis_switches")
 	var output_path: String = Config.get_output_path("q1")
@@ -236,10 +247,10 @@ func _compile_vis():
 	if switches:
 		args += " " + switches
 	args += " " + output_path
-	_run_compiler(args)
+	_run_compiler(args, compile_mode)
 
 
-func _compile_light():
+func _compile_light(compile_mode: Enums.compile_mode):
 	var light_path: String = Config.get_config_value("q1", "light_path")
 	var switches: String = Config.get_config_value("q1", "light_switches")
 	var output_path: String = Config.get_output_path("q1")
@@ -247,10 +258,28 @@ func _compile_light():
 	if switches:
 		args += " " + switches
 	args += " " + output_path
-	_run_compiler(args)
+	_run_compiler(args, compile_mode)
 
 
-func _run_compiler(args) -> void:
+func _run_compiler(args, compile_mode: Enums.compile_mode) -> void:
+	# Pausing after compilation
+	var pause := false
+	match compile_mode:
+		Enums.compile_mode.SINGLE:
+			if Config.get_config_value("q1", "pause_after_single"):
+				pause = true
+			_is_compiling_single = true
+		Enums.compile_mode.BATCH:
+			if Config.get_config_value("q1", "pause_after_batch"):
+				pause = true
+			_is_compiling_batch = true
+			%CompilerRunCheck.start()
+	if pause:
+		if OS.get_name() == "Windows":
+			args += "&& pause"
+		elif OS.get_name() == "Linux":
+			args += "; read"
+
 	if OS.get_name() == "Linux":
 		var terminals: Array[String] = ["gnome-terminal", "xfce4-terminal", "konsole",
 				"guake", "yakuake", "terminator", "tilix", "kitty", "xterm"]
@@ -260,16 +289,9 @@ func _run_compiler(args) -> void:
 			if exit_code == 0:
 				selected_terminal = terminal
 				break
-		#args += "; sleep 2" # Wait for x secs before auto-closing
-		#args += "; exec bash" # Keep terminal open
-		#args += "; read" # Keep terminal open until Enter is pressed
 		_compiler_pid = OS.create_process(selected_terminal, ["--", "bash", "-c", args])
-	elif OS.get_name() == "Windows":
-		var args_array = args.split(" ", false) as Array
-		var exe = args_array.pop_front()
-		_compiler_pid = OS.create_process(exe, args_array, true)
-	%CompilerRunCheck.start()
-	_is_compiling = true
+	else:
+		_compiler_pid = OS.create_process("cmd.exe", ["/c", args], true)
 
 
 func _compile_selected() -> void:
@@ -284,7 +306,7 @@ func _compile_selected() -> void:
 
 
 func _cancel_compilation() -> void:
-	if _is_compiling:
+	if _is_compiling_single or _is_compiling_batch:
 		OS.kill(_compiler_pid)
 	_compilation_queue.clear()
 
@@ -293,18 +315,26 @@ func _start_next_queued_action() -> void:
 	var next_action = _compilation_queue.pop_front()
 	match next_action:
 		"bsp":
-			_compile_bsp()
+			_compile_bsp(Enums.compile_mode.BATCH)
 		"vis":
-			_compile_vis()
+			_compile_vis(Enums.compile_mode.BATCH)
 		"light":
-			_compile_light()
+			_compile_light(Enums.compile_mode.BATCH)
 		_:
 			if Config.get_config_value("q1", "launch_after_compile"):
 				_run_game()
 
 
 func _on_compiler_run_check_timeout() -> void:
-	_is_compiling = OS.is_process_running(_compiler_pid)
-	if not _is_compiling:
+	_is_compiling_batch = OS.is_process_running(_compiler_pid)
+	if not _is_compiling_batch:
 		%CompilerRunCheck.stop()
 		_start_next_queued_action()
+
+
+func _on_pause_after_single_toggled(value: bool) -> void:
+	Config.set_config_value("q1", "pause_after_single", value)
+
+
+func _on_pause_after_batch_toggled(value: bool) -> void:
+	Config.set_config_value("q1", "pause_after_batch", value)

@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://ctuy3wytylol"]
 
-[ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://tab_selector.gd" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://help/help_button.gd" id="3_lquwl"]
-[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://license.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://help/help_panel.tscn" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://scenes/main/tab_selector.gd" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/license/license.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
 bg_color = Color(0.4, 0.3338667, 0.276, 1)

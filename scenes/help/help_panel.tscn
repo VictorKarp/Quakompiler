@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bh45da1w7wc1"]
 
-[ext_resource type="Script" uid="uid://dlgc00a5f5nk0" path="res://help/help_panel.gd" id="1_07px7"]
+[ext_resource type="Script" uid="uid://dlgc00a5f5nk0" path="res://scenes/help/help_panel.gd" id="1_07px7"]
 
 [node name="HelpPanel" type="PanelContainer"]
 anchors_preset = 15

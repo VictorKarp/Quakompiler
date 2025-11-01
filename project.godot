@@ -20,9 +20,9 @@ boot_splash/show_image=false
 
 [autoload]
 
-Enums="*res://enums.gd"
-Events="*res://events.gd"
-Config="*res://config/config.tscn"
+Enums="*res://core/enums.gd"
+Events="*res://core/events.gd"
+Config="*res://core/config/config.tscn"
 
 [display]
 

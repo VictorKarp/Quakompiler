@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=20700
+boot_splash/show_image=false
 
 [autoload]
 

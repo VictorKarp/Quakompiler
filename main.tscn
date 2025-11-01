@@ -17,62 +17,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
 script = ExtResource("1_ig7tw")
 
-[node name="SelectBspDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectVisDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectLightDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectMapDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-filters = PackedStringArray("*.map")
-use_native_dialog = true
-
-[node name="SelectOutputDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a Directory"
-file_mode = 2
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectGameDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-size = Vector2i(772, 360)
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
@@ -593,3 +537,62 @@ scroll_following = true
 [node name="License" parent="VBoxContainer/Tabs" instance=ExtResource("4_1bvp3")]
 visible = false
 layout_mode = 2
+
+[node name="SelectBspDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="SelectVisDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="SelectLightDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="SelectMapDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.map")
+use_native_dialog = true
+
+[node name="SelectOutputDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a Directory"
+file_mode = 2
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="SelectGameDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a File"
+size = Vector2i(772, 360)
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+
+[node name="CompilerRunCheck" type="Timer" parent="."]
+unique_name_in_owner = true

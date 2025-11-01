@@ -1,5 +1,9 @@
 extends Control
 
+var _compiler_pid: int
+var _is_compiling := false
+var _compilation_queue: Array[String]
+
 
 func _init() -> void:
 	Config.config_value_changed.connect(_on_config_value_changed)
@@ -58,6 +62,9 @@ func _ready() -> void:
 
 	# Console
 	%ClearConsole.pressed.connect(_clear_console)
+
+	# Timers
+	%CompilerRunCheck.timeout.connect(_on_compiler_run_check_timeout)
 
 	Config.load_config()
 
@@ -265,22 +272,44 @@ func _run_compiler(args) -> void:
 		#args += "; sleep 2" # Wait for x secs before auto-closing
 		#args += "; exec bash" # Keep terminal open
 		#args += "; read" # Keep terminal open until Enter is pressed
-		OS.create_process(selected_terminal, ["--", "bash", "-c", args])
+		_compiler_pid = OS.create_process(selected_terminal, ["--", "bash", "-c", args])
 	elif OS.get_name() == "Windows":
 		var args_array = args.split(" ", false) as Array
 		var exe = args_array.pop_front()
-		OS.create_process(exe, args_array, true)
+		_compiler_pid = OS.create_process(exe, args_array, true)
+	%CompilerRunCheck.start()
+	_is_compiling = true
 
 
 func _compile_selected() -> void:
+	_cancel_compilation()
 	if Config.get_config_value("q1", "bsp_enabled"):
-		_compile_bsp()
+		_compilation_queue.append("bsp")
 	if Config.get_config_value("q1", "vis_enabled"):
-		_compile_vis()
+		_compilation_queue.append("vis")
 	if Config.get_config_value("q1", "light_enabled"):
-		_compile_light()
-	if Config.get_config_value("q1", "launch_after_compile"):
-		_run_game()
+		_compilation_queue.append("light")
+	_start_next_queued_action()
+
+
+func _cancel_compilation() -> void:
+	if _is_compiling:
+		OS.kill(_compiler_pid)
+	_compilation_queue.clear()
+
+
+func _start_next_queued_action() -> void:
+	var next_action = _compilation_queue.pop_front()
+	match next_action:
+		"bsp":
+			_compile_bsp()
+		"vis":
+			_compile_vis()
+		"light":
+			_compile_light()
+		_:
+			if Config.get_config_value("q1", "launch_after_compile"):
+				_run_game()
 
 
 func _clear_console() -> void:
@@ -313,3 +342,10 @@ func _print_array_to_console(array: Array, clear_console = true,
 		%ConsoleOutput.text += item
 	if scroll_to_top:
 		%ConsoleOutput.call_deferred("scroll_to_line", 0)
+
+
+func _on_compiler_run_check_timeout() -> void:
+	_is_compiling = OS.is_process_running(_compiler_pid)
+	if not _is_compiling:
+		%CompilerRunCheck.stop()
+		_start_next_queued_action()

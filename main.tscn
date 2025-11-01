@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=8 format=3 uid="uid://ctuy3wytylol"]
 
 [ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://tab_selector.gd" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://help/help_button.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://license.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://help/help_panel.tscn" id="4_7mycd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
 bg_color = Color(0.4, 0.3338667, 0.276, 1)
@@ -60,7 +62,7 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 metadata/_tab_index = 0
 
-[node name="HSplitContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Tabs/Quake"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 4
@@ -84,9 +86,29 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Compiler executables"
+
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for compiler executables"
+text = "?"
+script = ExtResource("3_lquwl")
+topic = "Compiler executables"
+help_text = "You need to get a compiler from somewhere first before you can select it here. The compiler converts your .map file to a .bsp file which the game can run.
+
+[url=https://ericwa.github.io/ericw-tools/]ericw-tools[/url] is generally the recommended set of compilers for Quake 1. Download the latest stable release from [url=https://github.com/ericwa/ericw-tools/releases/]Github[/url], extract the files and choose the Bsp, Vis and Light executables here in the GUI.
+
+Click the help button in the \"Compilation\" section for more info about the Bsp, Vis and Light stages.
+
+"
+open_on_side = 1
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -101,7 +123,6 @@ text = "BSP"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "BSP compiler path."
 placeholder_text = "BSP compiler path"
 caret_blink = true
 
@@ -109,7 +130,6 @@ caret_blink = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-tooltip_text = "Locate your BSP compiler."
 text = "..."
 
 [node name="Vis" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
@@ -120,15 +140,13 @@ text = "Vis"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "VIS compiler path."
-placeholder_text = "VIS compiler path"
+placeholder_text = "Vis compiler path"
 caret_blink = true
 
 [node name="SelectVisPath" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-tooltip_text = "Locate your VIS compiler."
 text = "..."
 
 [node name="Light" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
@@ -139,15 +157,13 @@ text = "Light"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "LIGHT compiler path"
-placeholder_text = "LIGHT compiler path"
+placeholder_text = "Light compiler path"
 caret_blink = true
 
 [node name="SelectLightPath" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-tooltip_text = "Locate your LIGHT compiler."
 text = "..."
 
 [node name="Vis" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel"]
@@ -163,13 +179,35 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Compiler switches"
 
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for compiler switches"
+text = "?"
+script = ExtResource("3_lquwl")
+topic = "Compiler switches"
+help_text = "You can define additional switches for each compiler stage. Switches can for example decrease compilation time by lowering the quality for quick tests, improve lighting quality or provide debug features.
+
+Switches always begin with a dash (-) and are separated by spaces. Some switches can use numbers as well. Read the documentation for your compiler to see which switches it provides. Here are some examples for the [url=https://ericwa.github.io/ericw-tools/]ericw-tools[/url] compilers:
+
+BSP:   -bsp2 -subdivide 128
+Vis:     -fast -v
+Light: -extra -bounce
+
+If you are using the ericw-tools, read the docs for [url=https://ericwa.github.io/ericw-tools/doc/qbsp.html]qbsp[/url], [url=https://ericwa.github.io/ericw-tools/doc/vis.html]vis[/url] and [url=https://ericwa.github.io/ericw-tools/doc/light.html]light[/url] to learn about each stage's switches."
+open_on_side = 1
+
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer"]
 layout_mode = 2
-columns = 3
+columns = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(60, 0)
@@ -180,18 +218,8 @@ text = "Bsp"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Enter additional BSP switches.
-Format switches like this:
--bsp2 -subdivide 128  -splitsky"
 placeholder_text = "BSP switches"
 caret_blink = true
-
-[node name="BspHelp" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-tooltip_text = "Show the BSP compiler's flags."
-text = "?"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -201,18 +229,8 @@ text = "Vis"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Enter additional VIS switches.
-Format switches like this:
--v -fast  -threads 4"
-placeholder_text = "VIS switches"
+placeholder_text = "Vis switches"
 caret_blink = true
-
-[node name="VisHelp" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-tooltip_text = "Show the VIS compiler's flags."
-text = "?"
 
 [node name="Label3" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -222,18 +240,8 @@ text = "Light"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Enter additional LIGHT switches.
-Format switches like this:
--threads 4 -dirt -bounce 1"
 placeholder_text = "Light switches"
 caret_blink = true
-
-[node name="LightHelp" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-tooltip_text = "Show the LIGHT compiler's flags."
-text = "?"
 
 [node name="MapOutput" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel"]
 layout_mode = 2
@@ -248,6 +256,30 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer"]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Game and map settings"
+
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for game and map settings"
+text = "?"
+script = ExtResource("3_lquwl")
+topic = "Game and map settings"
+help_text = "Game: Select your Quake executable. If your are playing a modern source port like Quakespasm or Ironwail, select the executable of the source port instead.
+
+Mod: If you want to start a mod when launching the game, enter its name here. Otherwise, leave the field empty.
+
+Map: Select the .map file you want to compile.
+
+Output: Select the output folder where your .bsp file will be saved."
+open_on_side = 1
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -329,55 +361,12 @@ layout_mode = 2
 mouse_filter = 1
 text = "..."
 
-[node name="HelpPanel" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer"]
+[node name="HelpPanel" parent="VBoxContainer/Tabs/Quake/HSplitContainer" node_paths=PackedStringArray("left_panel", "right_panel") instance=ExtResource("4_7mycd")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/HelpPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/HelpPanel/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/HelpPanel/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="ClearConsole" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/HelpPanel/MarginContainer/VBoxContainer2/HBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Clear console"
-
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/HelpPanel/MarginContainer/VBoxContainer2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Help"
-text_overrun_behavior = 1
-
-[node name="CloseHelp" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/HelpPanel/MarginContainer/VBoxContainer2/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-text = "X"
-
-[node name="ConsoleOutput" type="RichTextLabel" parent="VBoxContainer/Tabs/Quake/HSplitContainer/HelpPanel/MarginContainer/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 2
-context_menu_enabled = true
-selection_enabled = true
-drag_and_drop_selection_enabled = false
+left_panel = NodePath("../PathsPanel")
+right_panel = NodePath("../ButtonsPanel")
 
 [node name="ButtonsPanel" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer"]
 unique_name_in_owner = true
@@ -397,9 +386,28 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Compilation"
+
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for compilation"
+text = "?"
+script = ExtResource("3_lquwl")
+topic = "Compilation"
+help_text = "Pressing one of these buttons will compile the respective stage. If you want to compile multiple stages and maybe even run the game when compilation has finished, use the [i]Batching[/i] section instead.
+
+[i]BSP[/i] (Binary Space Partitioning) compiles the physical structure of your map. This is sufficient to play your map, but there will be no optimization or shadows.
+
+[i]Vis[/i] (visibility) is for performance optimization. Compiles visibility (which parts of your map can be seen from which position - things that can't be  seen aren't rendered) and automatically generates ambient sounds. Only works if your map doesn't have a leak.
+
+[i]Light[/i] compiles lights and shadows."
 
 [node name="FlowContaine" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -409,7 +417,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Compile BSP."
 text = "BSP"
 icon_alignment = 1
 
@@ -418,7 +425,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Compile VIS."
 text = "Vis"
 icon_alignment = 1
 
@@ -427,7 +433,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Compile LIGHT."
 text = "Light"
 icon_alignment = 1
 
@@ -444,9 +449,24 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Batching"
+
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for batching"
+text = "?"
+script = ExtResource("3_lquwl")
+topic = "Batching"
+help_text = "Batching allows you to chain-compile multiple stages. Select the stages you want to compile, then press [i]Start[/i].
+
+Enable [i]Run[/i] if you want the GUI to launch your map after compilation has finished."
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -457,8 +477,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Selects if BSP should be compiled when \"Compile selected\" is pressed.
-If you just want to compile BSP, press the arrow button in this panel."
 toggle_mode = true
 text = "BSP"
 
@@ -467,8 +485,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Selects if VIS should be compiled when \"Compile selected\" is pressed.
-If you just want to compile VIS, press the arrow button in this panel."
 toggle_mode = true
 text = "Vis"
 
@@ -477,8 +493,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Selects if LIGHT should be compiled when \"Compile selected\" is pressed.
-If you just want to compile LIGHT, press the arrow button in this panel."
 toggle_mode = true
 text = "Light"
 
@@ -486,7 +500,6 @@ text = "Light"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Run the map after \"Compile selected\" has finished."
 toggle_mode = true
 text = "Run"
 
@@ -498,8 +511,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Compile all selected stages.
-Select stages by toggling the BSP, VIS and LIGHT buttons."
 text = "Start"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
@@ -541,10 +552,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "Run the game and load your map.
-If you have entered a mod, the mod will be loaded as well."
 mouse_filter = 1
-text = "Run game"
+text = "Run map"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
 

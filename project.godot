@@ -19,12 +19,14 @@ run/low_processor_mode_sleep_usec=20700
 
 [autoload]
 
+Enums="*res://enums.gd"
+Events="*res://events.gd"
 Config="*res://config/config.tscn"
 
 [display]
 
 window/size/viewport_width=1000
-window/size/viewport_height=520
+window/size/viewport_height=560
 
 [gui]
 

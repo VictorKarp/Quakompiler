@@ -55,14 +55,6 @@ func _ready() -> void:
 	%LaunchAfterCompile.toggled.connect(_on_launch_after_compile_toggled)
 	%RunGame.pressed.connect(_run_game)
 
-	# Help
-	%BspHelp.pressed.connect(_print_bsp_help)
-	%VisHelp.pressed.connect(_print_vis_help)
-	%LightHelp.pressed.connect(_print_light_help)
-	%CloseHelp.pressed.connect(_close_help)
-
-	# Console
-	%ClearConsole.pressed.connect(_clear_help)
 
 	# Timers
 	%CompilerRunCheck.timeout.connect(_on_compiler_run_check_timeout)
@@ -79,8 +71,6 @@ func _input(event: InputEvent) -> void:
 		_compile_light()
 	if event.is_action_pressed("compile_selected"):
 		_compile_selected()
-	if event.is_action_pressed("clear_console"):
-		_clear_help()
 	if event.is_action_pressed("run"):
 		_run_game()
 
@@ -311,49 +301,6 @@ func _start_next_queued_action() -> void:
 		_:
 			if Config.get_config_value("q1", "launch_after_compile"):
 				_run_game()
-
-
-func _clear_help() -> void:
-	%ConsoleOutput.text = ""
-
-
-func _print_bsp_help() -> void:
-	var output: Array[String]
-	OS.execute(%BspPath.text, [], output)
-	_set_help_text(output)
-	%HelpPanel.show()
-	%ButtonsPanel.hide()
-
-
-func _print_vis_help() -> void:
-	var output: Array[String]
-	OS.execute(%VisPath.text, [], output)
-	_set_help_text(output)
-	%HelpPanel.show()
-	%ButtonsPanel.hide()
-
-
-func _print_light_help() -> void:
-	var output: Array[String]
-	OS.execute(%LightPath.text, [], output)
-	_set_help_text(output)
-	%HelpPanel.show()
-	%ButtonsPanel.hide()
-
-
-func _close_help() -> void:
-	%HelpPanel.hide()
-	%ButtonsPanel.show()
-
-
-func _set_help_text(text) -> void:
-	_clear_help()
-	if text is String:
-		%ConsoleOutput.text = text
-	if text is Array:
-		for line in text:
-			%ConsoleOutput.text += line
-	%ConsoleOutput.scroll_to_line(0)
 
 
 func _on_compiler_run_check_timeout() -> void:

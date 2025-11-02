@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvmf25xfy7pxd"]
+
+[ext_resource type="Script" uid="uid://c0hxcpdbrpsqq" path="res://scenes/file_browser_button/file_browser_button.gd" id="1_nywm1"]
+
+[node name="SelectBspPath" type="Button"]
+custom_minimum_size = Vector2(32, 0)
+text = "..."
+script = ExtResource("1_nywm1")

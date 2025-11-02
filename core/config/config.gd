@@ -1,6 +1,8 @@
 extends Node
 
-signal config_value_changed(game: String, key: String, value)
+signal config_loaded
+
+var current_game := Enums.game.QUAKE1
 
 var config_q1 := {
 	"bsp_path" = "",
@@ -64,47 +66,54 @@ func load_config() -> void:
 	for section in config.get_sections():
 		for key in config.get_section_keys(section):
 			var value = config.get_value(section, key)
-			set_config_value(section, key, value)
+			if section == "global":
+				set_global_value(key, value)
+			else:
+				set_game_value(key, value)
 	_is_loading_config = false
+	config_loaded.emit()
 
 
-func set_config_value(section: String, key: String, value) -> void:
-	match section:
-		"q1":
+func set_game_value(key: String, value) -> void:
+	match current_game:
+		Enums.game.QUAKE1:
+			prints(key, value)
 			config_q1.set(key, value)
-		"global":
-			config_global.set(key, value)
-		_:
-			return
-	config_value_changed.emit(section, key, value)
-	save_config()
 
 
-func get_config_value(game: String, key: String):
-	match game:
-		"q1":
+func set_global_value(key: String, value) -> void:
+	config_global.set(key, value)
+
+
+func get_global_value(key: String):
+	return config_global.get(key)
+
+
+func get_game_value(key: String, game := current_game):
+	match current_game:
+		Enums.game.QUAKE1:
 			return config_q1.get(key)
 		_:
 			return null
 
 
-func get_output_path(game: String) -> String:
-	var output_path = get_config_value(game, "output_path")
-	var map_name = get_config_value(game, "map_path").get_file().rstrip(".map")
+func get_output_path() -> String:
+	var output_path = get_game_value("output_path")
+	var map_name = get_game_value("map_path").get_file().rstrip(".map")
 	return output_path + "/" + map_name + ".bsp"
 
 
-func _get_bsp_switches_array(game: String) -> PackedStringArray:
+func _get_bsp_switches_array(game: Enums.game) -> PackedStringArray:
 	match game:
-		"q1":
+		Enums.game.QUAKE1:
 			return config_q1["bsp_switches".split(" ", false)]
 		_:
 			return []
 
 
-func _get_bsp_switches_text(game: String) -> PackedStringArray:
+func _get_bsp_switches_text(game: Enums.game) -> PackedStringArray:
 	match game:
-		"q1":
+		Enums.game.QUAKE1:
 			return config_q1["vis_switches".split(" ", false)]
 		_:
 			return []

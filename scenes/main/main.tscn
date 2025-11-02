@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=13 format=3 uid="uid://ctuy3wytylol"]
 
 [ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="2_0xm2m"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/licenses/licenses.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="5_yyfjg"]
+[ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="6_a8run"]
+[ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="8_ouso4"]
+[ext_resource type="PackedScene" uid="uid://bbojh06nh2f6d" path="res://scenes/file_dialog/file_dialog.tscn" id="9_b1x3f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
 bg_color = Color(0.4, 0.3338667, 0.276, 1)
@@ -113,52 +117,44 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "BSP"
 
-[node name="BspPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="BspPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "BSP compiler path"
-caret_blink = true
 
-[node name="SelectBspPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SelectBspPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("6_a8run")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-text = "..."
+line_edit = NodePath("../BspPath")
+file_dialog = NodePath("../../../../../../../../../../../FileDialog")
 
 [node name="Vis" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Vis"
 
-[node name="VisPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="VisPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
 placeholder_text = "Vis compiler path"
-caret_blink = true
+config_key = "vis_path"
 
-[node name="SelectVisPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SelectVisPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("6_a8run")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-text = "..."
+line_edit = NodePath("../VisPath")
+file_dialog = NodePath("../../../../../../../../../../../FileDialog")
 
 [node name="Light" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Light"
 
-[node name="LightPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="LightPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
 placeholder_text = "Light compiler path"
-caret_blink = true
+config_key = "light_path"
 
-[node name="SelectLightPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SelectLightsPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("6_a8run")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-text = "..."
+line_edit = NodePath("../LightPath")
+file_dialog = NodePath("../../../../../../../../../../../FileDialog")
 
 [node name="GameAndMapSettings" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
 layout_mode = 2
@@ -201,33 +197,25 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Game"
 
-[node name="GamePath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="GamePath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
 placeholder_text = "Game executable path"
-caret_blink = true
+config_key = "game_path"
 
-[node name="SelectGamePath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="SelectGamePath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("6_a8run")]
 layout_mode = 2
-mouse_filter = 1
-text = "..."
+line_edit = NodePath("../GamePath")
+file_dialog = NodePath("../../../../../../../../../../../FileDialog")
 
 [node name="ModLabel" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Mod"
 
-[node name="Mod" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="ModName" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
 placeholder_text = "Mod name"
-caret_blink = true
+config_key = "mod"
 
 [node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -237,40 +225,31 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Map"
 
-[node name="MapPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="MapPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
 placeholder_text = "Map path"
-caret_blink = true
+config_key = "map_path"
 
-[node name="SelectMapPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="SelectMapPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("6_a8run")]
 layout_mode = 2
-mouse_filter = 1
-text = "..."
+line_edit = NodePath("../MapPath")
+file_dialog = NodePath("../../../../../../../../../../../FileDialog")
 
 [node name="Output" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Output"
 
-[node name="OutputPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="OutputPath" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
 placeholder_text = "Output path"
-caret_blink = true
+config_key = "output_path"
 
-[node name="SelectOutputFolder" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="SelectOutputFolder" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("6_a8run")]
 layout_mode = 2
-mouse_filter = 1
-text = "..."
+line_edit = NodePath("../OutputPath")
+file_dialog = NodePath("../../../../../../../../../../../FileDialog")
+mode = 2
 
 [node name="CompilerSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
 layout_mode = 2
@@ -318,12 +297,10 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Bsp"
 
-[node name="BspSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
+[node name="BspSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "BSP switches"
-caret_blink = true
+placeholder_text = "Bsp switches"
+config_key = "bsp_switches"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -333,20 +310,9 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
 [node name="BspSwitchButtons" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/BspSwitchButtons"]
-layout_mode = 2
-text = "-param"
-
-[node name="Button2" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/BspSwitchButtons"]
-layout_mode = 2
-text = "-param"
-
-[node name="Button3" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/BspSwitchButtons"]
-layout_mode = 2
-text = "-param"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -356,12 +322,10 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Vis"
 
-[node name="VisSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-unique_name_in_owner = true
+[node name="VisSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
 placeholder_text = "Vis switches"
-caret_blink = true
+config_key = "vis_switches"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -370,21 +334,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="HFlowContainer2" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+[node name="VisSwitchButtons" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/HFlowContainer2"]
-layout_mode = 2
-text = "-param"
-
-[node name="Button2" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/HFlowContainer2"]
-layout_mode = 2
-text = "-param"
-
-[node name="Button3" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/HFlowContainer2"]
-layout_mode = 2
-text = "-param"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -394,12 +347,10 @@ custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Light"
 
-[node name="LightSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
-unique_name_in_owner = true
+[node name="LightSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("5_yyfjg")]
 layout_mode = 2
-size_flags_horizontal = 3
 placeholder_text = "Light switches"
-caret_blink = true
+config_key = "light_switches"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -408,21 +359,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 
-[node name="HFlowContainer3" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
+[node name="LightSwitchButtons" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7/HFlowContainer3"]
-layout_mode = 2
-text = "-param"
-
-[node name="Button2" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7/HFlowContainer3"]
-layout_mode = 2
-text = "-param"
-
-[node name="Button3" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7/HFlowContainer3"]
-layout_mode = 2
-text = "-param"
 
 [node name="SingleCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
 layout_mode = 2
@@ -481,13 +421,10 @@ text = "Light"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
 
-[node name="PauseAfterSingle" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="PauseAfterSingle" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
 text = "Pause"
+config_key = "pause_after_single"
 
 [node name="BatchCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
 layout_mode = 2
@@ -515,45 +452,29 @@ Enable [i]Run[/i] if you want the GUI to launch your map after compilation has f
 layout_mode = 2
 columns = 3
 
-[node name="BspEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
+[node name="BspEnabled" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
 text = "BSP"
+config_key = "bsp_enabled"
 
-[node name="VisEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
+[node name="VisEnabled" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
 text = "Vis"
+config_key = "vis_enabled"
 
-[node name="LightEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
+[node name="LightEnabled" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
 text = "Light"
+config_key = "light_enabled"
 
-[node name="LaunchAfterCompile" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
+[node name="LaunchAfterCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
-text = "Run"
+config_key = "launch_after_compile"
 
-[node name="PauseAfterBatch" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="PauseAfterBatch" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
-size_flags_horizontal = 3
-toggle_mode = true
 text = "Pause"
-icon_alignment = 1
+config_key = "pause_after_batch"
 
 [node name="CompileSelected" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -661,61 +582,7 @@ visible = false
 visible = false
 layout_mode = 2
 
-[node name="SelectBspDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectVisDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectLightDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectMapDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-file_mode = 0
-display_mode = 1
-access = 2
-filters = PackedStringArray("*.map")
-use_native_dialog = true
-
-[node name="SelectOutputDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a Directory"
-file_mode = 2
-display_mode = 1
-access = 2
-use_native_dialog = true
-
-[node name="SelectGameDialog" type="FileDialog" parent="."]
-unique_name_in_owner = true
-oversampling_override = 1.0
-title = "Open a File"
-size = Vector2i(772, 360)
-file_mode = 0
-display_mode = 1
-access = 2
-use_native_dialog = true
+[node name="FileDialog" parent="." instance=ExtResource("9_b1x3f")]
 
 [node name="CompilerRunCheck" type="Timer" parent="."]
 unique_name_in_owner = true

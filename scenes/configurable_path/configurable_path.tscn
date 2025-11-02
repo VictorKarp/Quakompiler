@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dylivegu0pld5"]
+
+[ext_resource type="Script" uid="uid://cjsylq3vk0eoo" path="res://scenes/configurable_path/configurable_path.gd" id="1_xsodm"]
+
+[node name="ConfigurablePath" type="LineEdit"]
+offset_right = 617.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+placeholder_text = "BSP compiler path"
+caret_blink = true
+script = ExtResource("1_xsodm")
+config_key = "bsp_path"

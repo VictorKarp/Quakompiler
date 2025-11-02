@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://oteqgk7icfwp"]
+
+[ext_resource type="Script" uid="uid://cd2usdsd7d1nm" path="res://scenes/config_toggle_button/config_toggle_button.gd" id="1_lrjlc"]
+
+[node name="LaunchAfterCompile" type="Button"]
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Run"
+script = ExtResource("1_lrjlc")

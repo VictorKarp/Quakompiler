@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbojh06nh2f6d"]
+
+[ext_resource type="Script" uid="uid://bpd6rhgqtes8" path="res://scenes/file_dialog/file_dialog.gd" id="1_sqi1w"]
+
+[node name="FileDialog" type="FileDialog"]
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+display_mode = 1
+access = 2
+use_native_dialog = true
+script = ExtResource("1_sqi1w")

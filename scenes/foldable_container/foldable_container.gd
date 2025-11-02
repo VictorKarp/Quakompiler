@@ -5,13 +5,14 @@ extends FoldableContainer
 
 func _ready() -> void:
 	folding_changed.connect(_on_folding_changed)
-	Config.config_value_changed.connect(_on_config_value_changed)
+	Config.config_loaded.connect(_on_config_loaded)
 
 
 func _on_folding_changed(value: bool) -> void:
-	Config.set_config_value("q1", config_name, value)
+	Config.set_game_value(config_name, value)
 
 
-func _on_config_value_changed(game: String, key: String, value) -> void:
-	if key == config_name:
+func _on_config_loaded() -> void:
+	var value = Config.get_game_value(config_name)
+	if value:
 		folded = value

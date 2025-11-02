@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://scenes/main/tab_selector.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container.tscn" id="3_hujxm"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="3_lquwl"]
-[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/info/info.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/licenses/licenses.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
@@ -657,7 +657,7 @@ autowrap_mode = 3
 unique_name_in_owner = true
 visible = false
 
-[node name="License" parent="VBoxContainer/Tabs" instance=ExtResource("4_1bvp3")]
+[node name="Licenses" parent="VBoxContainer/Tabs" instance=ExtResource("4_1bvp3")]
 visible = false
 layout_mode = 2
 

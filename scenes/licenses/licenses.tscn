@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7g0n3olaswmi"]
 
-[ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/info/info.gd" id="1_sdeh5"]
+[ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/licenses/licenses.gd" id="1_sdeh5"]
 
 [node name="Licenses" type="MarginContainer"]
 anchors_preset = 15

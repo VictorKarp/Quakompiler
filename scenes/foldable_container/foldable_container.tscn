@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://csqg8ohcs57k5"]
 
-[ext_resource type="Script" uid="uid://c6fcaj0gpqtbt" path="res://scenes/foldable_container.gd" id="1_jfgwp"]
+[ext_resource type="Script" uid="uid://c6fcaj0gpqtbt" path="res://scenes/foldable_container/foldable_container.gd" id="1_jfgwp"]
 
 [node name="FoldableContainer" type="FoldableContainer"]
 custom_minimum_size = Vector2(300, 0)

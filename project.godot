@@ -24,11 +24,6 @@ Enums="*res://core/enums.gd"
 Events="*res://core/events.gd"
 Config="*res://core/config/config.tscn"
 
-[display]
-
-window/size/viewport_width=1000
-window/size/viewport_height=560
-
 [gui]
 
 theme/custom="uid://b0oqypotxwhel"

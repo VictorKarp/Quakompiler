@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=9 format=3 uid="uid://ctuy3wytylol"]
 
 [ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://scenes/main/tab_selector.gd" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container.tscn" id="3_hujxm"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/info/info.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
@@ -62,38 +63,32 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 metadata/_tab_index = 0
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Tabs/Quake"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Tabs/Quake"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 4
+size_flags_horizontal = 3
 
-[node name="PathsPanel" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer"]
-unique_name_in_owner = true
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Bsp" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel"]
+[node name="Compilers" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
+layout_mode = 2
+title = "Compiler executables"
+config_name = "compilers_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Compiler executables"
 
-[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -108,85 +103,192 @@ help_text = "You need to get a compiler from somewhere first before you can sele
 Click the help button in the \"Compilation\" section for more info about the Bsp, Vis and Light stages.
 
 "
-open_on_side = 1
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="Bsp" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Bsp" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "BSP"
 
-[node name="BspPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="BspPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "BSP compiler path"
 caret_blink = true
 
-[node name="SelectBspPath" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SelectBspPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="Vis" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Vis" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Vis"
 
-[node name="VisPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="VisPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Vis compiler path"
 caret_blink = true
 
-[node name="SelectVisPath" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SelectVisPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="Light" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="Light" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Light"
 
-[node name="LightPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="LightPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Light compiler path"
 caret_blink = true
 
-[node name="SelectLightPath" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Bsp/MarginContainer/VBoxContainer/GridContainer"]
+[node name="SelectLightPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 text = "..."
 
-[node name="Vis" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel"]
+[node name="GameAndMapSettings" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
+layout_mode = 2
+title = "Game and map settings"
+config_name = "game_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Game and map settings"
+
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for game and map settings"
+text = "?"
+script = ExtResource("3_lquwl")
+topic = "Game and map settings"
+help_text = "Game: Select your Quake executable. If your are playing a modern source port like Quakespasm or Ironwail, select the executable of the source port instead.
+
+Mod: If you want to start a mod when launching the game, enter its name here. Otherwise, leave the field empty.
+
+Map: Select the .map file you want to compile.
+
+Output: Select the output folder where your .bsp file will be saved."
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Game" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Game"
+
+[node name="GamePath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+placeholder_text = "Game executable path"
+caret_blink = true
+
+[node name="SelectGamePath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "..."
+
+[node name="ModLabel" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Mod"
+
+[node name="Mod" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+placeholder_text = "Mod name"
+caret_blink = true
+
+[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Map" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Map"
+
+[node name="MapPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+placeholder_text = "Map path"
+caret_blink = true
+
+[node name="SelectMapPath" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "..."
+
+[node name="Output" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Output"
+
+[node name="OutputPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+placeholder_text = "Output path"
+caret_blink = true
+
+[node name="SelectOutputFolder" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+mouse_filter = 1
+text = "..."
+
+[node name="CompilerSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
+layout_mode = 2
+title = "Compiler switches"
+config_name = "switches_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Compiler switches"
 
-[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -203,197 +305,134 @@ Vis:     -fast -v
 Light: -extra -bounce
 
 If you are using the ericw-tools, read the docs for [url=https://ericwa.github.io/ericw-tools/doc/qbsp.html]qbsp[/url], [url=https://ericwa.github.io/ericw-tools/doc/vis.html]vis[/url] and [url=https://ericwa.github.io/ericw-tools/doc/light.html]light[/url] to learn about each stage's switches."
-open_on_side = 1
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Bsp"
 
-[node name="BspSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
+[node name="BspSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "BSP switches"
 caret_blink = true
 
-[node name="Label2" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="BspSwitchButtons" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/BspSwitchButtons"]
+layout_mode = 2
+text = "-param"
+
+[node name="Button2" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/BspSwitchButtons"]
+layout_mode = 2
+text = "-param"
+
+[node name="Button3" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6/BspSwitchButtons"]
+layout_mode = 2
+text = "-param"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Vis"
 
-[node name="VisSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
+[node name="VisSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Vis switches"
 caret_blink = true
 
-[node name="Label3" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/HFlowContainer2"]
+layout_mode = 2
+text = "-param"
+
+[node name="Button2" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/HFlowContainer2"]
+layout_mode = 2
+text = "-param"
+
+[node name="Button3" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5/HFlowContainer2"]
+layout_mode = 2
+text = "-param"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Light"
 
-[node name="LightSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/Vis/MarginContainer/VBoxContainer/GridContainer"]
+[node name="LightSwitches" type="LineEdit" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Light switches"
 caret_blink = true
 
-[node name="MapOutput" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer"]
+[node name="HBoxContainer7" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/HBoxContainer"]
-layout_mode = 2
-text = "Game and map settings"
-
-[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-tooltip_text = "Show the help for game and map settings"
-text = "?"
-script = ExtResource("3_lquwl")
-topic = "Game and map settings"
-help_text = "Game: Select your Quake executable. If your are playing a modern source port like Quakespasm or Ironwail, select the executable of the source port instead.
-
-Mod: If you want to start a mod when launching the game, enter its name here. Otherwise, leave the field empty.
-
-Map: Select the .map file you want to compile.
-
-Output: Select the output folder where your .bsp file will be saved."
-open_on_side = 1
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-columns = 3
-
-[node name="Game" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
+[node name="Spacer" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-text = "Game"
 
-[node name="GamePath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-placeholder_text = "Game executable path"
-caret_blink = true
-
-[node name="SelectGamePath" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-mouse_filter = 1
-text = "..."
-
-[node name="ModLabel" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-text = "Mod"
-
-[node name="Mod" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-placeholder_text = "Mod name"
-caret_blink = true
-
-[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-layout_mode = 2
-
-[node name="Map" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-text = "Map"
-
-[node name="MapPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-placeholder_text = "Map path"
-caret_blink = true
-
-[node name="SelectMapPath" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-mouse_filter = 1
-text = "..."
-
-[node name="Output" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-text = "Output"
-
-[node name="OutputPath" type="LineEdit" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-placeholder_text = "Output path"
-caret_blink = true
-
-[node name="SelectOutputFolder" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/PathsPanel/MapOutput/MarginContainer/VBoxContainer2/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-mouse_filter = 1
-text = "..."
-
-[node name="HelpPanel" parent="VBoxContainer/Tabs/Quake/HSplitContainer" node_paths=PackedStringArray("left_panel", "right_panel") instance=ExtResource("4_7mycd")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-left_panel = NodePath("../PathsPanel")
-right_panel = NodePath("../ButtonsPanel")
-
-[node name="ButtonsPanel" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer"]
-unique_name_in_owner = true
+[node name="HFlowContainer3" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel"]
+[node name="Button" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7/HFlowContainer3"]
+layout_mode = 2
+text = "-param"
+
+[node name="Button2" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7/HFlowContainer3"]
+layout_mode = 2
+text = "-param"
+
+[node name="Button3" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7/HFlowContainer3"]
+layout_mode = 2
+text = "-param"
+
+[node name="SingleCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
+layout_mode = 2
+title = "Single compile"
+config_name = "single_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Compilation"
-
-[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -411,11 +450,11 @@ help_text = "Pressing one of these buttons will compile the respective stage. If
 
 [i]Keep open[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-columns = 4
+columns = 3
 
-[node name="CompileBsp" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="CompileBsp" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -424,7 +463,7 @@ text = "BSP"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
 
-[node name="CompileVis" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="CompileVis" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -433,7 +472,7 @@ text = "Vis"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
 
-[node name="CompileLight" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="CompileLight" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -442,53 +481,23 @@ text = "Light"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
 
-[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PauseAfterSingle" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="PauseAfterSingle" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "Keep open"
+text = "Pause"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BatchCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
+layout_mode = 2
+title = "Batch compile"
+config_name = "batch_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Automation" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Batching"
-
-[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Help" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -502,11 +511,11 @@ Enable [i]Run[/i] if you want the GUI to launch your map after compilation has f
 
 [i]Keep open[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-columns = 4
+columns = 3
 
-[node name="BspEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/GridContainer"]
+[node name="BspEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -514,7 +523,7 @@ size_flags_horizontal = 3
 toggle_mode = true
 text = "BSP"
 
-[node name="VisEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/GridContainer"]
+[node name="VisEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -522,7 +531,7 @@ size_flags_horizontal = 3
 toggle_mode = true
 text = "Vis"
 
-[node name="LightEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/GridContainer"]
+[node name="LightEnabled" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
@@ -530,26 +539,23 @@ size_flags_horizontal = 3
 toggle_mode = true
 text = "Light"
 
-[node name="LaunchAfterCompile" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/GridContainer"]
+[node name="LaunchAfterCompile" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 text = "Run"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="PauseAfterBatch" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PauseAfterBatch" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-text = "Keep open"
+text = "Pause"
 icon_alignment = 1
 
-[node name="CompileSelected" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CompileSelected" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -558,35 +564,22 @@ text = "Start"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
 
-[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control2" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Automation/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Game" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel"]
+[node name="GridContainer2" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game"]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game/MarginContainer"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game/MarginContainer/VBoxContainer"]
+[node name="Run" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
 layout_mode = 2
-text = "Game"
+title = "Run"
+config_name = "run_folded"
 
-[node name="AspectRatioContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run/PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
+size_flags_vertical = 0
 
-[node name="RunGame" type="Button" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game/MarginContainer/VBoxContainer/AspectRatioContainer"]
+[node name="RunGame" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
@@ -596,60 +589,73 @@ text = "Run map"
 icon = ExtResource("2_0xm2m")
 icon_alignment = 2
 
-[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game/MarginContainer/VBoxContainer/AspectRatioContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control2" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game/MarginContainer/VBoxContainer/AspectRatioContainer"]
+[node name="Control2" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run/PanelContainer/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Control3" type="Control" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Game/MarginContainer/VBoxContainer/AspectRatioContainer"]
+[node name="Control3" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run/PanelContainer/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Hotkeys" type="PanelContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel"]
+[node name="Hotkeys" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_hujxm")]
 layout_mode = 2
-size_flags_vertical = 3
+title = "Hotkeys"
+config_name = "hotkeys_folded"
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys"]
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Hotkeys/PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/h_separation = 16
+last_wrap_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys/MarginContainer"]
-layout_mode = 2
-
-[node name="Hotkeys" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Hotkeys"
-
-[node name="CompileBSP" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys/MarginContainer/VBoxContainer"]
+[node name="CompileBSP" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Hotkeys/PanelContainer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "F1: Compile BSP"
+autowrap_mode = 3
 
-[node name="CompileVIS" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys/MarginContainer/VBoxContainer"]
+[node name="CompileVIS" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Hotkeys/PanelContainer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "F2: Compile Vis"
+autowrap_mode = 3
 
-[node name="CompileLight" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys/MarginContainer/VBoxContainer"]
+[node name="CompileLight" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Hotkeys/PanelContainer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "F3: Compile Light"
+autowrap_mode = 3
 
-[node name="CompileSelected" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys/MarginContainer/VBoxContainer"]
+[node name="CompileSelected" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Hotkeys/PanelContainer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "F4: Start batched operations"
+autowrap_mode = 3
 
-[node name="RunGame" type="Label" parent="VBoxContainer/Tabs/Quake/HSplitContainer/ButtonsPanel/Hotkeys/MarginContainer/VBoxContainer"]
+[node name="RunGame" type="Label" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Hotkeys/PanelContainer/MarginContainer/HFlowContainer"]
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 text = "F5: Run game"
+autowrap_mode = 3
+
+[node name="HelpPanel" parent="VBoxContainer/Tabs/Quake" instance=ExtResource("4_7mycd")]
+unique_name_in_owner = true
+visible = false
 
 [node name="License" parent="VBoxContainer/Tabs" instance=ExtResource("4_1bvp3")]
 visible = false
@@ -713,3 +719,11 @@ use_native_dialog = true
 
 [node name="CompilerRunCheck" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[editable path="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Compilers"]
+[editable path="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/GameAndMapSettings"]
+[editable path="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/CompilerSwitches"]
+[editable path="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile"]
+[editable path="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile"]
+[editable path="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run"]
+[editable path="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Hotkeys"]

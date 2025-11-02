@@ -19,6 +19,12 @@ var config_q1 := {
 	"launch_after_compile" = false,
 	"pause_after_single" = false,
 	"pause_after_batch" = false,
+	"compilers_folded" = false,
+	"game_folded" = false,
+	"single_folded" = false,
+	"batch_folded" = false,
+	"run_folded" = false,
+	"hotkeys_folded" = false,
 }
 
 var _is_loading_config := false

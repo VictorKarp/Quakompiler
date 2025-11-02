@@ -40,7 +40,7 @@ texture_margin_bottom = 3.0
 modulate_color = Color(0.91015625, 0.8123172, 0.72172546, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bp0wp"]
-bg_color = Color(0.59, 0.49550164, 0.4071, 1)
+bg_color = Color(0.5882353, 0.49411765, 0.40784314, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1

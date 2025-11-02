@@ -1,8 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh45da1w7wc1"]
+[gd_scene load_steps=4 format=3 uid="uid://bh45da1w7wc1"]
 
 [ext_resource type="Script" uid="uid://dlgc00a5f5nk0" path="res://scenes/help/help_panel.gd" id="1_07px7"]
 
-[node name="HelpPanel" type="PanelContainer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l3vkd"]
+bg_color = Color(0.2890625, 0.24728397, 0.20550537, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.102, 0.084, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_left = 8.0
+expand_margin_top = 36.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+shadow_color = Color(0, 0, 0, 0.19607843)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ctrk"]
+bg_color = Color(0.33, 0.31069502, 0.28710002, 0.99607843)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.17, 0.14, 1)
+border_blend = true
+
+[node name="HelpPanel" type="Window"]
+oversampling_override = 1.0
+initial_position = 2
+size = Vector2i(600, 400)
+theme_override_styles/embedded_border = SubResource("StyleBoxFlat_l3vkd")
+script = ExtResource("1_07px7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,40 +44,32 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_07px7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ctrk")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="HelpTopic" type="Label" parent="MarginContainer/VBoxContainer2/HBoxContainer"]
+[node name="HelpTopic" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Help topic"
 
-[node name="Close" type="Button" parent="MarginContainer/VBoxContainer2/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-text = "X"
-
-[node name="HelpText" type="RichTextLabel" parent="MarginContainer/VBoxContainer2"]
+[node name="HelpText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 2
+focus_mode = 0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 bbcode_enabled = true
 context_menu_enabled = true
 selection_enabled = true

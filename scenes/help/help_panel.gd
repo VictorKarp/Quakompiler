@@ -1,31 +1,20 @@
-extends PanelContainer
-
-@export var left_panel: Control
-@export var right_panel: Control
+extends Window
 
 
 func _ready() -> void:
 	Events.help_requested.connect(_on_help_requested)
-	%Close.pressed.connect(_close)
 	%HelpText.meta_clicked.connect(_on_help_meta_clicked)
+	close_requested.connect(hide)
 	hide()
 
 
-func _on_help_requested(topic, text, open_on_side: Enums.side) -> void:
+func _on_help_requested(topic, text) -> void:
+	if not visible:
+		size.x = min(600, get_parent().get_viewport().get_visible_rect().size.x - 40)
+		popup_centered()
 	%HelpTopic.text = topic
 	%HelpText.text = text
-	show()
-	match open_on_side:
-		Enums.side.LEFT:
-			left_panel.hide()
-		Enums.side.RIGHT:
-			right_panel.hide()
 
-
-func _close() -> void:
-	hide()
-	left_panel.show()
-	right_panel.show()
 
 func _on_help_meta_clicked(meta) -> void:
 	OS.shell_open(str(meta))

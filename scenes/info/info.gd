@@ -5,7 +5,7 @@ var _loaded := false
 
 func _ready() -> void:
 	visibility_changed.connect(_on_visibility_changed)
-	%Info.meta_clicked.connect(_on_meta_clicked)
+	%GUI.meta_clicked.connect(_on_meta_clicked)
 
 
 func _on_visibility_changed() -> void:

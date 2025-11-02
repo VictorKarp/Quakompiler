@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/info/info.gd" id="1_sdeh5"]
 
-[node name="Info" type="MarginContainer"]
+[node name="Licenses" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,66 +18,98 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="Tabs" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+current_tab = 0
 
-[node name="InfoHeader" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Quake Compile GUI" type="MarginContainer" parent="MarginContainer/Tabs"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Info"
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_tab_index = 0
 
-[node name="Info" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quake Compile GUI"]
 layout_mode = 2
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-bbcode_enabled = true
-text = "Quake Compile GUI is being developed by Victor Karp.
-[url]https://victorkarp.com[/url]"
-fit_content = true
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 32
-
-[node name="GUIHeader" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="GUIHeader" type="Label" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quake Compile GUI"
 
-[node name="GUI" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="GUI" type="RichTextLabel" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-autowrap_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+fit_content = true
 
-[node name="HSeparator3" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Godot Engine" type="MarginContainer" parent="MarginContainer/Tabs"]
+visible = false
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_tab_index = 1
 
-[node name="GodotHeader" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Godot Engine"]
+layout_mode = 2
+
+[node name="GodotHeader" type="Label" parent="MarginContainer/Tabs/Godot Engine/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Godot Engine"
 
-[node name="Godot" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Tabs/Godot Engine/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Godot" type="Label" parent="MarginContainer/Tabs/Godot Engine/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 autowrap_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Godot Engine Third Party" type="MarginContainer" parent="MarginContainer/Tabs"]
+visible = false
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_tab_index = 2
 
-[node name="GodotThirdPartyHeader" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Godot Engine Third Party"]
+layout_mode = 2
+
+[node name="GodotThirdPartyHeader" type="Label" parent="MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Godot Engine Third Party"
 
-[node name="GodotThirdParty" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GodotThirdParty" type="Label" parent="MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 autowrap_mode = 2

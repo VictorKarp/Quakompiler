@@ -66,6 +66,10 @@ func _ready() -> void:
 	%PauseAfterSingle.toggled.connect(_on_pause_after_single_toggled)
 	%PauseAfterBatch.toggled.connect(_on_pause_after_batch_toggled)
 
+	# Window size
+	DisplayServer.window_set_min_size(Vector2i(320, 120))
+
+	# Config
 	Config.load_config()
 
 

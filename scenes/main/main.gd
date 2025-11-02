@@ -132,6 +132,12 @@ func _on_config_value_changed(game, key, value) -> void:
 					%PauseAfterSingle.set_pressed_no_signal(value)
 				"pause_after_batch":
 					%PauseAfterBatch.set_pressed_no_signal(value)
+		"global":
+			match key:
+				"window_size":
+					DisplayServer.window_set_size(value)
+				"window_position":
+					DisplayServer.window_set_position(value)
 		_:
 			pass
 

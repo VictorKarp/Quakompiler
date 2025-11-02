@@ -27,7 +27,18 @@ var config_q1 := {
 	"hotkeys_folded" = false,
 }
 
+var config_global := {
+	"window_size" = Vector2i(1152,648),
+	"window_position" = Vector2i.ZERO
+}
+
 var _is_loading_config := false
+
+
+func _exit_tree() -> void:
+	config_global.set("window_size", DisplayServer.window_get_size())
+	config_global.set("window_position", DisplayServer.window_get_position())
+	save_config()
 
 
 func save_config() -> void:
@@ -35,6 +46,8 @@ func save_config() -> void:
 		return
 
 	var config := ConfigFile.new()
+	for key in config_global:
+		config.set_value("global", key, config_global[key])
 	for key in config_q1:
 		config.set_value("q1", key, config_q1[key])
 
@@ -55,13 +68,15 @@ func load_config() -> void:
 	_is_loading_config = false
 
 
-func set_config_value(game: String, key: String, value) -> void:
-	match game:
+func set_config_value(section: String, key: String, value) -> void:
+	match section:
 		"q1":
 			config_q1.set(key, value)
+		"global":
+			config_global.set(key, value)
 		_:
 			return
-	config_value_changed.emit(game, key, value)
+	config_value_changed.emit(section, key, value)
 	save_config()
 
 

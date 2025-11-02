@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://scenes/main/tab_selector.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="3_lquwl"]
-[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/license/license.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/info/info.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
@@ -37,11 +37,11 @@ text = "Quake"
 script = ExtResource("2_h2yge")
 tabs = NodePath("../../../Tabs")
 
-[node name="Licenses" type="Button" parent="VBoxContainer/TopBar/HBoxContainer" node_paths=PackedStringArray("tabs")]
+[node name="Info" type="Button" parent="VBoxContainer/TopBar/HBoxContainer" node_paths=PackedStringArray("tabs")]
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Oi mate, got a loicense for that GUI?"
-text = "Licenses"
+text = "Info"
 script = ExtResource("2_h2yge")
 tabs = NodePath("../../../Tabs")
 index = 1

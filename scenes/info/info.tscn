@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7g0n3olaswmi"]
 
-[ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/license/license.gd" id="1_sdeh5"]
+[ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/info/info.gd" id="1_sdeh5"]
 
-[node name="Licenses" type="MarginContainer"]
+[node name="Info" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,6 +26,24 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="InfoHeader" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Info"
+
+[node name="Info" type="RichTextLabel" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "Quake Compile GUI is being developed by Victor Karp.
+[url]https://victorkarp.com[/url]"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
 [node name="GUIHeader" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
@@ -36,7 +54,7 @@ unique_name_in_owner = true
 layout_mode = 2
 autowrap_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 

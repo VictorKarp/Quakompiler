@@ -1,7 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7g0n3olaswmi"]
+[gd_scene load_steps=9 format=3 uid="uid://c7g0n3olaswmi"]
 
 [ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/licenses/licenses.gd" id="1_sdeh5"]
 [ext_resource type="Texture2D" uid="uid://cqykh5ecglep8" path="res://icons/icon.png" id="2_gelyk"]
+[ext_resource type="Texture2D" uid="uid://cj1tau1fjugvx" path="res://icons/button_normal.png" id="2_kywki"]
+[ext_resource type="Texture2D" uid="uid://hdnbs2yrd6fy" path="res://icons/button_hover.png" id="3_wbopq"]
+[ext_resource type="Texture2D" uid="uid://dxq4mqv6h0vlr" path="res://icons/button_pressed.png" id="4_ep3rm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbopq"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+texture = ExtResource("2_kywki")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.390625, 0.390625, 0.390625, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yo1l"]
+texture = ExtResource("4_ep3rm")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.55078125, 0.55078125, 0.55078125, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ep3rm"]
+texture = ExtResource("3_wbopq")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(0.4296875, 0.4296875, 0.4296875, 1)
 
 [node name="Licenses" type="MarginContainer"]
 anchors_preset = 15
@@ -36,30 +65,56 @@ metadata/_tab_index = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quakompiler"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer"]
+[node name="HeaderButton" type="Button" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 82)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_wbopq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8yo1l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ep3rm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_8yo1l")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_gelyk")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quakompiler"
 
-[node name="Subtitle" type="Label" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Version" type="Label" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "v0.1"
+
+[node name="Subtitle" type="Label" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "A Quake engine compiler GUI, made in Godot."
-
-[node name="Spacer" type="HSeparator" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer"]
 layout_mode = 2

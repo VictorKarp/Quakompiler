@@ -6,6 +6,7 @@ var _loaded := false
 func _ready() -> void:
 	visibility_changed.connect(_on_visibility_changed)
 	%GUI.meta_clicked.connect(_on_meta_clicked)
+	%HeaderButton.pressed.connect(_on_headerbutton_pressed)
 
 
 func _on_visibility_changed() -> void:
@@ -20,3 +21,7 @@ func _on_visibility_changed() -> void:
 
 func _on_meta_clicked(meta) -> void:
 	OS.shell_open(meta)
+
+
+func _on_headerbutton_pressed() -> void:
+	OS.shell_open("https://github.com/VictorKarp/Quakompiler")

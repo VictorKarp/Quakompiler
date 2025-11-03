@@ -467,14 +467,14 @@ layout_mode = 2
 text = "Light"
 config_key = "light_enabled"
 
-[node name="LaunchAfterCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
-layout_mode = 2
-config_key = "launch_after_compile"
-
 [node name="PauseAfterBatch" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
 text = "Pause"
 config_key = "pause_after_batch"
+
+[node name="LaunchAfterCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
+layout_mode = 2
+config_key = "launch_after_compile"
 
 [node name="CompileSelected" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 unique_name_in_owner = true
@@ -515,12 +515,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Control2" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run/PanelContainer/MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control3" type="Control" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/Run/PanelContainer/MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 

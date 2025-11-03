@@ -3,9 +3,12 @@ extends Button
 @export var config_key: String
 
 
+func _init() -> void:
+	Config.config_loaded.connect(_on_config_loaded)
+
+
 func _ready() -> void:
 	pressed.connect(_on_pressed)
-	Config.config_loaded.connect(_on_config_loaded)
 
 
 func _on_pressed() -> void:

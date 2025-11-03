@@ -20,7 +20,7 @@ func _ready() -> void:
 	%RunGame.pressed.connect(run_game)
 
 	# Window size
-	DisplayServer.window_set_min_size(Vector2i(320, 120))
+	DisplayServer.window_set_min_size(Vector2i(420, 120))
 
 	# Config
 	Config.load_config()

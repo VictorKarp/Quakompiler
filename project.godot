@@ -23,6 +23,7 @@ Enums="*res://core/enums.gd"
 Events="*res://core/events.gd"
 Config="*res://core/config/config.tscn"
 Compiler="*res://core/compiler/compiler.tscn"
+Runner="*res://core/runner/runner.gd"
 
 [global_group]
 

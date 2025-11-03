@@ -4,7 +4,6 @@ var _compiler_pid: int
 var _is_compiling_single := false
 var _is_compiling_batch := false
 var _compilation_queue: Array[String]
-@onready var _main = get_tree().get_first_node_in_group("main") as Main
 
 
 func _ready() -> void:
@@ -107,7 +106,7 @@ func _start_next_queued_action() -> void:
 			compile_light(Enums.compile_mode.BATCH)
 		_:
 			if Config.get_game_value("launch_after_compile"):
-				_main.run_game()
+				Runner.run_game()
 
 
 func _on_compiler_run_check_timeout() -> void:

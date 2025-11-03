@@ -10,6 +10,19 @@ func _ready() -> void:
 	%CompilerRunCheck.timeout.connect(_on_compiler_run_check_timeout)
 
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("compile_bsp"):
+		compile_bsp(Enums.compile_mode.SINGLE)
+	elif event.is_action_pressed("compile_vis"):
+		compile_vis(Enums.compile_mode.SINGLE)
+	elif event.is_action_pressed("compile_light"):
+		compile_light(Enums.compile_mode.SINGLE)
+	elif event.is_action_pressed("compile_selected") and not event.alt_pressed:
+		# Checking if Alt is pressed prevents running this code if the user
+		# quits the application by pressing Alt+F4.
+		compile_selected()
+
+
 func compile_bsp(compile_mode: Enums.compile_mode):
 	var map_path: String = Config.get_game_value("map_path")
 	var bsp_path: String = Config.get_game_value("bsp_path")

@@ -1,6 +1,11 @@
 extends Node
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("run"):
+		run_game()
+
+
 func run_game() -> void:
 	var game_path: String = Config.get_game_value("game_path")
 	var map: String = Config.get_game_value("map_path").get_file().rstrip(".map")

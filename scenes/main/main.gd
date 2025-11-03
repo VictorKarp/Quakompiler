@@ -13,11 +13,3 @@ func _input(event: InputEvent) -> void:
 		Compiler.compile_selected()
 	if event.is_action_pressed("run"):
 		Runner.run_game()
-
-
-func _on_pause_after_single_toggled(value: bool) -> void:
-	Config.set_game_value("pause_after_single", value)
-
-
-func _on_pause_after_batch_toggled(value: bool) -> void:
-	Config.set_game_value("pause_after_batch", value)

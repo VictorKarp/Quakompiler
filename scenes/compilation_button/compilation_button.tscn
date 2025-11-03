@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cge8hm2hktku2"]
+
+[ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="1_3pq2c"]
+[ext_resource type="Script" uid="uid://be86kl54lw8os" path="res://scenes/compilation_button/compilation_button.gd" id="2_nppmv"]
+
+[node name="CompilationButton" type="Button"]
+custom_minimum_size = Vector2(32, 0)
+size_flags_horizontal = 3
+text = "[Stage]"
+icon = ExtResource("1_3pq2c")
+icon_alignment = 2
+script = ExtResource("2_nppmv")

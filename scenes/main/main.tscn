@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=14 format=3 uid="uid://ctuy3wytylol"]
 
 [ext_resource type="Script" uid="uid://c1opsd0yl1cjy" path="res://scenes/main/main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="2_0xm2m"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="6_a8run"]
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="8_ouso4"]
 [ext_resource type="PackedScene" uid="uid://bbojh06nh2f6d" path="res://scenes/file_dialog/file_dialog.tscn" id="9_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="9_blune"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
 bg_color = Color(0.4, 0.3338667, 0.276, 1)
@@ -394,32 +395,19 @@ help_text = "Pressing one of these buttons will compile the respective stage. If
 layout_mode = 2
 columns = 3
 
-[node name="CompileBsp" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="CompileBsp" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_blune")]
 layout_mode = 2
-size_flags_horizontal = 3
 text = "BSP"
-icon = ExtResource("2_0xm2m")
-icon_alignment = 2
 
-[node name="CompileVis" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="CompileVis" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_blune")]
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Vis"
-icon = ExtResource("2_0xm2m")
-icon_alignment = 2
+stage = 1
 
-[node name="CompileLight" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
+[node name="CompileLight" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_blune")]
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Light"
-icon = ExtResource("2_0xm2m")
-icon_alignment = 2
+stage = 2
 
 [node name="PauseAfterSingle" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/SingleCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("8_ouso4")]
 layout_mode = 2
@@ -476,14 +464,11 @@ config_key = "pause_after_batch"
 layout_mode = 2
 config_key = "launch_after_compile"
 
-[node name="CompileSelected" type="Button" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="CompileSelected" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("9_blune")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 text = "Start"
-icon = ExtResource("2_0xm2m")
-icon_alignment = 2
+stage = 3
 
 [node name="GridContainer2" type="HBoxContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer/BatchCompile/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

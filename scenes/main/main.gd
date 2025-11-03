@@ -7,15 +7,6 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	# Compiling
-	var bsp_single = Compiler.compile_bsp.bind(Enums.compile_mode.SINGLE)
-	var vis_single = Compiler.compile_vis.bind(Enums.compile_mode.SINGLE)
-	var light_single = Compiler.compile_light.bind(Enums.compile_mode.SINGLE)
-	%CompileBsp.pressed.connect(bsp_single)
-	%CompileVis.pressed.connect(vis_single)
-	%CompileLight.pressed.connect(light_single)
-	%CompileSelected.pressed.connect(Compiler.compile_selected)
-
 	# Running
 	%RunGame.pressed.connect(run_game)
 

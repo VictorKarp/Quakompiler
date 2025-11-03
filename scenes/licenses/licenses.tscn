@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7g0n3olaswmi"]
+[gd_scene load_steps=3 format=3 uid="uid://c7g0n3olaswmi"]
 
 [ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/licenses/licenses.gd" id="1_sdeh5"]
+[ext_resource type="Texture2D" uid="uid://cqykh5ecglep8" path="res://icons/icon.png" id="2_gelyk"]
 
 [node name="Licenses" type="MarginContainer"]
 anchors_preset = 15
@@ -24,7 +25,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="Quake Compile GUI" type="MarginContainer" parent="MarginContainer/Tabs"]
+[node name="Quakompiler" type="MarginContainer" parent="MarginContainer/Tabs"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -32,25 +33,45 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quake Compile GUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quakompiler"]
 layout_mode = 2
 
-[node name="GUIHeader" type="Label" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gelyk")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GUIHeader" type="Label" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Quake Compile GUI"
+text = "Quakompiler"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer"]
+[node name="Version" type="Label" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "A Quake engine compiler GUI, made in Godot."
+
+[node name="Spacer" type="HSeparator" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="GUI" type="RichTextLabel" parent="MarginContainer/Tabs/Quake Compile GUI/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="GUI" type="RichTextLabel" parent="MarginContainer/Tabs/Quakompiler/VBoxContainer/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

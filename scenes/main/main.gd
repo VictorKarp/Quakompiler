@@ -2,19 +2,9 @@ class_name Main
 extends Control
 
 
-func _init() -> void:
-	Config.config_loaded.connect(_on_config_loaded)
-
-
 func _ready() -> void:
 	# Running
 	%RunGame.pressed.connect(run_game)
-
-	# Window size
-	DisplayServer.window_set_min_size(Vector2i(420, 120))
-
-	# Config
-	Config.load_config()
 
 
 func _input(event: InputEvent) -> void:
@@ -28,16 +18,6 @@ func _input(event: InputEvent) -> void:
 		Compiler.compile_selected()
 	if event.is_action_pressed("run"):
 		run_game()
-
-
-func _on_config_loaded() -> void:
-	var window_size = Config.get_global_value("window_size")
-	if window_size:
-		DisplayServer.window_set_size(window_size)
-
-	var window_position = Config.get_global_value("window_position")
-	if window_position:
-		DisplayServer.window_set_position(window_position)
 
 
 func run_game() -> void:

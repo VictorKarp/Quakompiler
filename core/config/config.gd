@@ -37,6 +37,12 @@ var config_global := {
 var _is_loading_config := false
 
 
+func _ready() -> void:
+	DisplayServer.window_set_min_size(Vector2i(420, 120))
+	_load_config()
+	_restore_window_size_and_pos()
+
+
 func _exit_tree() -> void:
 	config_global.set("window_size", DisplayServer.window_get_size())
 	config_global.set("window_position", DisplayServer.window_get_position())
@@ -56,7 +62,7 @@ func save_config() -> void:
 	config.save("config.ini")
 
 
-func load_config() -> void:
+func _load_config() -> void:
 	var config = ConfigFile.new()
 	var error = config.load("config.ini")
 	if error != OK:
@@ -117,3 +123,13 @@ func _get_bsp_switches_text(game: Enums.game) -> PackedStringArray:
 			return config_q1["vis_switches".split(" ", false)]
 		_:
 			return []
+
+
+func _restore_window_size_and_pos() -> void:
+	var window_size = config_global.get("window_size")
+	if window_size:
+		DisplayServer.window_set_size(window_size)
+
+	var window_position = config_global.get("window_position")
+	if window_position:
+		DisplayServer.window_set_position(window_position)

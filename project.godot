@@ -13,9 +13,8 @@ config_version=5
 config/name="Victor Karp's Quake Compile GUI"
 run/main_scene="uid://ctuy3wytylol"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-run/max_fps=60
 run/low_processor_mode=true
-run/low_processor_mode_sleep_usec=20700
+run/low_processor_mode_sleep_usec=18000
 boot_splash/show_image=false
 
 [autoload]

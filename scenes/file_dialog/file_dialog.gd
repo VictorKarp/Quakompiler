@@ -5,11 +5,8 @@ var line_edit: LineEdit
 
 
 func _ready() -> void:
-	match file_mode:
-		FileMode.FILE_MODE_OPEN_FILE:
-			file_selected.connect(_on_path_selected)
-		FileMode.FILE_MODE_OPEN_DIR:
-			dir_selected.connect(_on_path_selected)
+	file_selected.connect(_on_path_selected)
+	dir_selected.connect(_on_path_selected)
 
 
 func open_as_file_browser() -> void:

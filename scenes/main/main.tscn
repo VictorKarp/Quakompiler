@@ -105,4 +105,4 @@ visible = false
 visible = false
 layout_mode = 2
 
-[node name="FileDialog" parent="." instance=ExtResource("9_b1x3f")]
+[node name="FileDialog" parent="." groups=["file_dialog"] instance=ExtResource("9_b1x3f")]

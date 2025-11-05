@@ -50,10 +50,9 @@ layout_mode = 2
 placeholder_text = "Game executable path"
 config_key = "game_path"
 
-[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("4_5ytsn")]
+[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
 layout_mode = 2
 line_edit = NodePath("../GamePath")
-file_dialog = NodePath("")
 
 [node name="ModLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3"]
 custom_minimum_size = Vector2(60, 0)
@@ -78,10 +77,9 @@ layout_mode = 2
 placeholder_text = "Map path"
 config_key = "map_path"
 
-[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="8" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("4_5ytsn")]
+[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="8" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
 layout_mode = 2
 line_edit = NodePath("../MapPath")
-file_dialog = NodePath("")
 
 [node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="9"]
 custom_minimum_size = Vector2(60, 0)
@@ -93,8 +91,7 @@ layout_mode = 2
 placeholder_text = "Output path"
 config_key = "output_path"
 
-[node name="SelectOutputFolder" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="11" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("4_5ytsn")]
+[node name="SelectOutputFolder" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="11" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
 layout_mode = 2
 line_edit = NodePath("../OutputPath")
-file_dialog = NodePath("")
 mode = 2

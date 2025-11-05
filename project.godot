@@ -34,6 +34,7 @@ import/blender/enabled=false
 [global_group]
 
 main=""
+file_dialog=""
 
 [gui]
 

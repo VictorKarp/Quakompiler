@@ -1,8 +1,8 @@
 extends Button
 
 @export var line_edit: LineEdit
-@export var file_dialog: FileDialog
 @export var mode: FileDialog.FileMode
+@onready var file_dialog: FileDialog = get_tree().get_first_node_in_group("file_dialog")
 
 
 func _ready() -> void:

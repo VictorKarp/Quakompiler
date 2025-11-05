@@ -12,15 +12,7 @@ config_name = "game_folded"
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-visible = false
-layout_mode = 2
-text = "Game and map settings"
-
-[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -36,62 +28,71 @@ Map: Select the .map file you want to compile.
 
 Output: Select the output folder where your .bsp file will be saved."
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
-columns = 3
 
-[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0"]
+[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="0"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Game"
 
-[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_m5j51")]
+[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="1" instance=ExtResource("3_m5j51")]
 layout_mode = 2
 placeholder_text = "Game executable path"
 config_key = "game_path"
 
-[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
+[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
 layout_mode = 2
 line_edit = NodePath("../GamePath")
 
-[node name="ModLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3"]
+[node name="Mod" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="ModLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Mod" index="0"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Mod"
 
-[node name="ModName" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("3_m5j51")]
+[node name="ModName" parent="PanelContainer/MarginContainer/VBoxContainer/Mod" index="1" instance=ExtResource("3_m5j51")]
 layout_mode = 2
 placeholder_text = "Mod name"
 config_key = "mod"
 
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5"]
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Mod" index="2"]
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Map" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="6"]
+[node name="Map" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Map" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="0"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Map"
 
-[node name="MapPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="7" instance=ExtResource("3_m5j51")]
+[node name="MapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="1" instance=ExtResource("3_m5j51")]
 layout_mode = 2
 placeholder_text = "Map path"
 config_key = "map_path"
 
-[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="8" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
+[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
 layout_mode = 2
 line_edit = NodePath("../MapPath")
 
-[node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="9"]
+[node name="Output" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="0"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "Output"
 
-[node name="OutputPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="10" instance=ExtResource("3_m5j51")]
+[node name="OutputPath" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="1" instance=ExtResource("3_m5j51")]
 layout_mode = 2
 placeholder_text = "Output path"
 config_key = "output_path"
 
-[node name="SelectOutputFolder" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="11" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
+[node name="SelectOutputFolder" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]
 layout_mode = 2
 line_edit = NodePath("../OutputPath")
 mode = 2

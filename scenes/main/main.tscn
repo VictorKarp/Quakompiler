@@ -1,15 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=7 format=3 uid="uid://ctuy3wytylol"]
 
-[ext_resource type="PackedScene" uid="uid://cyvfa6vq82uuf" path="res://scenes/compiler_executables.tscn" id="2_blune"]
+[ext_resource type="PackedScene" uid="uid://q17ireoyjthf" path="res://scenes/games/quake.tscn" id="2_6q06x"]
 [ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://scenes/main/tab_selector.gd" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://d00q6yiu1w60w" path="res://scenes/compiler_switches.tscn" id="3_th5th"]
 [ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/licenses/licenses.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bvhbe6ibtdgwc" path="res://scenes/game_and_map_settings.tscn" id="4_blune"]
-[ext_resource type="PackedScene" uid="uid://8p51j86ffah3" path="res://scenes/single_compile.tscn" id="5_th5th"]
-[ext_resource type="PackedScene" uid="uid://bwfwqnbwrne7k" path="res://scenes/batch_compile.tscn" id="6_ouso4"]
-[ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/hotkeys.tscn" id="8_blune"]
-[ext_resource type="PackedScene" uid="uid://ivhp72d4h0lh" path="res://scenes/run.tscn" id="8_ouso4"]
 [ext_resource type="PackedScene" uid="uid://bbojh06nh2f6d" path="res://scenes/file_dialog/file_dialog.tscn" id="9_b1x3f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
@@ -57,52 +51,15 @@ size_flags_vertical = 3
 current_tab = 0
 tabs_visible = false
 
-[node name="Quake" type="MarginContainer" parent="VBoxContainer/Tabs"]
+[node name="Quake" parent="VBoxContainer/Tabs" instance=ExtResource("2_6q06x")]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-metadata/_tab_index = 0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Tabs/Quake"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/Tabs/Quake/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="CompilerExecutables" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("2_blune")]
-layout_mode = 2
-config_name = "compilers_folded"
-
-[node name="GameAndMapSettings" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("4_blune")]
-layout_mode = 2
-
-[node name="CompilerSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_th5th")]
-layout_mode = 2
-
-[node name="SingleCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("5_th5th")]
-layout_mode = 2
-
-[node name="BatchCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("6_ouso4")]
-layout_mode = 2
-
-[node name="Run" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("8_ouso4")]
-layout_mode = 2
-
-[node name="Hotkeys" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("8_blune")]
-layout_mode = 2
-
-[node name="HelpPanel" parent="VBoxContainer/Tabs/Quake" instance=ExtResource("4_7mycd")]
-unique_name_in_owner = true
-visible = false
 
 [node name="Licenses" parent="VBoxContainer/Tabs" instance=ExtResource("4_1bvp3")]
 visible = false
 layout_mode = 2
 
 [node name="FileDialog" parent="." groups=["file_dialog"] instance=ExtResource("9_b1x3f")]
+
+[node name="HelpPanel" parent="." instance=ExtResource("4_7mycd")]
+unique_name_in_owner = true
+visible = false

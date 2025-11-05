@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://ykdm1i4060jr"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_ccjqi"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_24b00"]
+[ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_yasfa"]
+[ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_arbn2"]
+
+[node name="CompilerExecutablesQ3" instance=ExtResource("1_ccjqi")]
+title = "Compiler executables"
+config_name = "executables_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for compiler executables"
+text = "?"
+script = ExtResource("2_24b00")
+topic = "Compiler executables"
+help_text = "You need to get a compiler from somewhere first before you can select it here. The compiler converts your .map file to a .bsp file which the game can run.
+
+[url=https://ericwa.github.io/ericw-tools/]ericw-tools[/url] is generally the recommended set of compilers for Quake 1. Download the latest stable release from [url=https://github.com/ericwa/ericw-tools/releases/]Github[/url], extract the files and choose the BSP, VIS and LIGHT executables here in the GUI.
+
+Click the help button in the \"Single compile\" section for more info about the BSP, VIS and LIGHT stages.
+
+"
+
+[node name="Bsp" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Bsp" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "BSP"
+
+[node name="BspPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="1" instance=ExtResource("3_yasfa")]
+layout_mode = 2
+
+[node name="SelectBspPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+unique_name_in_owner = true
+layout_mode = 2
+line_edit = NodePath("../BspPath")
+
+[node name="Vis" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Vis" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Vis" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "VIS"
+
+[node name="VisPath" parent="PanelContainer/MarginContainer/VBoxContainer/Vis" index="1" instance=ExtResource("3_yasfa")]
+layout_mode = 2
+placeholder_text = "VIS compiler path"
+config_key = "vis_path"
+
+[node name="SelectVisPath" parent="PanelContainer/MarginContainer/VBoxContainer/Vis" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+unique_name_in_owner = true
+layout_mode = 2
+line_edit = NodePath("../VisPath")
+
+[node name="Light" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Light" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Light" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "LIGHT"
+
+[node name="LightPath" parent="PanelContainer/MarginContainer/VBoxContainer/Light" index="1" instance=ExtResource("3_yasfa")]
+layout_mode = 2
+placeholder_text = "LIGHT compiler path"
+config_key = "light_path"
+
+[node name="SelectLightsPath" parent="PanelContainer/MarginContainer/VBoxContainer/Light" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+unique_name_in_owner = true
+layout_mode = 2
+line_edit = NodePath("../LightPath")
+
+[node name="Bspc" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="Bspc" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "BSPC"
+
+[node name="BspcPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="1" instance=ExtResource("3_yasfa")]
+layout_mode = 2
+placeholder_text = "BSPC compiler path"
+config_key = "bspc_path"
+
+[node name="SelectBspcPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+unique_name_in_owner = true
+layout_mode = 2
+line_edit = NodePath("../BspcPath")

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="3_vsjqm"]
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="4_yrky3"]
 
-[node name="BatchCompile" instance=ExtResource("1_g5fma")]
+[node name="BatchCompileQ1" instance=ExtResource("1_g5fma")]
 title = "Batch compile"
 config_name = "batch_folded"
 
@@ -59,9 +59,3 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
 stage = 3
-
-[node name="GridContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
-layout_mode = 2

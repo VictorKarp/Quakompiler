@@ -5,22 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_xbwis"]
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_o3h61"]
 
-[node name="CompilerExecutables" instance=ExtResource("1_brgpo")]
+[node name="CompilerExecutablesQ1" instance=ExtResource("1_brgpo")]
 title = "Compiler executables"
 config_name = "executables_folded"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-visible = false
-layout_mode = 2
-text = "Compiler executables"
-
-[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -36,47 +28,54 @@ Click the help button in the \"Single compile\" section for more info about the 
 
 "
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="Bsp" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
-columns = 3
 
-[node name="Bsp" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0"]
+[node name="Bsp" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="0"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "BSP"
 
-[node name="BspPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_xbwis")]
+[node name="BspPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="1" instance=ExtResource("3_xbwis")]
 layout_mode = 2
 
-[node name="SelectBspPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_o3h61")]
+[node name="SelectBspPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_o3h61")]
 unique_name_in_owner = true
 layout_mode = 2
 line_edit = NodePath("../BspPath")
 
-[node name="Vis" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3"]
+[node name="Vis" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Vis" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Vis" index="0"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "VIS"
 
-[node name="VisPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("3_xbwis")]
+[node name="VisPath" parent="PanelContainer/MarginContainer/VBoxContainer/Vis" index="1" instance=ExtResource("3_xbwis")]
 layout_mode = 2
-placeholder_text = "Vis compiler path"
+placeholder_text = "VIS compiler path"
 config_key = "vis_path"
 
-[node name="SelectVisPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_o3h61")]
+[node name="SelectVisPath" parent="PanelContainer/MarginContainer/VBoxContainer/Vis" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_o3h61")]
 unique_name_in_owner = true
 layout_mode = 2
 line_edit = NodePath("../VisPath")
 
-[node name="Light" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="6"]
+[node name="Light" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Light" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Light" index="0"]
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 text = "LIGHT"
 
-[node name="LightPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="7" instance=ExtResource("3_xbwis")]
+[node name="LightPath" parent="PanelContainer/MarginContainer/VBoxContainer/Light" index="1" instance=ExtResource("3_xbwis")]
 layout_mode = 2
-placeholder_text = "Light compiler path"
+placeholder_text = "LIGHT compiler path"
 config_key = "light_path"
 
-[node name="SelectLightsPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="8" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_o3h61")]
+[node name="SelectLightsPath" parent="PanelContainer/MarginContainer/VBoxContainer/Light" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_o3h61")]
 unique_name_in_owner = true
 layout_mode = 2
 line_edit = NodePath("../LightPath")

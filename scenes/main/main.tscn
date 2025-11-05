@@ -79,10 +79,10 @@ size_flags_vertical = 3
 layout_mode = 2
 config_name = "compilers_folded"
 
-[node name="CompilerSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_th5th")]
+[node name="GameAndMapSettings" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("4_blune")]
 layout_mode = 2
 
-[node name="GameAndMapSettings" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("4_blune")]
+[node name="CompilerSwitches" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("3_th5th")]
 layout_mode = 2
 
 [node name="SingleCompile" parent="VBoxContainer/Tabs/Quake/ScrollContainer/HFlowContainer" instance=ExtResource("5_th5th")]

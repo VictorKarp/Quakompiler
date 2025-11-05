@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3 uid="uid://d00q6yiu1w60w"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_ui0r8"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_86jy4"]
+[ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_mgj8f"]
+
+[node name="CompilerSwitches" instance=ExtResource("1_ui0r8")]
+title = "Compiler switches"
+config_name = "switches_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+visible = false
+layout_mode = 2
+text = "Compiler switches"
+
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for compiler switches"
+text = "?"
+script = ExtResource("2_86jy4")
+topic = "Compiler switches"
+help_text = "You can define additional switches for each compiler stage. Switches can for example decrease compilation time by lowering the quality for quick tests, improve lighting quality or provide debug features.
+
+Switches always begin with a dash (-) and are separated by spaces. Some switches can use numbers as well. Read the documentation for your compiler to see which switches it provides. Here are some examples for the [url=https://ericwa.github.io/ericw-tools/]ericw-tools[/url] compilers:
+
+BSP:     -bsp2 -subdivide 128
+VIS:      -fast -v
+LIGHT: -extra -bounce
+
+If you are using the ericw-tools, read the docs for [url=https://ericwa.github.io/ericw-tools/doc/qbsp.html]qbsp[/url], [url=https://ericwa.github.io/ericw-tools/doc/vis.html]vis[/url] and [url=https://ericwa.github.io/ericw-tools/doc/light.html]light[/url] to learn about each stage's switches."
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+columns = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "BSP"
+
+[node name="BspSwitches" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1" instance=ExtResource("3_mgj8f")]
+layout_mode = 2
+placeholder_text = "Bsp switches"
+config_key = "bsp_switches"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="BspSwitchButtons" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "VIS"
+
+[node name="VisSwitches" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" index="1" instance=ExtResource("3_mgj8f")]
+layout_mode = 2
+placeholder_text = "Vis switches"
+config_key = "vis_switches"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="5"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="VisSwitchButtons" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="6"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "LIGHT"
+
+[node name="LightSwitches" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" index="1" instance=ExtResource("3_mgj8f")]
+layout_mode = 2
+placeholder_text = "Light switches"
+config_key = "light_switches"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="7"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="LightSwitchButtons" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer7" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://csoojfhdfyasy"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_e8yee"]
+
+[node name="Hotkeys" instance=ExtResource("1_e8yee")]
+title = "Hotkeys"
+config_name = "hotkeys_folded"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+last_wrap_alignment = 1
+
+[node name="CompileBSP" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="0"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "F1: Compile BSP"
+autowrap_mode = 3
+
+[node name="CompileVIS" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="1"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "F2: Compile Vis"
+autowrap_mode = 3
+
+[node name="CompileLight" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="2"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "F3: Compile Light"
+autowrap_mode = 3
+
+[node name="CompileSelected" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="3"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "F4: Start batched operations"
+autowrap_mode = 3
+
+[node name="RunGame" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="4"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "F5: Run game"
+autowrap_mode = 3

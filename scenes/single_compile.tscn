@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://8p51j86ffah3"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_dn1xa"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_0p1v0"]
+[ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="3_5bchj"]
+[ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="4_xtvhw"]
+
+[node name="SingleCompile" instance=ExtResource("1_dn1xa")]
+title = "Single compile"
+config_name = "single_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for compilation"
+text = "?"
+script = ExtResource("2_0p1v0")
+topic = "Compilation"
+help_text = "Pressing one of these buttons will compile the respective stage. If you want to compile multiple stages and maybe even run the game when compilation has finished, use the [i]Batching[/i] section instead.
+
+[i]BSP[/i] (Binary Space Partitioning) compiles the physical structure of your map. This is sufficient to play your map, but there will be no optimization or shadows.
+
+[i]VIS[/i] (visibility) is for performance optimization. Compiles visibility (which parts of your map can be seen from which position - things that can't be  seen aren't rendered) and automatically generates ambient sounds. Only works if your map doesn't have a leak.
+
+[i]LIGHT[/i] compiles lights and shadows.
+
+[i]Pause[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+columns = 3
+
+[node name="CompileBsp" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" instance=ExtResource("3_5bchj")]
+layout_mode = 2
+text = "BSP"
+
+[node name="CompileVis" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_5bchj")]
+layout_mode = 2
+text = "VIS"
+stage = 1
+
+[node name="CompileLight" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_5bchj")]
+layout_mode = 2
+text = "LIGHT"
+stage = 2
+
+[node name="PauseAfterSingle" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("4_xtvhw")]
+layout_mode = 2
+text = "Pause"
+config_key = "pause_after_single"

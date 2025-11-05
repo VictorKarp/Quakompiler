@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvhbe6ibtdgwc"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_0y7wf"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_ojgp6"]
+[ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_m5j51"]
+[ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_5ytsn"]
+
+[node name="GameAndMapSettings" instance=ExtResource("1_0y7wf")]
+title = "Game and map settings"
+config_name = "game_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+visible = false
+layout_mode = 2
+text = "Game and map settings"
+
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for game and map settings"
+text = "?"
+script = ExtResource("2_ojgp6")
+topic = "Game and map settings"
+help_text = "Game: Select your Quake executable. If your are playing a modern source port like Quakespasm or Ironwail, select the executable of the source port instead.
+
+Mod: If you want to start a mod when launching the game, enter its name here. Otherwise, leave the field empty.
+
+Map: Select the .map file you want to compile.
+
+Output: Select the output folder where your .bsp file will be saved."
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+columns = 3
+
+[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Game"
+
+[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_m5j51")]
+layout_mode = 2
+placeholder_text = "Game executable path"
+config_key = "game_path"
+
+[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("4_5ytsn")]
+layout_mode = 2
+line_edit = NodePath("../GamePath")
+file_dialog = NodePath("")
+
+[node name="ModLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Mod"
+
+[node name="ModName" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("3_m5j51")]
+layout_mode = 2
+placeholder_text = "Mod name"
+config_key = "mod"
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5"]
+layout_mode = 2
+
+[node name="Map" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="6"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Map"
+
+[node name="MapPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="7" instance=ExtResource("3_m5j51")]
+layout_mode = 2
+placeholder_text = "Map path"
+config_key = "map_path"
+
+[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="8" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("4_5ytsn")]
+layout_mode = 2
+line_edit = NodePath("../MapPath")
+file_dialog = NodePath("")
+
+[node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="9"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Output"
+
+[node name="OutputPath" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="10" instance=ExtResource("3_m5j51")]
+layout_mode = 2
+placeholder_text = "Output path"
+config_key = "output_path"
+
+[node name="SelectOutputFolder" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="11" node_paths=PackedStringArray("line_edit", "file_dialog") instance=ExtResource("4_5ytsn")]
+layout_mode = 2
+line_edit = NodePath("../OutputPath")
+file_dialog = NodePath("")
+mode = 2

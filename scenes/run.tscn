@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://ivhp72d4h0lh"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_6elw1"]
+[ext_resource type="PackedScene" uid="uid://uaxs68cytyam" path="res://scenes/run_button/run_button.tscn" id="2_kyqep"]
+
+[node name="Run" instance=ExtResource("1_6elw1")]
+title = "Run"
+config_name = "run_folded"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RunMap" parent="PanelContainer/MarginContainer/HBoxContainer" index="0" instance=ExtResource("2_kyqep")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 3

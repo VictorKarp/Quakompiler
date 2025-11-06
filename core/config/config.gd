@@ -110,22 +110,6 @@ func get_output_path() -> String:
 	return output_path + "/" + map_name + ".bsp"
 
 
-func _get_bsp_switches_array(game: Enums.game) -> PackedStringArray:
-	match game:
-		Enums.game.QUAKE1:
-			return config_q1["bsp_switches".split(" ", false)]
-		_:
-			return []
-
-
-func _get_bsp_switches_text(game: Enums.game) -> PackedStringArray:
-	match game:
-		Enums.game.QUAKE1:
-			return config_q1["vis_switches".split(" ", false)]
-		_:
-			return []
-
-
 func _restore_window_size_and_pos() -> void:
 	var window_size = config_global.get("window_size")
 	if window_size:

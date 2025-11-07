@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://8p51j86ffah3"]
+[gd_scene load_steps=5 format=3 uid="uid://dxxm70sf6psoj"]
 
-[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_dn1xa"]
-[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_0p1v0"]
-[ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="3_5bchj"]
-[ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="4_xtvhw"]
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_30tkh"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_2pu3h"]
+[ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="3_j3mjk"]
+[ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="4_vn235"]
 
-[node name="SingleCompile" instance=ExtResource("1_dn1xa")]
+[node name="SingleCompileQ3" instance=ExtResource("1_30tkh")]
 title = "Single compile"
 config_name = "single_folded"
 
@@ -18,7 +18,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Show the help for compilation"
 text = "?"
-script = ExtResource("2_0p1v0")
+script = ExtResource("2_2pu3h")
 topic = "Compilation"
 help_text = "Pressing one of these buttons will compile the respective stage. If you want to compile multiple stages and maybe even run the game when compilation has finished, use the [i]Batching[/i] section instead.
 
@@ -32,23 +32,30 @@ help_text = "Pressing one of these buttons will compile the respective stage. If
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
-columns = 3
+columns = 4
 
-[node name="CompileBsp" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" instance=ExtResource("3_5bchj")]
+[node name="CompileBsp" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" instance=ExtResource("3_j3mjk")]
 layout_mode = 2
 text = "BSP"
-
-[node name="CompileVis" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_5bchj")]
-layout_mode = 2
-text = "VIS"
 stage = 1
 
-[node name="CompileLight" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_5bchj")]
+[node name="CompileVis" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_j3mjk")]
 layout_mode = 2
-text = "LIGHT"
+text = "VIS"
 stage = 2
 
-[node name="PauseAfterSingle" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("4_xtvhw")]
+[node name="CompileLight" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_j3mjk")]
+layout_mode = 2
+text = "LIGHT"
+stage = 3
+
+[node name="CompileBspc" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("3_j3mjk")]
+layout_mode = 2
+text = "BSPC"
+stage = 4
+
+[node name="PauseAfterSingle" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("4_vn235")]
 layout_mode = 2
 text = "Pause"
 config_key = "pause_after_single"
+game = 2

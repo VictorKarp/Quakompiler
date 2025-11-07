@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwfwqnbwrne7k"]
 
-[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_g5fma"]
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_g5fma"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_wxkso"]
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="3_vsjqm"]
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="4_yrky3"]
@@ -58,4 +58,3 @@ config_key = "launch_after_compile"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
-stage = 3

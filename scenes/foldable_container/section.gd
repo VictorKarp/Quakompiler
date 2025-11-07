@@ -1,5 +1,7 @@
+class_name Section
 extends FoldableContainer
 
+@export var game: Enums.game
 @export var config_name: String
 
 
@@ -16,6 +18,6 @@ func _on_folding_changed(value: bool) -> void:
 
 
 func _on_config_loaded() -> void:
-	var value = Config.get_game_value(config_name)
+	var value = Config.get_game_value(config_name, game)
 	if value:
 		folded = value

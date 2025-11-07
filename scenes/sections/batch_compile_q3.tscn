@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxdcof7n4aaas"]
 
-[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_ie4wx"]
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_ie4wx"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_xrabi"]
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="3_ynnum"]
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="4_a145k"]
@@ -34,33 +34,38 @@ columns = 4
 layout_mode = 2
 text = "BSP"
 config_key = "bsp_enabled"
+game = 2
 
 [node name="VisEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "VIS"
 config_key = "vis_enabled"
+game = 2
 
 [node name="LightEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "LIGHT"
 config_key = "light_enabled"
+game = 2
 
 [node name="BspcEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "BSPC"
 config_key = "bspc_enabled"
+game = 2
 
 [node name="PauseAfterBatch" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "Pause"
 config_key = "pause_after_batch"
+game = 2
 
 [node name="LaunchAfterCompile" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5" instance=ExtResource("3_ynnum")]
 layout_mode = 2
 config_key = "launch_after_compile"
+game = 2
 
 [node name="CompileSelected" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="6" instance=ExtResource("4_a145k")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start"
-stage = 3

@@ -1,6 +1,8 @@
+class_name ConfigToggleButton
 extends Button
 
 @export var config_key: String
+@export var game: Enums.game
 
 
 func _init() -> void:
@@ -16,6 +18,6 @@ func _on_pressed() -> void:
 
 
 func _on_config_loaded() -> void:
-	var value = Config.get_game_value(config_key)
+	var value = Config.get_game_value(config_key, game)
 	if value:
 		set_pressed_no_signal(value)

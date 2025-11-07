@@ -24,41 +24,78 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func compile_bsp(compile_mode: Enums.compile_mode):
+	var compiler_path: String
+	var base_path = Config.get_game_value("game_path").get_base_dir()
 	var map_path: String = Config.get_game_value("map_path")
-	var bsp_path: String = Config.get_game_value("bsp_path")
 	var output_path: String = Config.get_output_path()
 	var switches: String = Config.get_game_value("bsp_switches")
 	var args: String
-	args = bsp_path + " " + map_path
-	if switches:
-		args += " " + switches
-	args += " " + output_path
-	_run_compiler(args, compile_mode)
+	match Config.current_game:
+		Enums.game.QUAKE1:
+			compiler_path = Config.get_game_value("bsp_path")
+			args = switches + " " + map_path + " " + output_path
+		Enums.game.QUAKE3:
+			compiler_path = Config.get_game_value("q3map2_path")
+			args = "-fs_basepath " + base_path + " " + switches + " " + map_path
+	_run_compiler(compiler_path, args, compile_mode)
 
 
 func compile_vis(compile_mode: Enums.compile_mode):
-	var vis_path: String = Config.get_game_value("vis_path")
+	var compiler_path: String
+	var base_path = Config.get_game_value("game_path").get_base_dir()
+	var args: String
+	match Config.current_game:
+		Enums.game.QUAKE1:
+			compiler_path = Config.get_game_value("vis_path")
+		Enums.game.QUAKE3:
+			compiler_path = Config.get_game_value("q3map2_path")
+			args = "-fs_basepath " + base_path + " -vis"
 	var switches: String = Config.get_game_value("vis_switches")
 	var output_path: String = Config.get_output_path()
-	var args := vis_path
 	if switches:
 		args += " " + switches
 	args += " " + output_path
-	_run_compiler(args, compile_mode)
+	_run_compiler(compiler_path, args, compile_mode)
 
 
 func compile_light(compile_mode: Enums.compile_mode):
-	var light_path: String = Config.get_game_value("light_path")
+	var compiler_path: String
+	var base_path = Config.get_game_value("game_path").get_base_dir()
+	var args := ""
 	var switches: String = Config.get_game_value("light_switches")
+	var map_path: String = Config.get_game_value("map_path")
 	var output_path: String = Config.get_output_path()
-	var args := light_path
+
+	match Config.current_game:
+		Enums.game.QUAKE1:
+			compiler_path = Config.get_game_value("light_path")
+			if switches:
+				args = switches
+			args += " " + output_path
+		Enums.game.QUAKE3:
+			compiler_path = Config.get_game_value("q3map2_path")
+			args = "-fs_basepath " + base_path + " -light"
+			if switches:
+				args += " " + switches
+			args += " " + map_path
+
+	_run_compiler(compiler_path, args, compile_mode)
+
+
+func compile_bspc(compile_mode: Enums.compile_mode):
+	var compiler_path: String = Config.get_game_value("bspc_path")
+	var switches: String = Config.get_game_value("bspc_switches")
+	var output_path: String = Config.get_output_path()
+	var args := ""
 	if switches:
 		args += " " + switches
 	args += " " + output_path
-	_run_compiler(args, compile_mode)
+	_run_compiler(compiler_path, args, compile_mode)
 
 
-func _run_compiler(args, compile_mode: Enums.compile_mode) -> void:
+func _run_compiler(compiler_path, args, compile_mode: Enums.compile_mode) -> void:
+	print(compiler_path)
+	print(args)
 	# Pausing after compilation
 	var pause := false
 	match compile_mode:
@@ -86,9 +123,9 @@ func _run_compiler(args, compile_mode: Enums.compile_mode) -> void:
 			if exit_code == 0:
 				selected_terminal = terminal
 				break
-		_compiler_pid = OS.create_process(selected_terminal, ["--", "bash", "-c", args])
+		_compiler_pid = OS.create_process(selected_terminal, ["--", "bash", "-c", compiler_path, args])
 	else:
-		_compiler_pid = OS.create_process("cmd.exe", ["/c", args], true)
+		_compiler_pid = OS.create_process("cmd.exe", ["/c", compiler_path + " " + args], true)
 
 
 func compile_selected() -> void:
@@ -99,6 +136,8 @@ func compile_selected() -> void:
 		_compilation_queue.append("vis")
 	if Config.get_game_value("light_enabled"):
 		_compilation_queue.append("light")
+	if Config.get_game_value("bspc_enabled"):
+		_compilation_queue.append("bspc")
 	_start_next_queued_action()
 
 
@@ -117,6 +156,8 @@ func _start_next_queued_action() -> void:
 			compile_vis(Enums.compile_mode.BATCH)
 		"light":
 			compile_light(Enums.compile_mode.BATCH)
+		"bspc":
+			compile_bspc(Enums.compile_mode.BATCH)
 		_:
 			if Config.get_game_value("launch_after_compile"):
 				Runner.run_game()

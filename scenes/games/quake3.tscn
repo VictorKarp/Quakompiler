@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvl7bqf5bvw36"]
+
+[ext_resource type="PackedScene" uid="uid://ykdm1i4060jr" path="res://scenes/sections/compiler_executables_q3.tscn" id="1_ms7ca"]
+[ext_resource type="PackedScene" uid="uid://5m8cw7mradw6" path="res://scenes/sections/game_and_map_settings_q3.tscn" id="2_ms7ca"]
+[ext_resource type="PackedScene" uid="uid://dcuahs0svyle5" path="res://scenes/sections/compiler_switches_q3.tscn" id="3_ow7qe"]
+[ext_resource type="PackedScene" uid="uid://dxxm70sf6psoj" path="res://scenes/sections/single_compile_q3.tscn" id="4_ms7ca"]
+[ext_resource type="PackedScene" uid="uid://cxdcof7n4aaas" path="res://scenes/sections/batch_compile_q3.tscn" id="5_ms7ca"]
+[ext_resource type="PackedScene" uid="uid://ivhp72d4h0lh" path="res://scenes/sections/run.tscn" id="6_0cwyu"]
+[ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/sections/hotkeys.tscn" id="7_tsqwu"]
+
+[node name="Quake3" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CompilerExecutablesQ3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_ms7ca")]
+layout_mode = 2
+game = 2
+config_name = "compilers_folded"
+
+[node name="GameAndMapSettingsQ3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("2_ms7ca")]
+layout_mode = 2
+
+[node name="CompilerSwitchesQ3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("3_ow7qe")]
+layout_mode = 2
+game = 2
+
+[node name="SingleCompileQ3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_ms7ca")]
+layout_mode = 2
+game = 2
+
+[node name="BatchCompileQ3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("5_ms7ca")]
+layout_mode = 2
+game = 2
+
+[node name="Run" parent="ScrollContainer/HFlowContainer" instance=ExtResource("6_0cwyu")]
+layout_mode = 2
+game = 2
+
+[node name="Hotkeys" parent="ScrollContainer/HFlowContainer" instance=ExtResource("7_tsqwu")]
+layout_mode = 2
+game = 2

@@ -4,35 +4,62 @@ signal config_loaded
 
 var current_game := Enums.game.QUAKE1
 
-var config_q1 := {
-	"bsp_path" = "",
-	"vis_path" = "",
-	"light_path" = "",
-	"game_path" = "",
-	"map_path" = "",
-	"output_path" = "",
-	"bsp_switches" = "",
-	"vis_switches" = "",
-	"light_switches" = "",
-	"mod" = "",
-	"bsp_enabled" = false,
-	"vis_enabled" = false,
-	"light_enabled" = false,
-	"launch_after_compile" = false,
-	"compilers_folded" = false,
-	"switches_folded" = false,
-	"game_folded" = false,
-	"pause_after_single" = false,
-	"pause_after_batch" = false,
-	"single_folded" = false,
-	"batch_folded" = false,
-	"run_folded" = false,
-	"hotkeys_folded" = false,
-}
-
-var config_global := {
-	"window_size" = Vector2i(1152,648),
-	"window_position" = Vector2i.ZERO
+var config := {
+	global = {
+		"window_size" = Vector2i(1152,648),
+		"window_position" = Vector2i.ZERO
+	},
+	q1 = {
+		"bsp_path" = "",
+		"vis_path" = "",
+		"light_path" = "",
+		"game_path" = "",
+		"map_path" = "",
+		"output_path" = "",
+		"bsp_switches" = "",
+		"vis_switches" = "",
+		"light_switches" = "",
+		"mod" = "",
+		"bsp_enabled" = false,
+		"vis_enabled" = false,
+		"light_enabled" = false,
+		"launch_after_compile" = false,
+		"compilers_folded" = false,
+		"switches_folded" = false,
+		"game_folded" = false,
+		"pause_after_single" = false,
+		"pause_after_batch" = false,
+		"single_folded" = false,
+		"batch_folded" = false,
+		"run_folded" = false,
+		"hotkeys_folded" = false,
+	},
+	q3 = {
+		"q3map2_path" = "",
+		"bspc_path" = "",
+		"game_path" = "",
+		"map_path" = "",
+		"output_path" = "",
+		"bsp_switches" = "",
+		"vis_switches" = "",
+		"light_switches" = "",
+		"bspc_switches" = "",
+		"mod" = "",
+		"bsp_enabled" = false,
+		"vis_enabled" = false,
+		"light_enabled" = false,
+		"bspc_enabled" = false,
+		"launch_after_compile" = false,
+		"compilers_folded" = false,
+		"switches_folded" = false,
+		"game_folded" = false,
+		"pause_after_single" = false,
+		"pause_after_batch" = false,
+		"single_folded" = false,
+		"batch_folded" = false,
+		"run_folded" = false,
+		"hotkeys_folded" = false,
+	}
 }
 
 var _is_loading_config := false
@@ -45,8 +72,8 @@ func _ready() -> void:
 
 
 func _exit_tree() -> void:
-	config_global.set("window_size", DisplayServer.window_get_size())
-	config_global.set("window_position", DisplayServer.window_get_position())
+	config["global"].set("window_size", DisplayServer.window_get_size())
+	config["global"].set("window_position", DisplayServer.window_get_position())
 	save_config()
 
 
@@ -54,54 +81,64 @@ func save_config() -> void:
 	if _is_loading_config:
 		return
 
-	var config := ConfigFile.new()
-	for key in config_global:
-		config.set_value("global", key, config_global[key])
-	for key in config_q1:
-		config.set_value("q1", key, config_q1[key])
+	var config_file := ConfigFile.new()
+	for section in config:
+		for key in config[section]:
+			var value = config[section][key]
+			config_file.set_value(section, key, value)
 
-	config.save("config.ini")
+	config_file.save("config.ini")
 
 
 func _load_config() -> void:
-	var config = ConfigFile.new()
-	var error = config.load("config.ini")
+	var config_file = ConfigFile.new()
+	var error = config_file.load("config.ini")
 	if error != OK:
 		return
 
 	_is_loading_config = true
-	for section in config.get_sections():
-		for key in config.get_section_keys(section):
-			var value = config.get_value(section, key)
-			if section == "global":
-				set_global_value(key, value)
-			else:
-				set_game_value(key, value)
+	for section in config_file.get_sections():
+		for key in config_file.get_section_keys(section):
+			var value = config_file.get_value(section, key)
+			config[section][key] = value
+			#if section == "global":
+				#set_global_value(key, value)
+			#else:
+				#set_game_value(key, value)
 	_is_loading_config = false
 	config_loaded.emit()
 
 
-func set_game_value(key: String, value) -> void:
-	match current_game:
+func set_game_value(key: String, value, game := current_game) -> void:
+	match game:
 		Enums.game.QUAKE1:
-			prints(key, value)
-			config_q1.set(key, value)
+			config["q1"][key] = value
+		Enums.game.QUAKE3:
+			config["q3"][key] = value
 
 
 func set_global_value(key: String, value) -> void:
-	config_global.set(key, value)
+	config["global"][key] = value
 
 
 func get_global_value(key: String):
-	return config_global.get(key)
+	return config["global"][key]
 
 
 func get_game_value(key: String, game := current_game):
-	match current_game:
+	var value = null
+	match game:
 		Enums.game.QUAKE1:
-			return config_q1.get(key)
+			if config.has("q1"):
+				if config["q1"].has(key):
+					value = config["q1"][key]
+		Enums.game.QUAKE3:
+			if config.has("q3"):
+				if config["q3"].has(key):
+					value = config["q3"][key]
 		_:
-			return null
+			pass
+	return value
 
 
 func get_output_path() -> String:
@@ -111,10 +148,10 @@ func get_output_path() -> String:
 
 
 func _restore_window_size_and_pos() -> void:
-	var window_size = config_global.get("window_size")
+	var window_size = config["global"]["window_size"]
 	if window_size:
 		DisplayServer.window_set_size(window_size)
 
-	var window_position = config_global.get("window_position")
+	var window_position = config["global"]["window_position"]
 	if window_position:
 		DisplayServer.window_set_position(window_position)

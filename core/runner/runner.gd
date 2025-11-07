@@ -11,4 +11,8 @@ func run_game() -> void:
 	var map: String = Config.get_game_value("map_path").get_file().rstrip(".map")
 	var basedir: String = Config.get_game_value("game_path").get_base_dir()
 	var mod: String = Config.get_game_value("mod")
-	OS.create_process(game_path, ["-basedir", basedir, "+game", mod, "+map", map])
+	match Config.current_game:
+		Enums.game.QUAKE1:
+			OS.create_process(game_path, ["-basedir", basedir, "+game", mod, "+map", map])
+		Enums.game.QUAKE3:
+			OS.create_process("cmd.exe", ["/C", "cd /d " + basedir + " && " + game_path + " +sv_pure 0 +devmap " + map])

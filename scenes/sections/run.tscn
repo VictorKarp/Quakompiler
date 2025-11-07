@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ivhp72d4h0lh"]
 
-[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_6elw1"]
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_6elw1"]
 [ext_resource type="PackedScene" uid="uid://uaxs68cytyam" path="res://scenes/run_button/run_button.tscn" id="2_kyqep"]
 
 [node name="Run" instance=ExtResource("1_6elw1")]

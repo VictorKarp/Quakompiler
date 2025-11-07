@@ -7,4 +7,6 @@ enum compile_mode {
 
 enum game {
 	QUAKE1 = 0,
+	QUAKE2 = 1,
+	QUAKE3 = 2,
 }

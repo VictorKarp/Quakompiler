@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=8 format=3 uid="uid://ctuy3wytylol"]
 
-[ext_resource type="PackedScene" uid="uid://q17ireoyjthf" path="res://scenes/games/quake.tscn" id="2_6q06x"]
-[ext_resource type="Script" uid="uid://bes4nkte8aanh" path="res://scenes/main/tab_selector.gd" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/licenses/licenses.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://dw1cwruka80bn" path="res://view_selection.gd" id="1_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://q17ireoyjthf" path="res://scenes/games/quake1.tscn" id="2_6q06x"]
+[ext_resource type="PackedScene" uid="uid://bvl7bqf5bvw36" path="res://scenes/games/quake3.tscn" id="2_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/about/about.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bbojh06nh2f6d" path="res://scenes/file_dialog/file_dialog.tscn" id="9_b1x3f"]
 
@@ -20,43 +21,23 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="TopBar" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBar"]
-layout_mode = 2
-
-[node name="Quake" type="Button" parent="VBoxContainer/TopBar/HBoxContainer" node_paths=PackedStringArray("tabs")]
-layout_mode = 2
-text = "Quake"
-script = ExtResource("2_h2yge")
-tabs = NodePath("../../../Tabs")
-
-[node name="Info" type="Button" parent="VBoxContainer/TopBar/HBoxContainer" node_paths=PackedStringArray("tabs")]
-layout_mode = 2
-size_flags_horizontal = 10
-tooltip_text = "Oi mate, got a loicense for that GUI?"
-text = "Info"
-script = ExtResource("2_h2yge")
-tabs = NodePath("../../../Tabs")
-index = 1
-
-[node name="Tabs" type="TabContainer" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="Games" type="TabContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 current_tab = 0
-tabs_visible = false
+script = ExtResource("1_ow5a4")
 
-[node name="Quake" parent="VBoxContainer/Tabs" instance=ExtResource("2_6q06x")]
+[node name="Quake" parent="VBoxContainer/Games" instance=ExtResource("2_6q06x")]
 layout_mode = 2
 
-[node name="Licenses" parent="VBoxContainer/Tabs" instance=ExtResource("4_1bvp3")]
+[node name="Quake 3" parent="VBoxContainer/Games" instance=ExtResource("2_ow5a4")]
 visible = false
 layout_mode = 2
+
+[node name="About" parent="VBoxContainer/Games" instance=ExtResource("4_1bvp3")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="FileDialog" parent="." groups=["file_dialog"] instance=ExtResource("9_b1x3f")]
 

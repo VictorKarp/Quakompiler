@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://d00q6yiu1w60w"]
 
-[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_ui0r8"]
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_ui0r8"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_86jy4"]
 [ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_mgj8f"]
 
-[node name="CompilerSwitches" instance=ExtResource("1_ui0r8")]
+[node name="CompilerSwitchesQ1" instance=ExtResource("1_ui0r8")]
 title = "Compiler switches"
 config_name = "switches_folded"
 

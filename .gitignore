@@ -1,8 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+/builds/
 /config.ini
+/bspc.log
+/history.txt
 /light.log
 /vis.log
-/builds/*
-/history.txt
+

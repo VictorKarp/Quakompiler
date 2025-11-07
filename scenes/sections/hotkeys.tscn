@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://csoojfhdfyasy"]
 
-[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/foldable_container.tscn" id="1_e8yee"]
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_e8yee"]
 
 [node name="Hotkeys" instance=ExtResource("1_e8yee")]
 title = "Hotkeys"

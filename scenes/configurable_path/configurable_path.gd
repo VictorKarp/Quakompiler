@@ -1,5 +1,6 @@
 extends LineEdit
 
+@export var game: Enums.game
 @export var config_key: String
 
 
@@ -12,9 +13,11 @@ func _ready() -> void:
 
 
 func _on_config_loaded() -> void:
-	text = Config.get_game_value(config_key)
-	caret_column = text.length()
+	var value = Config.get_game_value(config_key, game)
+	if value:
+		text = value
+		caret_column = text.length()
 
 
 func _on_text_changed(new_text: String) -> void:
-	Config.set_game_value(config_key, new_text)
+	Config.set_game_value(config_key, new_text, game)

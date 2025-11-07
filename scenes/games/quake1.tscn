@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8p51j86ffah3" path="res://scenes/sections/single_compile_q1.tscn" id="4_4c0ga"]
 [ext_resource type="PackedScene" uid="uid://bwfwqnbwrne7k" path="res://scenes/sections/batch_compile_q1.tscn" id="5_7cogx"]
 [ext_resource type="PackedScene" uid="uid://ivhp72d4h0lh" path="res://scenes/sections/run.tscn" id="6_p8ddq"]
-[ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/sections/hotkeys.tscn" id="7_bspov"]
+[ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/sections/hotkeys_q1.tscn" id="7_bspov"]
 
 [node name="Quake" type="MarginContainer"]
 anchors_preset = 15
@@ -51,5 +51,5 @@ layout_mode = 2
 [node name="Run" parent="ScrollContainer/HFlowContainer" instance=ExtResource("6_p8ddq")]
 layout_mode = 2
 
-[node name="Hotkeys" parent="ScrollContainer/HFlowContainer" instance=ExtResource("7_bspov")]
+[node name="HotkeysQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("7_bspov")]
 layout_mode = 2

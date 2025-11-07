@@ -17,6 +17,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		compile_vis(Enums.compile_mode.SINGLE)
 	elif event.is_action_pressed("compile_light"):
 		compile_light(Enums.compile_mode.SINGLE)
+	elif event.is_action_pressed("compile_bspc"):
+		compile_bspc(Enums.compile_mode.SINGLE)
 	elif event.is_action_pressed("compile_selected") and not event.alt_pressed:
 		# Checking if Alt is pressed prevents running this code if the user
 		# quits the application by pressing Alt+F4.
@@ -83,6 +85,8 @@ func compile_light(compile_mode: Enums.compile_mode):
 
 
 func compile_bspc(compile_mode: Enums.compile_mode):
+	if Config.get_current_game() != Enums.game.QUAKE3:
+		return
 	var compiler_path: String = Config.get_game_value("bspc_path")
 	var switches: String = Config.get_game_value("bspc_switches")
 	var output_path: String = Config.get_output_path()

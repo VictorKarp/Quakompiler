@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dxxm70sf6psoj" path="res://scenes/sections/single_compile_q3.tscn" id="4_ms7ca"]
 [ext_resource type="PackedScene" uid="uid://cxdcof7n4aaas" path="res://scenes/sections/batch_compile_q3.tscn" id="5_ms7ca"]
 [ext_resource type="PackedScene" uid="uid://ivhp72d4h0lh" path="res://scenes/sections/run.tscn" id="6_0cwyu"]
-[ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/sections/hotkeys.tscn" id="7_tsqwu"]
 [ext_resource type="StyleBox" uid="uid://cjhxfom0ywlcl" path="res://themes/panel_q3.tres" id="8_gi4qi"]
+[ext_resource type="PackedScene" uid="uid://c0ckrlkp41j52" path="res://scenes/sections/hotkeys_q3.tscn" id="9_gi4qi"]
 
 [node name="Quake3" type="MarginContainer"]
 anchors_preset = 15
@@ -61,12 +61,7 @@ game = 2
 [node name="PanelContainer" parent="ScrollContainer/HFlowContainer/Run" index="0"]
 theme_override_styles/panel = ExtResource("8_gi4qi")
 
-[node name="Hotkeys" parent="ScrollContainer/HFlowContainer" instance=ExtResource("7_tsqwu")]
+[node name="HotkeysQ3" parent="ScrollContainer/HFlowContainer" instance=ExtResource("9_gi4qi")]
 layout_mode = 2
-game = 2
-
-[node name="PanelContainer" parent="ScrollContainer/HFlowContainer/Hotkeys" index="0"]
-theme_override_styles/panel = ExtResource("8_gi4qi")
 
 [editable path="ScrollContainer/HFlowContainer/Run"]
-[editable path="ScrollContainer/HFlowContainer/Hotkeys"]

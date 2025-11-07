@@ -12,41 +12,41 @@ theme_override_constants/h_separation = 16
 last_wrap_alignment = 1
 
 [node name="CompileBSP" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="0"]
-custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "F1: Compile BSP"
-autowrap_mode = 3
+tooltip_text = "Compile the BSP stage"
+mouse_filter = 0
+text = "F1: BSP"
 
 [node name="CompileVIS" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="1"]
-custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "F2: Compile Vis"
-autowrap_mode = 3
+tooltip_text = "Compile the VIS stage"
+mouse_filter = 0
+text = "F2: VIS"
 
-[node name="CompileLight" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="2"]
-custom_minimum_size = Vector2(105, 0)
+[node name="CompileLIGHT" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "F3: Compile Light"
-autowrap_mode = 3
+tooltip_text = "Compile the LIGHT stage"
+mouse_filter = 0
+text = "F3: LIGHT"
 
 [node name="CompileSelected" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="3"]
-custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "F4: Start batched operations"
-autowrap_mode = 3
+tooltip_text = "Compile all enabled Batch actions"
+mouse_filter = 0
+text = "F5: Batch"
 
 [node name="RunGame" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="4"]
-custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "F5: Run game"
-autowrap_mode = 3
+tooltip_text = "Run the map"
+mouse_filter = 0
+text = "F6: Run"

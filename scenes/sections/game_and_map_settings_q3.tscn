@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://5m8cw7mradw6"]
+[gd_scene load_steps=6 format=3 uid="uid://5m8cw7mradw6"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_p1wbe"]
+[ext_resource type="StyleBox" uid="uid://cjhxfom0ywlcl" path="res://themes/panel_q3.tres" id="2_2rxva"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_3lx7a"]
 [ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_2rxva"]
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_2w4pb"]
@@ -9,6 +10,9 @@
 title = "Game and map settings"
 game = 2
 config_name = "game_folded"
+
+[node name="PanelContainer" parent="." index="0"]
+theme_override_styles/panel = ExtResource("2_2rxva")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
 layout_mode = 2

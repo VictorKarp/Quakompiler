@@ -154,6 +154,10 @@ func get_game_value(key: String, game := get_current_game()):
 func get_output_path() -> String:
 	var output_path = get_game_value("output_path")
 	var map_name = get_game_value("map_path").get_file().rstrip(".map")
+
+	if not DirAccess.dir_exists_absolute(output_path) or output_path == "":
+		output_path = get_game_value("map_path").get_base_dir()
+
 	return output_path + "/" + map_name + ".bsp"
 
 

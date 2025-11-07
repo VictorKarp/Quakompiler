@@ -26,7 +26,7 @@ Mod: If you want to start a mod when launching the game, enter its name here. Ot
 
 Map: Select the .map file you want to compile.
 
-Output: Select the output folder where your .bsp file will be saved."
+Output: Leave this empty to save the .bsp in the same folder as your .map. The folder you enter here must exist, as Quakompiler will not create it. If the .bsp can't be saved at the path you have specified, it will fall back to the .map folder."
 
 [node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
@@ -89,7 +89,7 @@ text = "Output"
 
 [node name="OutputPath" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="1" instance=ExtResource("3_m5j51")]
 layout_mode = 2
-placeholder_text = "Output path"
+placeholder_text = "Output path (optional)"
 config_key = "output_path"
 
 [node name="SelectOutputFolder" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_5ytsn")]

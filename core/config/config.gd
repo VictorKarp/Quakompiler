@@ -5,9 +5,11 @@ signal config_loaded
 var current_game := Enums.game.QUAKE1
 
 var config := {
-	global = {
+	application = {
 		"window_size" = Vector2i(1152,648),
-		"window_position" = Vector2i.ZERO
+		"window_position" = Vector2i.ZERO,
+		"q1_scroll" = 0,
+		"q3_scroll" = 0,
 	},
 	q1 = {
 		"bsp_path" = "",
@@ -71,10 +73,14 @@ func _ready() -> void:
 	_restore_window_size_and_pos()
 
 
-func _exit_tree() -> void:
-	config["global"].set("window_size", DisplayServer.window_get_size())
-	config["global"].set("window_position", DisplayServer.window_get_position())
-	save_config()
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		config["application"].set("window_size", DisplayServer.window_get_size())
+		config["application"].set("window_position", DisplayServer.window_get_position())
+		config["application"].set("q1_scroll", get_tree().get_first_node_in_group("q1_scroll").scroll_vertical)
+		config["application"].set("q3_scroll", get_tree().get_first_node_in_group("q3_scroll").scroll_vertical)
+		save_config()
+		get_tree().quit()
 
 
 func save_config() -> void:
@@ -101,10 +107,6 @@ func _load_config() -> void:
 		for key in config_file.get_section_keys(section):
 			var value = config_file.get_value(section, key)
 			config[section][key] = value
-			#if section == "global":
-				#set_global_value(key, value)
-			#else:
-				#set_game_value(key, value)
 	_is_loading_config = false
 	config_loaded.emit()
 
@@ -117,12 +119,12 @@ func set_game_value(key: String, value, game := current_game) -> void:
 			config["q3"][key] = value
 
 
-func set_global_value(key: String, value) -> void:
-	config["global"][key] = value
+func set_application_value(key: String, value) -> void:
+	config["application"][key] = value
 
 
-func get_global_value(key: String):
-	return config["global"][key]
+func get_application_value(key: String):
+	return config["application"][key]
 
 
 func get_game_value(key: String, game := current_game):
@@ -148,10 +150,10 @@ func get_output_path() -> String:
 
 
 func _restore_window_size_and_pos() -> void:
-	var window_size = config["global"]["window_size"]
+	var window_size = config["application"]["window_size"]
 	if window_size:
 		DisplayServer.window_set_size(window_size)
 
-	var window_position = config["global"]["window_position"]
+	var window_position = config["application"]["window_position"]
 	if window_position:
 		DisplayServer.window_set_position(window_position)

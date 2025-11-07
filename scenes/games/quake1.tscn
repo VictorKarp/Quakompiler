@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://q17ireoyjthf"]
+[gd_scene load_steps=9 format=3 uid="uid://q17ireoyjthf"]
 
 [ext_resource type="PackedScene" uid="uid://cyvfa6vq82uuf" path="res://scenes/sections/compiler_executables_q1.tscn" id="1_1hw85"]
+[ext_resource type="Script" uid="uid://dgnjvsrtg80ux" path="res://scenes/games/game_page_scroll.gd" id="1_5gacf"]
 [ext_resource type="PackedScene" uid="uid://bvhbe6ibtdgwc" path="res://scenes/sections/game_and_map_settings_q1.tscn" id="2_vwpgn"]
 [ext_resource type="PackedScene" uid="uid://d00q6yiu1w60w" path="res://scenes/sections/compiler_switches_q1.tscn" id="3_8ejga"]
 [ext_resource type="PackedScene" uid="uid://8p51j86ffah3" path="res://scenes/sections/single_compile_q1.tscn" id="4_4c0ga"]
@@ -21,9 +22,10 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." groups=["q1_scroll"]]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("1_5gacf")
 
 [node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
 layout_mode = 2

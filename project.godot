@@ -35,6 +35,8 @@ import/blender/enabled=false
 
 main=""
 file_dialog=""
+q1_scroll=""
+q3_scroll=""
 
 [gui]
 

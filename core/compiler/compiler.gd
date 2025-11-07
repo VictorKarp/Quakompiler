@@ -30,7 +30,7 @@ func compile_bsp(compile_mode: Enums.compile_mode):
 	var output_path: String = Config.get_output_path()
 	var switches: String = Config.get_game_value("bsp_switches")
 	var args: String
-	match Config.current_game:
+	match Config.get_current_game():
 		Enums.game.QUAKE1:
 			compiler_path = Config.get_game_value("bsp_path")
 			args = switches + " " + map_path + " " + output_path
@@ -44,7 +44,7 @@ func compile_vis(compile_mode: Enums.compile_mode):
 	var compiler_path: String
 	var base_path = Config.get_game_value("game_path").get_base_dir()
 	var args: String
-	match Config.current_game:
+	match Config.get_current_game():
 		Enums.game.QUAKE1:
 			compiler_path = Config.get_game_value("vis_path")
 		Enums.game.QUAKE3:
@@ -66,7 +66,7 @@ func compile_light(compile_mode: Enums.compile_mode):
 	var map_path: String = Config.get_game_value("map_path")
 	var output_path: String = Config.get_output_path()
 
-	match Config.current_game:
+	match Config.get_current_game():
 		Enums.game.QUAKE1:
 			compiler_path = Config.get_game_value("light_path")
 			if switches:

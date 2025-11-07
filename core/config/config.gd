@@ -2,7 +2,6 @@ extends Node
 
 signal config_loaded
 
-var current_game := Enums.game.QUAKE1
 
 var config := {
 	application = {
@@ -10,6 +9,7 @@ var config := {
 		"window_position" = Vector2i.ZERO,
 		"q1_scroll" = 0,
 		"q3_scroll" = 0,
+		"current_game" = Enums.game.QUAKE1,
 	},
 	q1 = {
 		"bsp_path" = "",
@@ -111,7 +111,7 @@ func _load_config() -> void:
 	config_loaded.emit()
 
 
-func set_game_value(key: String, value, game := current_game) -> void:
+func set_game_value(key: String, value, game := get_current_game()) -> void:
 	match game:
 		Enums.game.QUAKE1:
 			config["q1"][key] = value
@@ -127,7 +127,15 @@ func get_application_value(key: String):
 	return config["application"][key]
 
 
-func get_game_value(key: String, game := current_game):
+func get_current_game() -> Enums.game:
+	return config["application"]["current_game"]
+
+
+func set_current_game(value: Enums.game) -> void:
+	config["application"]["current_game"] = value
+
+
+func get_game_value(key: String, game := get_current_game()):
 	var value = null
 	match game:
 		Enums.game.QUAKE1:

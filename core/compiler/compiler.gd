@@ -17,11 +17,15 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		compile_vis(Enums.compile_mode.SINGLE)
 	elif event.is_action_pressed("compile_light"):
 		compile_light(Enums.compile_mode.SINGLE)
-	elif event.is_action_pressed("compile_bspc"):
-		compile_bspc(Enums.compile_mode.SINGLE)
-	elif event.is_action_pressed("compile_selected") and not event.alt_pressed:
+	elif (
+			event.is_action_pressed("compile_bspc")
+			and Config.get_current_game() == Enums.game.QUAKE3
+			and not event.alt_pressed
+		):
 		# Checking if Alt is pressed prevents running this code if the user
 		# quits the application by pressing Alt+F4.
+		compile_bspc(Enums.compile_mode.SINGLE)
+	elif event.is_action_pressed("compile_selected"):
 		compile_selected()
 
 
@@ -32,6 +36,7 @@ func compile_bsp(compile_mode: Enums.compile_mode):
 	var output_path: String = Config.get_output_path()
 	var switches: String = Config.get_game_value("bsp_switches")
 	var args: String
+
 	match Config.get_current_game():
 		Enums.game.QUAKE1:
 			compiler_path = Config.get_game_value("bsp_path")
@@ -39,24 +44,25 @@ func compile_bsp(compile_mode: Enums.compile_mode):
 		Enums.game.QUAKE3:
 			compiler_path = Config.get_game_value("q3map2_path")
 			args = "-fs_basepath " + base_path + " " + switches + " " + map_path
+
 	_run_compiler(compiler_path, args, compile_mode)
 
 
 func compile_vis(compile_mode: Enums.compile_mode):
 	var compiler_path: String
 	var base_path = Config.get_game_value("game_path").get_base_dir()
-	var args: String
+	var args := ""
+	var switches: String = Config.get_game_value("vis_switches")
+	var output_path: String = Config.get_output_path()
+
 	match Config.get_current_game():
 		Enums.game.QUAKE1:
 			compiler_path = Config.get_game_value("vis_path")
+			args = switches + " " + output_path
 		Enums.game.QUAKE3:
 			compiler_path = Config.get_game_value("q3map2_path")
-			args = "-fs_basepath " + base_path + " -vis"
-	var switches: String = Config.get_game_value("vis_switches")
-	var output_path: String = Config.get_output_path()
-	if switches:
-		args += " " + switches
-	args += " " + output_path
+			args = "-fs_basepath " + base_path + " -vis " + switches + " " + output_path
+
 	_run_compiler(compiler_path, args, compile_mode)
 
 
@@ -71,35 +77,24 @@ func compile_light(compile_mode: Enums.compile_mode):
 	match Config.get_current_game():
 		Enums.game.QUAKE1:
 			compiler_path = Config.get_game_value("light_path")
-			if switches:
-				args = switches
-			args += " " + output_path
+			args = switches + " " + output_path
 		Enums.game.QUAKE3:
 			compiler_path = Config.get_game_value("q3map2_path")
-			args = "-fs_basepath " + base_path + " -light"
-			if switches:
-				args += " " + switches
-			args += " " + map_path
+			args = "-fs_basepath " + base_path + " -light " + switches + " " + map_path
 
 	_run_compiler(compiler_path, args, compile_mode)
 
 
 func compile_bspc(compile_mode: Enums.compile_mode):
-	if Config.get_current_game() != Enums.game.QUAKE3:
-		return
 	var compiler_path: String = Config.get_game_value("bspc_path")
 	var switches: String = Config.get_game_value("bspc_switches")
 	var output_path: String = Config.get_output_path()
-	var args := ""
-	if switches:
-		args += " " + switches
-	args += " " + output_path
+	var args = switches + " " + output_path
+
 	_run_compiler(compiler_path, args, compile_mode)
 
 
 func _run_compiler(compiler_path, args, compile_mode: Enums.compile_mode) -> void:
-	print(compiler_path)
-	print(args)
 	# Pausing after compilation
 	var pause := false
 	match compile_mode:

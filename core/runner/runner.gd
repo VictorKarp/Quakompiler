@@ -15,4 +15,7 @@ func run_game() -> void:
 		Enums.game.QUAKE1:
 			OS.create_process(game_path, ["-basedir", basedir, "+game", mod, "+map", map])
 		Enums.game.QUAKE3:
-			OS.create_process("cmd.exe", ["/C", "cd /d " + basedir + " && " + game_path + " +sv_pure 0 +devmap " + map])
+			if OS.get_name() == "Windows":
+				OS.create_process("cmd.exe", ["/C", "cd /d " + basedir + " && " + game_path + " +sv_pure 0 +devmap " + map])
+			else:
+				OS.create_process(game_path, ["+set fs_game " + mod + " +sv_pure 0 +devmap " + map])

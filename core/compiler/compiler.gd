@@ -163,7 +163,18 @@ func _start_next_queued_action() -> void:
 
 
 func _on_compiler_run_check_timeout() -> void:
-	_is_compiling_batch = OS.is_process_running(_compiler_pid)
+	if Config.get_current_game() == Enums.game.QUAKE3:
+		if OS.get_name() == "Windows":
+			_is_compiling_batch = OS.is_process_running(_compiler_pid)
+		elif OS.get_name() == "Linux":
+			# q3maps2 can spawn new subprocesses during compilation, which
+			# makes process detection via PID fail on Linux. So we check
+			# for running processes with the compiler's file name instead.
+			var compiler = Config.get_game_value("q3map2_path").get_file()
+			var exit_code = OS.execute("pgrep", [compiler], [], true)
+			_is_compiling_batch = exit_code == 0
+	else:
+		_is_compiling_batch = OS.is_process_running(_compiler_pid)
 	if not _is_compiling_batch:
 		%CompilerRunCheck.stop()
 		_start_next_queued_action()

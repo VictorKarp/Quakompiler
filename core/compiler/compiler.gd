@@ -122,7 +122,7 @@ func _run_compiler(compiler_path, args, compile_mode: Enums.compile_mode) -> voi
 			if exit_code == 0:
 				selected_terminal = terminal
 				break
-		_compiler_pid = OS.create_process(selected_terminal, ["--", "bash", "-c", compiler_path, args])
+		_compiler_pid = OS.create_process(selected_terminal, ["--", "bash", "-c", compiler_path + " " + args])
 	else:
 		_compiler_pid = OS.create_process("cmd.exe", ["/c", compiler_path + " " + args], true)
 

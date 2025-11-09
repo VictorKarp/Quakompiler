@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://c0ed48sfthsce"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_usipj"]
+
+[resource]
+script = ExtResource("1_usipj")
+topic = "Creating batch files"
+text = "You can create executable batch files that are usable without Quakompiler. These files contain all paths, stages and switches you have selected. Simple double-click them to compile your maps with the settings you have defined in Quakompiler.
+
+Press the [b]Create[/b] button to create the batch files. On Windows, you'll get a *.bat file. On Linux, you'll get an executable *.sh file.
+
+[b]Output[/b]
+Selct where the batch files should be saved. Leave this empty to save them in the same folder where Quakompiler is located.
+
+"
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

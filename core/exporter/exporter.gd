@@ -1,7 +1,7 @@
 extends Node
 
 
-func export(os: Enums.os) -> void:
+func export() -> void:
 	var lines := ""
 	var filename: String
 	var mapname = Config.get_game_value("map_path").get_file().rstrip(".map")
@@ -13,7 +13,7 @@ func export(os: Enums.os) -> void:
 	var pause := false
 	var is_quake3 = Config.get_current_game() == Enums.game.QUAKE3
 
-	if os == Enums.os.LINUX:
+	if OS.get_name() == "Linux":
 		lines = "#!/bin/bash\n"
 
 	filename = mapname
@@ -35,7 +35,7 @@ func export(os: Enums.os) -> void:
 		lines += "\n" + Runner.get_run_commands()
 		run = true
 	if Config.get_game_value("export_pause"):
-		if os == Enums.os.WINDOWS:
+		if OS.get_name() == "Windows":
 			lines += " && pause"
 		else:
 			lines += " ;read"
@@ -63,7 +63,7 @@ func export(os: Enums.os) -> void:
 	if run:
 		filename += "_run"
 
-	if os == Enums.os.WINDOWS:
+	if OS.get_name() == "Windows":
 		filename += ".bat"
 	else:
 		filename += ".sh"
@@ -79,7 +79,7 @@ func export(os: Enums.os) -> void:
 	var file = FileAccess.open(full_path, FileAccess.WRITE)
 	file.store_string(lines)
 
-	if os == Enums.os.LINUX:
+	if OS.get_name() == "Linux":
 		OS.execute("chmod", ["a+x", full_path], [], false)
 
 

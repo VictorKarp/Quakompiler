@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d00q6yiu1w60w"]
+[gd_scene load_steps=5 format=3 uid="uid://d00q6yiu1w60w"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_ui0r8"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_86jy4"]
+[ext_resource type="Resource" uid="uid://m14bv68nyn6l" path="res://help_texts/switches_q1.tres" id="3_ge7vx"]
 [ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_mgj8f"]
 
 [node name="CompilerSwitchesQ1" instance=ExtResource("1_ui0r8")]
@@ -18,16 +19,7 @@ size_flags_horizontal = 10
 tooltip_text = "Show the help for compiler switches"
 text = "?"
 script = ExtResource("2_86jy4")
-topic = "Compiler switches"
-help_text = "You can define additional switches for each compiler stage. Switches can for example decrease compilation time by lowering the quality for quick tests, improve lighting quality or provide debug features.
-
-Switches always begin with a dash (-) and are separated by spaces. Some switches can use numbers as well. Read the documentation for your compiler to see which switches it provides. Here are some examples for the [url=https://ericwa.github.io/ericw-tools/]ericw-tools[/url] compilers:
-
-BSP:     -bsp2 -subdivide 128
-VIS:      -fast -v
-LIGHT: -extra -bounce
-
-If you are using the ericw-tools, read the docs for [url=https://ericwa.github.io/ericw-tools/doc/qbsp.html]qbsp[/url], [url=https://ericwa.github.io/ericw-tools/doc/vis.html]vis[/url] and [url=https://ericwa.github.io/ericw-tools/doc/light.html]light[/url] to learn about each stage's switches."
+help_file = ExtResource("3_ge7vx")
 
 [node name="Bsp" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
@@ -35,7 +27,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="0"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-text = "BSP"
+text = "QBSP"
 
 [node name="BspSwitches" parent="PanelContainer/MarginContainer/VBoxContainer/Bsp" index="1" instance=ExtResource("3_mgj8f")]
 layout_mode = 2

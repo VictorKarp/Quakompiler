@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxdcof7n4aaas"]
+[gd_scene load_steps=7 format=3 uid="uid://cxdcof7n4aaas"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_ie4wx"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_xrabi"]
 [ext_resource type="StyleBox" uid="uid://cjhxfom0ywlcl" path="res://themes/panel_q3.tres" id="2_ynnum"]
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="3_ynnum"]
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="4_a145k"]
+[ext_resource type="Resource" uid="uid://bcqp2rkr7bqxx" path="res://help_texts/batch_compile_q3.tres" id="4_ynnum"]
 
 [node name="BatchCompileQ3" instance=ExtResource("1_ie4wx")]
 title = "Batch compile"
@@ -23,12 +24,7 @@ size_flags_horizontal = 10
 tooltip_text = "Show the help for batching"
 text = "?"
 script = ExtResource("2_xrabi")
-topic = "Batching"
-help_text = "Batching allows you to chain-compile multiple stages. Select the stages you want to compile, then press [i]Start[/i].
-
-Enable [i]Run[/i] if you want the GUI to launch your map after compilation has finished.
-
-[i]Pause[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+help_file = ExtResource("4_ynnum")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
@@ -48,7 +44,7 @@ game = 2
 
 [node name="LightEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_ynnum")]
 layout_mode = 2
-text = "LIGHT"
+text = "Light"
 config_key = "light_enabled"
 game = 2
 

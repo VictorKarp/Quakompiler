@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://b0idpuhrrx01h"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_u4x7e"]
+
+[resource]
+script = ExtResource("1_u4x7e")
+topic = "Compilation"
+text = "Pressing one of these buttons will compile the respective stage. If you want to compile multiple stages and maybe even run the game when compilation has finished, use the [i]Batch compile[/i] section instead.
+
+[b]BSP[/b]
+(Binary Space Partitioning) compiles the physical structure of your map. This is sufficient to play your map, but there will be no visibility optimization or shadows.
+
+[b]VIS[/b]
+VIS (visibility) is for performance optimization. Compiles visibility (which parts of your map can be seen from which position - things that can't be  seen aren't rendered) and automatically generates ambient sounds. Only works if your map doesn't have a leak.
+
+[b]LIGHT[/b]
+Compiles lights and shadows.
+
+[b]Pause[/b]
+Prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

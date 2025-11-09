@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://de3ss0283pki8"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_lg0jx"]
+
+[resource]
+script = ExtResource("1_lg0jx")
+topic = "Game and map settings"
+text = "[b]Game[/b]
+Select your Quake executable. If your are playing a modern source port like Quakespasm or Ironwail, select the executable of the source port instead.
+
+[b]Mod[/b]
+If you want to start a mod when launching the game, enter its name here. Otherwise, leave the field empty.
+
+[b]Map[/b]
+Select the .map file you want to compile."
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

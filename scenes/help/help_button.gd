@@ -1,7 +1,6 @@
 extends Button
 
-@export var topic := ""
-@export_multiline var help_text := ""
+@export var help_file: Help
 
 
 func _ready() -> void:
@@ -9,4 +8,9 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	Events.help_requested.emit(topic, help_text)
+	var help_topic := ""
+	var help_text := ""
+	if help_file:
+		help_topic = help_file.topic
+		help_text = help_file.text
+	Events.help_requested.emit(help_topic, help_text)

@@ -17,7 +17,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 tooltip_text = "Compile the BSP stage"
 mouse_filter = 0
-text = "F1: BSP"
+text = "F1: QBSP"
 
 [node name="CompileVIS" type="Label" parent="PanelContainer/MarginContainer/HFlowContainer" index="1"]
 layout_mode = 2

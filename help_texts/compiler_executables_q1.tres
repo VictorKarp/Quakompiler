@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://g48hn5k24epe"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_48vag"]
+
+[resource]
+script = ExtResource("1_48vag")
+topic = "Compiler executables"
+text = "You need to get a compiler from somewhere first before you can select it here. The compiler converts your .map file to a .bsp file which the game can run.
+
+[url=https://ericwa.github.io/ericw-tools/]ericw-tools[/url] is generally the recommended set of compilers for Quake 1. Download the latest stable release from [url=https://github.com/ericwa/ericw-tools/releases/]Github[/url], extract the files and choose the QBSP, VIS and LIGHT executables here in the GUI.
+
+Click the help button in the \"Single compile\" section for more info about the QBSP, VIS and LIGHT stages.
+
+"
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

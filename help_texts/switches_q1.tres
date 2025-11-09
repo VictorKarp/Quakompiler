@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://m14bv68nyn6l"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_ypir2"]
+
+[resource]
+script = ExtResource("1_ypir2")
+topic = "Compiler switches"
+text = "You can define additional switches for each compiler stage. Switches can for example decrease compilation time by lowering the quality for quick tests, improve lighting quality or provide debug features.
+
+Switches always begin with a dash (-) and are separated by spaces. Some switches can use numbers as well. Read the documentation for your compiler to see which switches it provides. Here are some examples for the Q3MAP2 and BSPC compilers:
+
+[i]QBSP[/i]
+-bsp2 -subdivide 128
+
+[i]VIS[/i]
+-fast -v
+
+[i]LIGHT[/i]
+-extra -bounce
+
+If you are using the ericw-tools, read the docs for [url=https://ericwa.github.io/ericw-tools/doc/qbsp.html]qbsp[/url], [url=https://ericwa.github.io/ericw-tools/doc/vis.html]vis[/url] and [url=https://ericwa.github.io/ericw-tools/doc/light.html]light[/url] to learn about each stage's switches."
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

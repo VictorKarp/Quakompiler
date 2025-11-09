@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://w2psngnonaof"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_l58ly"]
+
+[resource]
+script = ExtResource("1_l58ly")
+topic = "Compiler switches"
+text = "You can define additional switches for each compiler stage. Switches can for example decrease compilation time by lowering the quality for quick tests, improve lighting quality or provide debug features.
+
+Switches always begin with a dash (-) and are separated by spaces. Some switches can use numbers as well. Read the documentation on wikibooks.org for Q3MAP2 ([url=https://en.wikibooks.org/wiki/Q3Map2/BSP]BSP[/url], [url=https://en.wikibooks.org/wiki/Q3Map2/VIS]VIS[/url],  [url=https://en.wikibooks.org/wiki/Q3Map2/Light]Light[/url]) for more info on available switches. Here are some examples:
+
+[b]BSP[/b]
+-meta -v
+
+[b]VIS[/b]
+-fast -v
+
+[b]Light[/b]
+-fast -dark -dirty -bounce 3 -v
+
+[b]BSPC[/b]
+-bsp2aas
+
+"
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

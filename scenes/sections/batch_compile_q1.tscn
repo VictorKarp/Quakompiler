@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwfwqnbwrne7k"]
+[gd_scene load_steps=6 format=3 uid="uid://bwfwqnbwrne7k"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_g5fma"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_wxkso"]
+[ext_resource type="Resource" uid="uid://b51slfyhli2rn" path="res://help_texts/batch_compile_q1.tres" id="3_kyxfo"]
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="3_vsjqm"]
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="4_yrky3"]
 
@@ -19,12 +20,7 @@ size_flags_horizontal = 10
 tooltip_text = "Show the help for batching"
 text = "?"
 script = ExtResource("2_wxkso")
-topic = "Batching"
-help_text = "Batching allows you to chain-compile multiple stages. Select the stages you want to compile, then press [i]Start[/i].
-
-Enable [i]Run[/i] if you want the GUI to launch your map after compilation has finished.
-
-[i]Pause[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+help_file = ExtResource("3_kyxfo")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
@@ -32,7 +28,7 @@ columns = 3
 
 [node name="BspEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" instance=ExtResource("3_vsjqm")]
 layout_mode = 2
-text = "BSP"
+text = "QBSP"
 config_key = "bsp_enabled"
 
 [node name="VisEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_vsjqm")]

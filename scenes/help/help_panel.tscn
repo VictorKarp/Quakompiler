@@ -72,7 +72,6 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 bbcode_enabled = true
 context_menu_enabled = true
 selection_enabled = true

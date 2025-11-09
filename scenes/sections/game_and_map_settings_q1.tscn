@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvhbe6ibtdgwc"]
+[gd_scene load_steps=6 format=3 uid="uid://bvhbe6ibtdgwc"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_0y7wf"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_ojgp6"]
 [ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_m5j51"]
+[ext_resource type="Resource" uid="uid://bu1gbnfy1gpoa" path="res://help_texts/game_and_map_q1.tres" id="3_yvsqm"]
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_5ytsn"]
 
 [node name="GameAndMapSettingsQ1" instance=ExtResource("1_0y7wf")]
@@ -27,6 +28,7 @@ Mod: If you want to start a mod when launching the game, enter its name here. Ot
 Map: Select the .map file you want to compile.
 
 Output: Leave this empty to save the .bsp in the same folder as your .map. The folder you enter here must exist, as Quakompiler will not create it. If the .bsp can't be saved at the path you have specified, it will fall back to the .map folder."
+help_file = ExtResource("3_yvsqm")
 
 [node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://bu1gbnfy1gpoa"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_boug6"]
+
+[resource]
+script = ExtResource("1_boug6")
+topic = "Game and map settings"
+text = "[i]Game[/i]
+Select your Quake executable. If your are playing a modern source port like Quakespasm or Ironwail, select the executable of the source port instead.
+
+[i]Mod[/i]
+If you want to start a mod when launching the game, enter its name here. Otherwise, leave the field empty.
+
+[i]Map[/i]
+Select the .map file you want to compile.
+
+[i]Output[/i]
+Leave this empty to save the .bsp in the same folder as your .map. The folder you enter here must exist, as Quakompiler will not create it. If the .bsp can't be saved at the path you have specified, it will fall back to the .map folder."
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

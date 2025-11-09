@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://gsqe3483gg66"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_3ddea"]
+
+[resource]
+script = ExtResource("1_3ddea")
+topic = "Compilation"
+text = "Pressing one of these buttons will compile the respective stage. If you want to compile multiple stages and maybe even run the game when compilation has finished, use the [b]Batch compile[/b] section instead.
+
+[b]BSP[/b]
+(Binary Space Partitioning) compiles the physical structure of your map. This is sufficient to play your map, but there will be no visibility optimization or shadows.
+
+[b]VIS[/b]
+VIS (visibility) is for performance optimization. Compiles visibility (which parts of your map can be seen from which position - things that can't be  seen aren't rendered). Only works if your map doesn't have a leak.
+
+[b]Light[/b]
+Compiles lights and shadows.
+
+[b]BSPC[/b]
+Creates .aas files (among other things), which contain the pathing information for bots. You can't add bots to your map without an .aas file.
+
+[b]Pause[/b]
+Prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxxm70sf6psoj"]
+[gd_scene load_steps=7 format=3 uid="uid://dxxm70sf6psoj"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_30tkh"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_2pu3h"]
 [ext_resource type="StyleBox" uid="uid://cjhxfom0ywlcl" path="res://themes/panel_q3.tres" id="2_j3mjk"]
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="3_j3mjk"]
+[ext_resource type="Resource" uid="uid://gsqe3483gg66" path="res://help_texts/single_compile_q3.tres" id="4_j3mjk"]
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="4_vn235"]
 
 [node name="SingleCompileQ3" instance=ExtResource("1_30tkh")]
@@ -23,16 +24,7 @@ size_flags_horizontal = 10
 tooltip_text = "Show the help for compilation"
 text = "?"
 script = ExtResource("2_2pu3h")
-topic = "Compilation"
-help_text = "Pressing one of these buttons will compile the respective stage. If you want to compile multiple stages and maybe even run the game when compilation has finished, use the [i]Batching[/i] section instead.
-
-[i]BSP[/i] (Binary Space Partitioning) compiles the physical structure of your map. This is sufficient to play your map, but there will be no optimization or shadows.
-
-[i]VIS[/i] (visibility) is for performance optimization. Compiles visibility (which parts of your map can be seen from which position - things that can't be  seen aren't rendered) and automatically generates ambient sounds. Only works if your map doesn't have a leak.
-
-[i]LIGHT[/i] compiles lights and shadows.
-
-[i]Pause[/i] prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+help_file = ExtResource("4_j3mjk")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
@@ -50,7 +42,7 @@ stage = 2
 
 [node name="CompileLight" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_j3mjk")]
 layout_mode = 2
-text = "LIGHT"
+text = "Light"
 stage = 3
 
 [node name="CompileBspc" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("3_j3mjk")]

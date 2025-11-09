@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjr3fdtwjwla0"]
+[gd_scene load_steps=9 format=3 uid="uid://cjr3fdtwjwla0"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_lr7y7"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_klndj"]
 [ext_resource type="PackedScene" uid="uid://bsc50m5evgd8x" path="res://scenes/export_flag_button/export_flag_button.tscn" id="2_u3l76"]
+[ext_resource type="Resource" uid="uid://c0ed48sfthsce" path="res://help_texts/batch_files.tres" id="3_7a6em"]
 [ext_resource type="PackedScene" uid="uid://gc0lvyobjity" path="res://scenes/export_button/export_button.tscn" id="3_yfcv3"]
 [ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="4_cygoh"]
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="5_5o3la"]
@@ -21,16 +22,17 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "?"
 script = ExtResource("2_klndj")
-topic = "Export batch files"
+help_file = ExtResource("3_7a6em")
 
 [node name="VBoxContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="1"]
 layout_mode = 2
-columns = 3
+columns = 4
 
 [node name="BSP" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="0" instance=ExtResource("2_u3l76")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+text = "QBSP"
 
 [node name="VIS" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="1" instance=ExtResource("2_u3l76")]
 custom_minimum_size = Vector2(70, 0)
@@ -60,27 +62,14 @@ size_flags_horizontal = 3
 text = "Run"
 action = 5
 
-[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="5"]
-layout_mode = 2
-
-[node name="ExportWindows" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="6" instance=ExtResource("3_yfcv3")]
+[node name="Create" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="5" instance=ExtResource("3_yfcv3")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Windows"
+text = "Create"
 icon = ExtResource("5_5o3la")
-autowrap_mode = 2
+text_overrun_behavior = 1
 icon_alignment = 2
-
-[node name="ExportLinux" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="7" instance=ExtResource("3_yfcv3")]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Linux"
-icon = ExtResource("5_5o3la")
-autowrap_mode = 2
-icon_alignment = 2
-os = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="2"]
 layout_mode = 2

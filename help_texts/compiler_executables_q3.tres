@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://cjbta4csc7i2j"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_mq4fg"]
+
+[resource]
+script = ExtResource("1_mq4fg")
+topic = "Compiler executables"
+text = "If you are using [url=https://github.com/Garux/netradiant-custom]NetRadiant-custom[/url] or [url=https://netradiant.gitlab.io/]Netradiant[/url] for making your maps, the q3map2 and bspc executables should come bundled with the editor.
+
+[b]Q3MAP2[/b]
+Converts your .map file to a .bsp file which the game can run.
+
+[b]BSPC[/b]
+Creates .aas files (among other things), which contain the pathing information for bots. You can't add bots to your map without an .aas file.
+
+Click the help button in the \"Single compile\" section for more info about the BSP, VIS and Light and BSPC stages.
+
+"
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

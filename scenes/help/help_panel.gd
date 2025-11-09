@@ -11,6 +11,7 @@ func _ready() -> void:
 func _on_help_requested(topic, text) -> void:
 	if not visible:
 		size.x = min(600, get_parent().get_viewport().get_visible_rect().size.x - 40)
+		size.y = min(600, get_parent().get_viewport().get_visible_rect().size.y - 80)
 		popup_centered()
 	%HelpTopic.text = topic
 	%HelpText.text = text

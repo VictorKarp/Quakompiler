@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://b51slfyhli2rn"]
+
+[ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_g0eg1"]
+
+[resource]
+script = ExtResource("1_g0eg1")
+topic = "Batch compiling"
+text = "Batching allows you to chain-compile multiple stages. Select the stages you want to compile, then press [b]Start[/b].
+
+Read the [b]Single compile[/b] help for info about what BSP, VIS and LIGHT do.
+
+[b]Run[/b]
+Launch the map after compilation has finished.
+
+[b]Pause[/b]
+Prevents the compiler window from closing automatically after compilation has finished so you can read the compile log."
+metadata/_custom_type_script = "uid://nlcikuhx3xfd"

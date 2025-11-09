@@ -17,6 +17,7 @@ func _on_visibility_changed() -> void:
 		%Godot.text = FileAccess.open("res://LICENSE_GODOT.txt", FileAccess.READ).get_as_text()
 		%GodotThirdParty.text = FileAccess.open("res://LICENSE_3RD_PARTY.txt",
 				FileAccess.READ).get_as_text()
+		%Fonts.text = FileAccess.open("res://fonts/inter/inter_ofl.txt", FileAccess.READ).get_as_text()
 
 
 func _on_meta_clicked(meta) -> void:

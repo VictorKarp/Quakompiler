@@ -1,8 +1,11 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b0oqypotxwhel"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b0oqypotxwhel"]
 
 [ext_resource type="Texture2D" uid="uid://hdnbs2yrd6fy" path="res://icons/button_hover.png" id="1_lkf7m"]
 [ext_resource type="Texture2D" uid="uid://dxq4mqv6h0vlr" path="res://icons/button_pressed.png" id="2_fx2g0"]
 [ext_resource type="Texture2D" uid="uid://cj1tau1fjugvx" path="res://icons/button_normal.png" id="3_nwjvr"]
+[ext_resource type="FontFile" uid="uid://ddh3iiqcbktd" path="res://fonts/inter/inter_18p_bold.ttf" id="4_r3xux"]
+[ext_resource type="FontFile" uid="uid://bq3g0mifw1lor" path="res://fonts/inter/inter_18p_italic.ttf" id="5_oxkhk"]
+[ext_resource type="FontFile" uid="uid://bkwifvhk68fqk" path="res://fonts/inter/inter_18p_medium.ttf" id="6_r3xux"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fx2g0"]
 texture = ExtResource("1_lkf7m")
@@ -70,6 +73,8 @@ shadow_color = Color(0, 0, 0, 0.19607843)
 shadow_size = 8
 
 [resource]
+default_font = ExtResource("6_r3xux")
+default_font_size = 16
 Button/colors/font_color = Color(0.1, 0.1, 0.1, 1)
 Button/colors/font_focus_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 Button/colors/font_hover_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
@@ -83,7 +88,11 @@ LineEdit/colors/font_placeholder_color = Color(0.625, 0.625, 0.625, 1)
 LineEdit/styles/normal = SubResource("StyleBoxTexture_qe7jt")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_bp0wp")
 RichTextLabel/colors/default_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.3137255)
 RichTextLabel/colors/selection_color = Color(0.6, 0.7247243, 0.87058824, 1)
+RichTextLabel/fonts/bold_font = ExtResource("4_r3xux")
+RichTextLabel/fonts/italics_font = ExtResource("5_oxkhk")
+RichTextLabel/fonts/normal_font = ExtResource("6_r3xux")
 TooltipLabel/colors/font_color = Color(0.1, 0.1, 0.1, 1)
 TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_lkf7m")

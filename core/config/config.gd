@@ -5,7 +5,7 @@ signal config_loaded
 
 var config := {
 	application = {
-		"window_size" = Vector2i(1152,648),
+		"window_size" = Vector2i(1152,658),
 		"window_position" = Vector2i.ZERO,
 		"q1_scroll" = 0,
 		"q3_scroll" = 0,
@@ -83,7 +83,7 @@ var _is_loading_config := false
 
 
 func _ready() -> void:
-	DisplayServer.window_set_min_size(Vector2i(420, 120))
+	DisplayServer.window_set_min_size(Vector2i(420, 300))
 	_load_config()
 	_restore_window_size_and_pos()
 

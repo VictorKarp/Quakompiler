@@ -28,6 +28,10 @@ Compiler="*res://core/compiler/compiler.tscn"
 Runner="*res://core/runner/runner.gd"
 Exporter="*res://core/exporter/exporter.gd"
 
+[display]
+
+window/size/viewport_height=700
+
 [filesystem]
 
 import/blender/enabled=false

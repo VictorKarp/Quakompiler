@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://csoojfhdfyasy"]
+
+[node name="FooterQ3" type="PanelContainer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 16
+
+[node name="CompileBSP" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Compile the BSP stage"
+mouse_filter = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
+text = "[F1] BSP"
+
+[node name="CompileVIS" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Compile the VIS stage"
+mouse_filter = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
+text = "[F2] VIS"
+
+[node name="CompileLIGHT" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Compile the LIGHT stage"
+mouse_filter = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
+text = "[F3] LIGHT"
+
+[node name="CompileSelected" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Compile all enabled Batch actions"
+mouse_filter = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
+text = "[F5] Batch"
+
+[node name="RunGame" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Run the map"
+mouse_filter = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
+text = "[F6] Run"

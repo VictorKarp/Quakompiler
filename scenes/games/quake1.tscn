@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://q17ireoyjthf"]
+[gd_scene load_steps=9 format=3 uid="uid://q17ireoyjthf"]
 
 [ext_resource type="PackedScene" uid="uid://cyvfa6vq82uuf" path="res://scenes/sections/compiler_executables_q1.tscn" id="1_1hw85"]
 [ext_resource type="Script" uid="uid://dgnjvsrtg80ux" path="res://scenes/games/game_page_scroll.gd" id="1_5gacf"]
@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d00q6yiu1w60w" path="res://scenes/sections/compiler_switches_q1.tscn" id="3_8ejga"]
 [ext_resource type="PackedScene" uid="uid://8p51j86ffah3" path="res://scenes/sections/single_compile_q1.tscn" id="4_4c0ga"]
 [ext_resource type="PackedScene" uid="uid://bwfwqnbwrne7k" path="res://scenes/sections/batch_compile_q1.tscn" id="5_7cogx"]
-[ext_resource type="PackedScene" uid="uid://ivhp72d4h0lh" path="res://scenes/sections/run.tscn" id="6_p8ddq"]
-[ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/sections/hotkeys_q1.tscn" id="7_bspov"]
+[ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/sections/footer_q1.tscn" id="7_bspov"]
 [ext_resource type="PackedScene" uid="uid://cjr3fdtwjwla0" path="res://scenes/sections/export_q1.tscn" id="8_wdge0"]
 
 [node name="Quake" type="MarginContainer"]
@@ -23,37 +22,42 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." groups=["q1_scroll"]]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" node_paths=PackedStringArray("root") groups=["q1_scroll"]]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_5gacf")
+root = NodePath("../..")
 
-[node name="HFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CompilerExecutablesQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("1_1hw85")]
+[node name="CompilerExecutablesQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("1_1hw85")]
 layout_mode = 2
 config_name = "compilers_folded"
 
-[node name="GameAndMapSettingsQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("2_vwpgn")]
+[node name="GameAndMapSettingsQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("2_vwpgn")]
 layout_mode = 2
 
-[node name="CompilerSwitchesQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("3_8ejga")]
+[node name="CompilerSwitchesQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("3_8ejga")]
 layout_mode = 2
 
-[node name="SingleCompileQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("4_4c0ga")]
+[node name="SingleCompileQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("4_4c0ga")]
 layout_mode = 2
 
-[node name="BatchCompileQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("5_7cogx")]
+[node name="BatchCompileQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("5_7cogx")]
 layout_mode = 2
 
-[node name="Run" parent="ScrollContainer/HFlowContainer" instance=ExtResource("6_p8ddq")]
+[node name="ExportQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("8_wdge0")]
 layout_mode = 2
 
-[node name="ExportQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("8_wdge0")]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="HotkeysQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("7_bspov")]
+[node name="FooterQ1" parent="VBoxContainer" instance=ExtResource("7_bspov")]
 layout_mode = 2

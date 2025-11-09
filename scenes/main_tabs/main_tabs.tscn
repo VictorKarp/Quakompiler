@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://yy6wcna0gkf"]
+
+[ext_resource type="Script" uid="uid://dw1cwruka80bn" path="res://scenes/main_tabs/main_tabs.gd" id="1_wkdcn"]
+[ext_resource type="PackedScene" uid="uid://q17ireoyjthf" path="res://scenes/games/quake1.tscn" id="2_51mku"]
+[ext_resource type="PackedScene" uid="uid://bvl7bqf5bvw36" path="res://scenes/games/quake3.tscn" id="3_72op4"]
+[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/about/about.tscn" id="4_1eq84"]
+
+[node name="MainTabs" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+current_tab = 0
+script = ExtResource("1_wkdcn")
+
+[node name="Quake" parent="." instance=ExtResource("2_51mku")]
+layout_mode = 2
+
+[node name="Quake 3" parent="." instance=ExtResource("3_72op4")]
+visible = false
+layout_mode = 2
+
+[node name="About" parent="." instance=ExtResource("4_1eq84")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

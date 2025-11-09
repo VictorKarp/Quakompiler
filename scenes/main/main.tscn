@@ -1,9 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene load_steps=5 format=3 uid="uid://ctuy3wytylol"]
 
-[ext_resource type="Script" uid="uid://dw1cwruka80bn" path="res://view_selection.gd" id="1_ow5a4"]
-[ext_resource type="PackedScene" uid="uid://q17ireoyjthf" path="res://scenes/games/quake1.tscn" id="2_6q06x"]
-[ext_resource type="PackedScene" uid="uid://bvl7bqf5bvw36" path="res://scenes/games/quake3.tscn" id="2_ow5a4"]
-[ext_resource type="PackedScene" uid="uid://c7g0n3olaswmi" path="res://scenes/about/about.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://yy6wcna0gkf" path="res://scenes/main_tabs/main_tabs.tscn" id="1_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bbojh06nh2f6d" path="res://scenes/file_dialog/file_dialog.tscn" id="9_b1x3f"]
 
@@ -18,26 +15,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainTabs" parent="." instance=ExtResource("1_k2fmo")]
 layout_mode = 2
-
-[node name="Games" type="TabContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-current_tab = 0
-script = ExtResource("1_ow5a4")
-
-[node name="Quake" parent="VBoxContainer/Games" instance=ExtResource("2_6q06x")]
-layout_mode = 2
-
-[node name="Quake 3" parent="VBoxContainer/Games" instance=ExtResource("2_ow5a4")]
-visible = false
-layout_mode = 2
-
-[node name="About" parent="VBoxContainer/Games" instance=ExtResource("4_1bvp3")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
 
 [node name="FileDialog" parent="." groups=["file_dialog"] instance=ExtResource("9_b1x3f")]
 

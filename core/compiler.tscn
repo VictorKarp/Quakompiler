@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbvqk3gdmi8au"]
 
-[ext_resource type="Script" uid="uid://d5peqwpq3ox4" path="res://core/compiler/compiler.gd" id="1_koter"]
+[ext_resource type="Script" uid="uid://d5peqwpq3ox4" path="res://core/compiler.gd" id="1_koter"]
 
 [node name="Compiler" type="Node"]
 script = ExtResource("1_koter")

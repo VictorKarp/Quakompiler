@@ -10,3 +10,8 @@ enum game {
 	QUAKE2 = 1,
 	QUAKE3 = 2,
 }
+
+enum os {
+	WINDOWS = 0,
+	LINUX = 1,
+}

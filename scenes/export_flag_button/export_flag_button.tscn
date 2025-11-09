@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsc50m5evgd8x"]
+
+[ext_resource type="Script" uid="uid://dbvjnxy1wuinq" path="res://scenes/export_flag_button/export_flag_button.gd" id="1_dwyr3"]
+
+[node name="ExportFlagButton" type="Button"]
+offset_right = 16.0
+offset_bottom = 6.0
+toggle_mode = true
+text = "BSP"
+script = ExtResource("1_dwyr3")

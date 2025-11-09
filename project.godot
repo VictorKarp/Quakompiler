@@ -26,6 +26,7 @@ Events="*res://core/events.gd"
 Config="*res://core/config/config.tscn"
 Compiler="*res://core/compiler/compiler.tscn"
 Runner="*res://core/runner/runner.gd"
+Exporter="*res://core/exporter/exporter.gd"
 
 [filesystem]
 

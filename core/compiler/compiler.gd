@@ -30,6 +30,11 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func compile_bsp(compile_mode: Enums.compile_mode):
+	var commands: Array = get_bsp_commands()
+	_run_compiler(commands[0], commands[1], compile_mode)
+
+
+func get_bsp_commands() -> Array:
 	var compiler_path: String
 	var base_path = Config.get_game_value("game_path").get_base_dir()
 	var map_path: String = Config.get_game_value("map_path")
@@ -45,10 +50,15 @@ func compile_bsp(compile_mode: Enums.compile_mode):
 			compiler_path = Config.get_game_value("q3map2_path")
 			args = "-fs_basepath " + base_path + " " + switches + " " + map_path
 
-	_run_compiler(compiler_path, args, compile_mode)
+	return [compiler_path, args]
 
 
 func compile_vis(compile_mode: Enums.compile_mode):
+	var commands = get_vis_commands()
+	_run_compiler(commands[0], commands[1], compile_mode)
+
+
+func get_vis_commands() -> Array:
 	var compiler_path: String
 	var base_path = Config.get_game_value("game_path").get_base_dir()
 	var args := ""
@@ -63,10 +73,15 @@ func compile_vis(compile_mode: Enums.compile_mode):
 			compiler_path = Config.get_game_value("q3map2_path")
 			args = "-fs_basepath " + base_path + " -vis " + switches + " " + output_path
 
-	_run_compiler(compiler_path, args, compile_mode)
+	return [compiler_path, args]
 
 
 func compile_light(compile_mode: Enums.compile_mode):
+	var commands = get_light_commands()
+	_run_compiler(commands[0], commands[1], compile_mode)
+
+
+func get_light_commands() -> Array:
 	var compiler_path: String
 	var base_path = Config.get_game_value("game_path").get_base_dir()
 	var args := ""
@@ -82,7 +97,7 @@ func compile_light(compile_mode: Enums.compile_mode):
 			compiler_path = Config.get_game_value("q3map2_path")
 			args = "-fs_basepath " + base_path + " -light " + switches + " " + map_path
 
-	_run_compiler(compiler_path, args, compile_mode)
+	return [compiler_path, args]
 
 
 func compile_bspc(compile_mode: Enums.compile_mode):

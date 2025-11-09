@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://gc0lvyobjity"]
+
+[ext_resource type="Script" uid="uid://drytl4l7cgt5u" path="res://scenes/export_button/export_button.gd" id="1_nqg6y"]
+
+[node name="ExportButton" type="Button"]
+offset_right = 16.0
+offset_bottom = 6.0
+size_flags_horizontal = 0
+text = "Export"
+script = ExtResource("1_nqg6y")

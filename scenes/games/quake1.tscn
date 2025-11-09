@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://q17ireoyjthf"]
+[gd_scene load_steps=10 format=3 uid="uid://q17ireoyjthf"]
 
 [ext_resource type="PackedScene" uid="uid://cyvfa6vq82uuf" path="res://scenes/sections/compiler_executables_q1.tscn" id="1_1hw85"]
 [ext_resource type="Script" uid="uid://dgnjvsrtg80ux" path="res://scenes/games/game_page_scroll.gd" id="1_5gacf"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwfwqnbwrne7k" path="res://scenes/sections/batch_compile_q1.tscn" id="5_7cogx"]
 [ext_resource type="PackedScene" uid="uid://ivhp72d4h0lh" path="res://scenes/sections/run.tscn" id="6_p8ddq"]
 [ext_resource type="PackedScene" uid="uid://csoojfhdfyasy" path="res://scenes/sections/hotkeys_q1.tscn" id="7_bspov"]
+[ext_resource type="PackedScene" uid="uid://cjr3fdtwjwla0" path="res://scenes/sections/export_q1.tscn" id="8_wdge0"]
 
 [node name="Quake" type="MarginContainer"]
 anchors_preset = 15
@@ -49,6 +50,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Run" parent="ScrollContainer/HFlowContainer" instance=ExtResource("6_p8ddq")]
+layout_mode = 2
+
+[node name="ExportQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("8_wdge0")]
 layout_mode = 2
 
 [node name="HotkeysQ1" parent="ScrollContainer/HFlowContainer" instance=ExtResource("7_bspov")]

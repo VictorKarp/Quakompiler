@@ -101,12 +101,16 @@ func get_light_commands() -> Array:
 
 
 func compile_bspc(compile_mode: Enums.compile_mode):
+	var commands = get_bspc_commands()
+	_run_compiler(commands[0], commands[1], compile_mode)
+
+
+func get_bspc_commands() -> Array:
 	var compiler_path: String = Config.get_game_value("bspc_path")
 	var switches: String = Config.get_game_value("bspc_switches")
 	var output_path: String = Config.get_output_path()
 	var args = switches + " " + output_path
-
-	_run_compiler(compiler_path, args, compile_mode)
+	return [compiler_path, args]
 
 
 func _run_compiler(compiler_path, args, compile_mode: Enums.compile_mode) -> void:

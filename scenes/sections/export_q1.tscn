@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="5_7a6em"]
 
 [node name="ExportQ1" instance=ExtResource("1_lr7y7")]
-title = "Export batch files"
+title = "Create batch files"
 config_name = "export_folded"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
@@ -60,17 +60,39 @@ size_flags_horizontal = 3
 text = "Run"
 action = 5
 
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="5"]
+layout_mode = 2
+
+[node name="ExportWindows" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="6" instance=ExtResource("3_yfcv3")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Windows"
+icon = ExtResource("5_5o3la")
+autowrap_mode = 2
+icon_alignment = 2
+
+[node name="ExportLinux" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="7" instance=ExtResource("3_yfcv3")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Linux"
+icon = ExtResource("5_5o3la")
+autowrap_mode = 2
+icon_alignment = 2
+os = 1
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="2"]
 layout_mode = 2
 
 [node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="0"]
-custom_minimum_size = Vector2(6, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "Output"
 
 [node name="ExportPath" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="1" instance=ExtResource("4_cygoh")]
 layout_mode = 2
-placeholder_text = "Batch file output path"
+placeholder_text = "Batch file output path (optional)"
 config_key = "export_path"
 
 [node name="SelectOutputPath" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("5_7a6em")]
@@ -80,22 +102,3 @@ mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="3"]
 layout_mode = 2
-
-[node name="ExportWindows" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer" index="0" instance=ExtResource("3_yfcv3")]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Export for Windows"
-icon = ExtResource("5_5o3la")
-autowrap_mode = 2
-icon_alignment = 2
-
-[node name="ExportLinux" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer" index="1" instance=ExtResource("3_yfcv3")]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Export for Linux"
-icon = ExtResource("5_5o3la")
-autowrap_mode = 2
-icon_alignment = 2
-os = 1

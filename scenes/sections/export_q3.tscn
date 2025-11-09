@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://cktwy15w4wx66"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_k4da1"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_3ftj1"]
+[ext_resource type="StyleBox" uid="uid://cjhxfom0ywlcl" path="res://themes/panel_q3.tres" id="2_xomjd"]
+[ext_resource type="PackedScene" uid="uid://bsc50m5evgd8x" path="res://scenes/export_flag_button/export_flag_button.tscn" id="3_xomjd"]
+[ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="4_dx6yl"]
+[ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="5_tllbv"]
+[ext_resource type="PackedScene" uid="uid://gc0lvyobjity" path="res://scenes/export_button/export_button.tscn" id="6_qwa8m"]
+[ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="7_0efgu"]
+
+[node name="ExportQ3" instance=ExtResource("1_k4da1")]
+title = "Create batch files"
+game = 2
+config_name = "export_folded"
+
+[node name="PanelContainer" parent="." index="0"]
+theme_override_styles/panel = ExtResource("2_xomjd")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "?"
+script = ExtResource("2_3ftj1")
+topic = "Export batch files"
+
+[node name="Flags" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="1"]
+layout_mode = 2
+columns = 3
+
+[node name="BSP" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="0" instance=ExtResource("3_xomjd")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+game = 2
+
+[node name="VIS" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="1" instance=ExtResource("3_xomjd")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VIS"
+game = 2
+action = 1
+
+[node name="LIGHT" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="2" instance=ExtResource("3_xomjd")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LIGHT"
+game = 2
+action = 2
+
+[node name="BSPC" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="3" instance=ExtResource("3_xomjd")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BSPC"
+game = 2
+action = 3
+
+[node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="4" instance=ExtResource("3_xomjd")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pause"
+game = 2
+action = 4
+
+[node name="Run" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="5" instance=ExtResource("3_xomjd")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Run"
+game = 2
+action = 5
+
+[node name="ExportWindows" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="6" instance=ExtResource("6_qwa8m")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Windows"
+icon = ExtResource("7_0efgu")
+autowrap_mode = 2
+icon_alignment = 2
+
+[node name="ExportLinux" parent="PanelContainer/MarginContainer/VBoxContainer2/Flags" index="7" instance=ExtResource("6_qwa8m")]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Linux"
+icon = ExtResource("7_0efgu")
+autowrap_mode = 2
+icon_alignment = 2
+os = 1
+
+[node name="Path" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="2"]
+layout_mode = 2
+
+[node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2/Path" index="0"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Output"
+
+[node name="ExportPath" parent="PanelContainer/MarginContainer/VBoxContainer2/Path" index="1" instance=ExtResource("4_dx6yl")]
+layout_mode = 2
+placeholder_text = "Batch file output path (optional)"
+config_key = "export_path"
+
+[node name="SelectOutputPath" parent="PanelContainer/MarginContainer/VBoxContainer2/Path" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("5_tllbv")]
+layout_mode = 2
+line_edit = NodePath("../ExportPath")
+mode = 2

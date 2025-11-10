@@ -16,6 +16,7 @@ run/main_scene="uid://ctuy3wytylol"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=18000
+boot_splash/show_image=false
 config/icon="uid://cqykh5ecglep8"
 config/windows_native_icon="res://icons/icon.ico"
 

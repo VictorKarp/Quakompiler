@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbojh06nh2f6d" path="res://scenes/file_dialog/file_dialog.tscn" id="9_b1x3f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
-bg_color = Color(0.4, 0.3338667, 0.276, 1)
+bg_color = Color(0.23840332, 0.2839651, 0.328125, 1)
 
 [node name="Main" type="PanelContainer" groups=["main"]]
 anchors_preset = 15

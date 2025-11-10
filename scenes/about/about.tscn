@@ -115,7 +115,7 @@ text = "Quakompiler"
 [node name="Version" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "v0.1"
+text = "v0.2"
 
 [node name="Subtitle" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

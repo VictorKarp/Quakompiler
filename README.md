@@ -1,4 +1,4 @@
-# Quakompiler
+# Quakompiler v0.2
 
 ![image](icons/icon.png)
 
@@ -8,14 +8,16 @@ A Quake engine compiler GUI by [Victor Karp](https://victorkarp.com), made in [G
 
 ## Features
 
-- Runs natively on Windows and Linux - no installation necessary
-- Compile BSP, VIS or LIGHT stages individually or multiple stages one after another at the click of a button
-- Add custom switches to all stages
-- Various hotkeys. Once you have set up all your paths and switches, you can compile and launch your map at the press of a single button
-- Detailed help dialogues for each section
+- Compiling and running Quake 1 and 3 maps with an easy to use GUI
+- Compiling multiple stages sequentially
+- Custom switches for all stages
+- Compiler setups can be exported as executable .bat files on Windows and .sh files on Linux
+- Runs natively on Windows and Linux without setup
+- Hotkeys for compiling and launching
+- Detailed help dialogues
 - Full keyboard support - Quakompile can be used without a mouse
-- Responsive, resizeable UI. Window size and position are stored between sessions
-- Settings are automatically stored in a config.ini file that can be edited with any text editor
+- Responsive, resizeable UI
+- Easy to edit config.ini file that contains all settings
 
 ## Building from source
 

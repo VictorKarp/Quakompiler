@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://q17ireoyjthf"]
 
-[ext_resource type="PackedScene" uid="uid://cyvfa6vq82uuf" path="res://scenes/sections/compiler_executables_q1.tscn" id="1_1hw85"]
+[ext_resource type="PackedScene" uid="uid://cyvfa6vq82uuf" path="res://scenes/sections/executables_q1.tscn" id="1_1hw85"]
 [ext_resource type="Script" uid="uid://dgnjvsrtg80ux" path="res://scenes/games/game_page_scroll.gd" id="1_5gacf"]
-[ext_resource type="PackedScene" uid="uid://bvhbe6ibtdgwc" path="res://scenes/sections/game_and_map_settings_q1.tscn" id="2_vwpgn"]
+[ext_resource type="PackedScene" uid="uid://bvhbe6ibtdgwc" path="res://scenes/sections/map_and_mod_q1.tscn" id="2_vwpgn"]
 [ext_resource type="PackedScene" uid="uid://d00q6yiu1w60w" path="res://scenes/sections/compiler_switches_q1.tscn" id="3_8ejga"]
 [ext_resource type="PackedScene" uid="uid://8p51j86ffah3" path="res://scenes/sections/single_compile_q1.tscn" id="4_4c0ga"]
 [ext_resource type="PackedScene" uid="uid://bwfwqnbwrne7k" path="res://scenes/sections/batch_compile_q1.tscn" id="5_7cogx"]
@@ -37,11 +37,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CompilerExecutablesQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("1_1hw85")]
+[node name="ExecutablesQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("1_1hw85")]
 layout_mode = 2
+title = "Executables"
 config_name = "compilers_folded"
 
-[node name="GameAndMapSettingsQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("2_vwpgn")]
+[node name="MapAndModQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("2_vwpgn")]
 layout_mode = 2
 
 [node name="CompilerSwitchesQ1" parent="VBoxContainer/ScrollContainer/HFlowContainer" instance=ExtResource("3_8ejga")]

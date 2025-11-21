@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvhbe6ibtdgwc"]
+
+[ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_2n7n3"]
+[ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_2nxwr"]
+[ext_resource type="Resource" uid="uid://bu1gbnfy1gpoa" path="res://help_texts/game_and_map_q1.tres" id="3_6bgid"]
+[ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="4_nfqo6"]
+[ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="5_4fg3m"]
+
+[node name="MapAndModQ1" instance=ExtResource("1_2n7n3")]
+title = "Map and mod"
+config_name = "game_folded"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Show the help for game and map settings"
+text = "?"
+script = ExtResource("2_2nxwr")
+help_file = ExtResource("3_6bgid")
+
+[node name="Map" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Map" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Map"
+
+[node name="MapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="1" instance=ExtResource("4_nfqo6")]
+layout_mode = 2
+placeholder_text = "Map path"
+config_key = "map_path"
+
+[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("5_4fg3m")]
+layout_mode = 2
+line_edit = NodePath("../MapPath")
+
+[node name="Output" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Output"
+
+[node name="OutputPath" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="1" instance=ExtResource("4_nfqo6")]
+layout_mode = 2
+placeholder_text = "Map output path (optional)"
+config_key = "output_path"
+
+[node name="SelectOutputFolder" parent="PanelContainer/MarginContainer/VBoxContainer/Output" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("5_4fg3m")]
+layout_mode = 2
+line_edit = NodePath("../OutputPath")
+mode = 2
+
+[node name="Mod" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="ModLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Mod" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Mod"
+
+[node name="ModName" parent="PanelContainer/MarginContainer/VBoxContainer/Mod" index="1" instance=ExtResource("4_nfqo6")]
+layout_mode = 2
+placeholder_text = "Mod name"
+config_key = "mod"
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Mod" index="2"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2

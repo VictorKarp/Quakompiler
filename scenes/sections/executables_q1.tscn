@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dylivegu0pld5" path="res://scenes/configurable_path/configurable_path.tscn" id="3_xbwis"]
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_o3h61"]
 
-[node name="CompilerExecutablesQ1" instance=ExtResource("1_brgpo")]
+[node name="ExecutablesQ1" instance=ExtResource("1_brgpo")]
 title = "Compiler executables"
 config_name = "executables_folded"
 
@@ -73,3 +73,20 @@ config_key = "light_path"
 unique_name_in_owner = true
 layout_mode = 2
 line_edit = NodePath("../LightPath")
+
+[node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="4"]
+layout_mode = 2
+
+[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="0"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "Game"
+
+[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="1" instance=ExtResource("3_xbwis")]
+layout_mode = 2
+placeholder_text = "Game executable path"
+config_key = "game_path"
+
+[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_o3h61")]
+layout_mode = 2
+line_edit = NodePath("../GamePath")

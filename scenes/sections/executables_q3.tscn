@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_arbn2"]
 [ext_resource type="Resource" uid="uid://cjbta4csc7i2j" path="res://help_texts/compiler_executables_q3.tres" id="4_yasfa"]
 
-[node name="CompilerExecutablesQ3" instance=ExtResource("1_ccjqi")]
-title = "Compiler executables"
+[node name="ExecutablesQ3" instance=ExtResource("1_ccjqi")]
+title = "Executables"
 game = 1
 config_name = "executables_folded"
 
@@ -64,3 +64,21 @@ config_key = "bspc_path"
 unique_name_in_owner = true
 layout_mode = 2
 line_edit = NodePath("../BspcPath")
+
+[node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+
+[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="0"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Game"
+
+[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="1" instance=ExtResource("3_yasfa")]
+layout_mode = 2
+placeholder_text = "Game executable path"
+game = 2
+config_key = "game_path"
+
+[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+layout_mode = 2
+line_edit = NodePath("../GamePath")

@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://de3ss0283pki8" path="res://help_texts/game_and_map_q3.tres" id="4_2rxva"]
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_2w4pb"]
 
-[node name="GameAndMapSettingsQ3" instance=ExtResource("1_p1wbe")]
-title = "Game and map settings"
+[node name="MapAndModQ3" instance=ExtResource("1_p1wbe")]
+title = "Map and mod"
 game = 2
 config_name = "game_folded"
 
@@ -27,23 +27,23 @@ text = "?"
 script = ExtResource("2_3lx7a")
 help_file = ExtResource("4_2rxva")
 
-[node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="Map" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 
-[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="0"]
+[node name="Map" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="0"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
-text = "Game"
+text = "Map"
 
-[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="1" instance=ExtResource("3_2rxva")]
+[node name="MapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="1" instance=ExtResource("3_2rxva")]
 layout_mode = 2
-placeholder_text = "Game executable path"
+placeholder_text = "Map path"
 game = 2
-config_key = "game_path"
+config_key = "map_path"
 
-[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_2w4pb")]
+[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_2w4pb")]
 layout_mode = 2
-line_edit = NodePath("../GamePath")
+line_edit = NodePath("../MapPath")
 
 [node name="Mod" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
 layout_mode = 2
@@ -63,25 +63,7 @@ config_key = "mod"
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Map" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
-layout_mode = 2
-
-[node name="Map" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="0"]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-text = "Map"
-
-[node name="MapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="1" instance=ExtResource("3_2rxva")]
-layout_mode = 2
-placeholder_text = "Map path"
-game = 2
-config_key = "map_path"
-
-[node name="SelectMapPath" parent="PanelContainer/MarginContainer/VBoxContainer/Map" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_2w4pb")]
-layout_mode = 2
-line_edit = NodePath("../MapPath")
-
-[node name="Output" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="4"]
+[node name="Output" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
 visible = false
 layout_mode = 2
 

@@ -15,7 +15,7 @@ A Quake engine compiler GUI by [Victor Karp](https://victorkarp.com), made in [G
 - Runs natively on Windows and Linux without setup
 - Hotkeys for compiling and launching
 - Detailed help dialogues
-- Full keyboard support - Quakompile can be used without a mouse
+- Full keyboard support - Quakompiler can be used without a mouse
 - Responsive, resizeable UI
 - Easy to edit config.ini file that contains all settings
 

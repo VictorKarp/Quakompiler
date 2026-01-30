@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bieblckvcwdwb"]
+[gd_scene format=3 uid="uid://bieblckvcwdwb"]
 
 [ext_resource type="StyleBox" uid="uid://cjhxfom0ywlcl" path="res://themes/panel_q3.tres" id="2_f1nxs"]
 
-[node name="FooterQ3" type="PanelContainer"]
+[node name="FooterQ3" type="PanelContainer" unique_id=1819099414]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -13,21 +13,21 @@ grow_vertical = 0
 size_flags_vertical = 8
 theme_override_styles/panel = ExtResource("2_f1nxs")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1758899031]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1410297055]
 layout_mode = 2
 
-[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer" unique_id=1165188974]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 
-[node name="CompileBSP" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="CompileBSP" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer" unique_id=1550441591]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -37,7 +37,7 @@ mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
 text = "[F1] BSP"
 
-[node name="CompileVIS" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="CompileVIS" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer" unique_id=189213160]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -47,7 +47,7 @@ mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
 text = "[F2] VIS"
 
-[node name="CompileLIGHT" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="CompileLIGHT" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer" unique_id=1884262393]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -57,7 +57,7 @@ mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
 text = "[F3] LIGHT"
 
-[node name="CompileBSPC" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="CompileBSPC" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer" unique_id=502410993]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -67,7 +67,7 @@ mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
 text = "[F4] BSPC"
 
-[node name="CompileSelected" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="CompileSelected" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer" unique_id=2048130164]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -77,7 +77,7 @@ mouse_filter = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.39215687)
 text = "[F5] Batch"
 
-[node name="RunGame" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer"]
+[node name="RunGame" type="Label" parent="MarginContainer/VBoxContainer/HFlowContainer" unique_id=2030482079]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0

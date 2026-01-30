@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://uaxs68cytyam"]
+[gd_scene format=3 uid="uid://uaxs68cytyam"]
 
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="1_o3oph"]
 [ext_resource type="Script" uid="uid://b3pgx6ueuavp2" path="res://scenes/run_button/run_button.gd" id="2_yfups"]
 
-[node name="RunMap" type="Button"]
+[node name="RunMap" type="Button" unique_id=418739745]
 custom_minimum_size = Vector2(32, 0)
 size_flags_horizontal = 3
 mouse_filter = 1

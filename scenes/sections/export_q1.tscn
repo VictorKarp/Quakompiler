@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjr3fdtwjwla0"]
+[gd_scene format=3 uid="uid://cjr3fdtwjwla0"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_lr7y7"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_klndj"]
@@ -9,14 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://cs25jdots5mqj" path="res://icons/compile.png" id="5_5o3la"]
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="5_7a6em"]
 
-[node name="ExportQ1" instance=ExtResource("1_lr7y7")]
+[node name="ExportQ1" unique_id=992995704 instance=ExtResource("1_lr7y7")]
 title = "Create batch files"
 config_name = "export_folded"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1357018393) index="0" unique_id=1409968265]
 layout_mode = 2
 
-[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2" index="0"]
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer2" index="0" unique_id=752327393]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -24,45 +24,45 @@ text = "?"
 script = ExtResource("2_klndj")
 help_file = ExtResource("3_7a6em")
 
-[node name="VBoxContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="1"]
+[node name="VBoxContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="1" unique_id=420606282]
 layout_mode = 2
 columns = 4
 
-[node name="BSP" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="0" instance=ExtResource("2_u3l76")]
+[node name="BSP" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="0" unique_id=1589014212 instance=ExtResource("2_u3l76")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "QBSP"
 
-[node name="VIS" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="1" instance=ExtResource("2_u3l76")]
+[node name="VIS" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="1" unique_id=2122796354 instance=ExtResource("2_u3l76")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "VIS"
 action = 1
 
-[node name="LIGHT" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="2" instance=ExtResource("2_u3l76")]
+[node name="LIGHT" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="2" unique_id=1746475102 instance=ExtResource("2_u3l76")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "LIGHT"
 action = 2
 
-[node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="3" instance=ExtResource("2_u3l76")]
+[node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="3" unique_id=1996686053 instance=ExtResource("2_u3l76")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Pause"
 action = 4
 
-[node name="Run" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="4" instance=ExtResource("2_u3l76")]
+[node name="Run" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="4" unique_id=698042803 instance=ExtResource("2_u3l76")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Run"
 action = 5
 
-[node name="Create" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="5" instance=ExtResource("3_yfcv3")]
+[node name="Create" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" index="5" unique_id=1805102331 instance=ExtResource("3_yfcv3")]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -71,23 +71,23 @@ icon = ExtResource("5_5o3la")
 text_overrun_behavior = 1
 icon_alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="2" unique_id=1171974124]
 layout_mode = 2
 
-[node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="0"]
+[node name="Output" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="0" unique_id=2126008307]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "Output"
 
-[node name="ExportPath" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="1" instance=ExtResource("4_cygoh")]
+[node name="ExportPath" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="1" unique_id=136389712 instance=ExtResource("4_cygoh")]
 layout_mode = 2
 placeholder_text = "Batch file output path (optional)"
 config_key = "export_path"
 
-[node name="SelectOutputPath" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("5_7a6em")]
+[node name="SelectOutputPath" parent="PanelContainer/MarginContainer/VBoxContainer2/HBoxContainer2" index="2" unique_id=1721923326 node_paths=PackedStringArray("line_edit") instance=ExtResource("5_7a6em")]
 layout_mode = 2
 line_edit = NodePath("../ExportPath")
 mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer2" index="3" unique_id=962934246]
 layout_mode = 2

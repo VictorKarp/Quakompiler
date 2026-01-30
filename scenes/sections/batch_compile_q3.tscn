@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxdcof7n4aaas"]
+[gd_scene format=3 uid="uid://cxdcof7n4aaas"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_ie4wx"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_xrabi"]
@@ -7,17 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="4_a145k"]
 [ext_resource type="Resource" uid="uid://bcqp2rkr7bqxx" path="res://help_texts/batch_compile_q3.tres" id="4_ynnum"]
 
-[node name="BatchCompileQ3" instance=ExtResource("1_ie4wx")]
+[node name="BatchCompileQ3" unique_id=1406685257 instance=ExtResource("1_ie4wx")]
 title = "Batch compile"
 config_name = "batch_folded"
 
-[node name="PanelContainer" parent="." index="0"]
+[node name="PanelContainer" parent="." index="0" unique_id=1997401403]
 theme_override_styles/panel = ExtResource("2_ynnum")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1357018393) index="0" unique_id=1074001021]
 layout_mode = 2
 
-[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0" unique_id=609127997]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -26,46 +26,46 @@ text = "?"
 script = ExtResource("2_xrabi")
 help_file = ExtResource("4_ynnum")
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1" unique_id=13334606]
 layout_mode = 2
 columns = 4
 
-[node name="BspEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" instance=ExtResource("3_ynnum")]
+[node name="BspEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" unique_id=966359864 instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "BSP"
 config_key = "bsp_enabled"
 game = 2
 
-[node name="VisEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_ynnum")]
+[node name="VisEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" unique_id=26480453 instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "VIS"
 config_key = "vis_enabled"
 game = 2
 
-[node name="LightEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_ynnum")]
+[node name="LightEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" unique_id=1761172230 instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "Light"
 config_key = "light_enabled"
 game = 2
 
-[node name="BspcEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("3_ynnum")]
+[node name="BspcEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" unique_id=615193217 instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "BSPC"
 config_key = "bspc_enabled"
 game = 2
 
-[node name="PauseAfterBatch" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("3_ynnum")]
+[node name="PauseAfterBatch" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" unique_id=2114862579 instance=ExtResource("3_ynnum")]
 layout_mode = 2
 text = "Pause"
 config_key = "pause_after_batch"
 game = 2
 
-[node name="LaunchAfterCompile" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5" instance=ExtResource("3_ynnum")]
+[node name="LaunchAfterCompile" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5" unique_id=1350821496 instance=ExtResource("3_ynnum")]
 layout_mode = 2
 config_key = "launch_after_compile"
 game = 2
 
-[node name="CompileSelected" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="6" instance=ExtResource("4_a145k")]
+[node name="CompileSelected" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="6" unique_id=37249836 instance=ExtResource("4_a145k")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start"

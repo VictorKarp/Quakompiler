@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dylivegu0pld5"]
+[gd_scene format=3 uid="uid://dylivegu0pld5"]
 
 [ext_resource type="Script" uid="uid://cjsylq3vk0eoo" path="res://scenes/configurable_path/configurable_path.gd" id="1_xsodm"]
 
-[node name="ConfigurablePath" type="LineEdit"]
+[node name="ConfigurablePath" type="LineEdit" unique_id=505768254]
 offset_right = 617.0
 offset_bottom = 48.0
 size_flags_horizontal = 3

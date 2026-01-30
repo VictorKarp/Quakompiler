@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh45da1w7wc1"]
+[gd_scene format=3 uid="uid://bh45da1w7wc1"]
 
 [ext_resource type="Script" uid="uid://dlgc00a5f5nk0" path="res://scenes/help/help_panel.gd" id="1_07px7"]
 
@@ -29,14 +29,14 @@ border_width_bottom = 1
 border_color = Color(0.2, 0.17, 0.14, 1)
 border_blend = true
 
-[node name="HelpPanel" type="Window"]
+[node name="HelpPanel" type="Window" unique_id=447285356]
 oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(600, 400)
 theme_override_styles/embedded_border = SubResource("StyleBoxFlat_l3vkd")
 script = ExtResource("1_07px7")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1770813891]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,27 +46,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_3ctrk")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=98866993]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2043908055]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="HelpTopic" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HelpTopic" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2" unique_id=1292767602]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Help topic"
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer2" unique_id=1028434510]
 layout_mode = 2
 
-[node name="HelpText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2"]
+[node name="HelpText" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer2" unique_id=1124093236]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwfwqnbwrne7k"]
+[gd_scene format=3 uid="uid://bwfwqnbwrne7k"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_g5fma"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_wxkso"]
@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="3_vsjqm"]
 [ext_resource type="PackedScene" uid="uid://cge8hm2hktku2" path="res://scenes/compilation_button/compilation_button.tscn" id="4_yrky3"]
 
-[node name="BatchCompileQ1" instance=ExtResource("1_g5fma")]
+[node name="BatchCompileQ1" unique_id=1730080631 instance=ExtResource("1_g5fma")]
 title = "Batch compile"
 config_name = "batch_folded"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1357018393) index="0" unique_id=1000851370]
 layout_mode = 2
 
-[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0" unique_id=37050961]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -22,35 +22,35 @@ text = "?"
 script = ExtResource("2_wxkso")
 help_file = ExtResource("3_kyxfo")
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1" unique_id=705859059]
 layout_mode = 2
 columns = 3
 
-[node name="BspEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" instance=ExtResource("3_vsjqm")]
+[node name="BspEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" unique_id=1962842175 instance=ExtResource("3_vsjqm")]
 layout_mode = 2
 text = "QBSP"
 config_key = "bsp_enabled"
 
-[node name="VisEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_vsjqm")]
+[node name="VisEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" unique_id=1147796744 instance=ExtResource("3_vsjqm")]
 layout_mode = 2
 text = "VIS"
 config_key = "vis_enabled"
 
-[node name="LightEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_vsjqm")]
+[node name="LightEnabled" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" unique_id=2087759212 instance=ExtResource("3_vsjqm")]
 layout_mode = 2
 text = "LIGHT"
 config_key = "light_enabled"
 
-[node name="PauseAfterBatch" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("3_vsjqm")]
+[node name="PauseAfterBatch" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" unique_id=2089397853 instance=ExtResource("3_vsjqm")]
 layout_mode = 2
 text = "Pause"
 config_key = "pause_after_batch"
 
-[node name="LaunchAfterCompile" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("3_vsjqm")]
+[node name="LaunchAfterCompile" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" unique_id=1600903737 instance=ExtResource("3_vsjqm")]
 layout_mode = 2
 config_key = "launch_after_compile"
 
-[node name="CompileSelected" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5" instance=ExtResource("4_yrky3")]
+[node name="CompileSelected" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="5" unique_id=1093395398 instance=ExtResource("4_yrky3")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Start"

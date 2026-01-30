@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxxm70sf6psoj"]
+[gd_scene format=3 uid="uid://dxxm70sf6psoj"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_30tkh"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_2pu3h"]
@@ -7,17 +7,17 @@
 [ext_resource type="Resource" uid="uid://gsqe3483gg66" path="res://help_texts/single_compile_q3.tres" id="4_j3mjk"]
 [ext_resource type="PackedScene" uid="uid://oteqgk7icfwp" path="res://scenes/config_toggle_button/config_toggle_button.tscn" id="4_vn235"]
 
-[node name="SingleCompileQ3" instance=ExtResource("1_30tkh")]
+[node name="SingleCompileQ3" unique_id=1616554854 instance=ExtResource("1_30tkh")]
 title = "Single compile"
 config_name = "single_folded"
 
-[node name="PanelContainer" parent="." index="0"]
+[node name="PanelContainer" parent="." index="0" unique_id=1997401403]
 theme_override_styles/panel = ExtResource("2_j3mjk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1357018393) index="0" unique_id=1101446266]
 layout_mode = 2
 
-[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0" unique_id=268646501]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -26,31 +26,31 @@ text = "?"
 script = ExtResource("2_2pu3h")
 help_file = ExtResource("4_j3mjk")
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1" unique_id=337912722]
 layout_mode = 2
 columns = 4
 
-[node name="CompileBsp" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" instance=ExtResource("3_j3mjk")]
+[node name="CompileBsp" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="0" unique_id=2114863185 instance=ExtResource("3_j3mjk")]
 layout_mode = 2
 text = "BSP"
 stage = 1
 
-[node name="CompileVis" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" instance=ExtResource("3_j3mjk")]
+[node name="CompileVis" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="1" unique_id=142160651 instance=ExtResource("3_j3mjk")]
 layout_mode = 2
 text = "VIS"
 stage = 2
 
-[node name="CompileLight" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" instance=ExtResource("3_j3mjk")]
+[node name="CompileLight" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="2" unique_id=24310923 instance=ExtResource("3_j3mjk")]
 layout_mode = 2
 text = "Light"
 stage = 3
 
-[node name="CompileBspc" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" instance=ExtResource("3_j3mjk")]
+[node name="CompileBspc" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="3" unique_id=933097001 instance=ExtResource("3_j3mjk")]
 layout_mode = 2
 text = "BSPC"
 stage = 4
 
-[node name="PauseAfterSingle" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" instance=ExtResource("4_vn235")]
+[node name="PauseAfterSingle" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" index="4" unique_id=1776171464 instance=ExtResource("4_vn235")]
 layout_mode = 2
 text = "Pause"
 config_key = "pause_after_single"

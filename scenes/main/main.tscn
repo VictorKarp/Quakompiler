@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctuy3wytylol"]
+[gd_scene format=3 uid="uid://ctuy3wytylol"]
 
 [ext_resource type="PackedScene" uid="uid://yy6wcna0gkf" path="res://scenes/main_tabs/main_tabs.tscn" id="1_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://bh45da1w7wc1" path="res://scenes/help/help_panel.tscn" id="4_7mycd"]
@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
 bg_color = Color(0.23840332, 0.2839651, 0.328125, 1)
 
-[node name="Main" type="PanelContainer" groups=["main"]]
+[node name="Main" type="PanelContainer" unique_id=1670376501 groups=["main"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,11 +15,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
 
-[node name="MainTabs" parent="." instance=ExtResource("1_k2fmo")]
+[node name="MainTabs" parent="." unique_id=1235216562 instance=ExtResource("1_k2fmo")]
 layout_mode = 2
 
-[node name="FileDialog" parent="." groups=["file_dialog"] instance=ExtResource("9_b1x3f")]
+[node name="FileDialog" parent="." unique_id=769816903 groups=["file_dialog"] instance=ExtResource("9_b1x3f")]
 
-[node name="HelpPanel" parent="." instance=ExtResource("4_7mycd")]
+[node name="HelpPanel" parent="." unique_id=1549096974 instance=ExtResource("4_7mycd")]
 unique_name_in_owner = true
 visible = false

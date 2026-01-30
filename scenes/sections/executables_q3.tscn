@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ykdm1i4060jr"]
+[gd_scene format=3 uid="uid://ykdm1i4060jr"]
 
 [ext_resource type="PackedScene" uid="uid://csqg8ohcs57k5" path="res://scenes/foldable_container/section.tscn" id="1_ccjqi"]
 [ext_resource type="Script" uid="uid://cca2ih7e7g7v7" path="res://scenes/help/help_button.gd" id="2_24b00"]
@@ -7,18 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://bvmf25xfy7pxd" path="res://scenes/file_browser_button/file_browser_button.tscn" id="4_arbn2"]
 [ext_resource type="Resource" uid="uid://cjbta4csc7i2j" path="res://help_texts/compiler_executables_q3.tres" id="4_yasfa"]
 
-[node name="ExecutablesQ3" instance=ExtResource("1_ccjqi")]
+[node name="ExecutablesQ3" unique_id=500353842 instance=ExtResource("1_ccjqi")]
 title = "Executables"
 game = 1
 config_name = "executables_folded"
 
-[node name="PanelContainer" parent="." index="0"]
+[node name="PanelContainer" parent="." index="0" unique_id=1997401403]
 theme_override_styles/panel = ExtResource("2_yasfa")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1357018393) index="0" unique_id=1674002853]
 layout_mode = 2
 
-[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="Help" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" index="0" unique_id=975651773]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -27,58 +27,58 @@ text = "?"
 script = ExtResource("2_24b00")
 help_file = ExtResource("4_yasfa")
 
-[node name="q3map2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="q3map2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="1" unique_id=1771400011]
 layout_mode = 2
 
-[node name="Q3map2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/q3map2" index="0"]
+[node name="Q3map2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/q3map2" index="0" unique_id=1789068127]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Q3MAP2"
 
-[node name="Q3map2Path" parent="PanelContainer/MarginContainer/VBoxContainer/q3map2" index="1" instance=ExtResource("3_yasfa")]
+[node name="Q3map2Path" parent="PanelContainer/MarginContainer/VBoxContainer/q3map2" index="1" unique_id=1342310338 instance=ExtResource("3_yasfa")]
 layout_mode = 2
 placeholder_text = "Q3MAP2 compiler path"
 game = 2
 config_key = "q3map2_path"
 
-[node name="SelectQ3map2Path" parent="PanelContainer/MarginContainer/VBoxContainer/q3map2" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+[node name="SelectQ3map2Path" parent="PanelContainer/MarginContainer/VBoxContainer/q3map2" index="2" unique_id=1133697326 node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
 unique_name_in_owner = true
 layout_mode = 2
 line_edit = NodePath("../Q3map2Path")
 
-[node name="Bspc" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
+[node name="Bspc" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="2" unique_id=520860033]
 layout_mode = 2
 
-[node name="Bspc" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="0"]
+[node name="Bspc" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="0" unique_id=221941395]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "BSPC"
 
-[node name="BspcPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="1" instance=ExtResource("3_yasfa")]
+[node name="BspcPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="1" unique_id=1853395837 instance=ExtResource("3_yasfa")]
 layout_mode = 2
 placeholder_text = "BSPC compiler path"
 game = 2
 config_key = "bspc_path"
 
-[node name="SelectBspcPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+[node name="SelectBspcPath" parent="PanelContainer/MarginContainer/VBoxContainer/Bspc" index="2" unique_id=1280745545 node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
 unique_name_in_owner = true
 layout_mode = 2
 line_edit = NodePath("../BspcPath")
 
-[node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3"]
+[node name="Game" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" index="3" unique_id=671200641]
 layout_mode = 2
 
-[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="0"]
+[node name="Game" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="0" unique_id=1526620753]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Game"
 
-[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="1" instance=ExtResource("3_yasfa")]
+[node name="GamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="1" unique_id=1008016214 instance=ExtResource("3_yasfa")]
 layout_mode = 2
 placeholder_text = "Game executable path"
 game = 2
 config_key = "game_path"
 
-[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="2" node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
+[node name="SelectGamePath" parent="PanelContainer/MarginContainer/VBoxContainer/Game" index="2" unique_id=1937466491 node_paths=PackedStringArray("line_edit") instance=ExtResource("4_arbn2")]
 layout_mode = 2
 line_edit = NodePath("../GamePath")

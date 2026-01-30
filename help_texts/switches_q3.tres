@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Help" load_steps=2 format=3 uid="uid://w2psngnonaof"]
+[gd_resource type="Resource" script_class="Help" format=3 uid="uid://w2psngnonaof"]
 
 [ext_resource type="Script" uid="uid://nlcikuhx3xfd" path="res://help_texts/help.gd" id="1_l58ly"]
 

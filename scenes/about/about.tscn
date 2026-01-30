@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7g0n3olaswmi"]
+[gd_scene format=3 uid="uid://c7g0n3olaswmi"]
 
 [ext_resource type="Script" uid="uid://dymhw3rxx8t2x" path="res://scenes/about/about.gd" id="1_sdeh5"]
 [ext_resource type="Texture2D" uid="uid://cqykh5ecglep8" path="res://icons/icon.png" id="2_gelyk"]
@@ -32,7 +32,7 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 modulate_color = Color(0.4296875, 0.4296875, 0.4296875, 1)
 
-[node name="About" type="MarginContainer"]
+[node name="About" type="MarginContainer" unique_id=1780976020]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,10 +41,10 @@ grow_vertical = 2
 script = ExtResource("1_sdeh5")
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1229832826]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1043559886]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -53,13 +53,13 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Tabs" type="TabContainer" parent="ScrollContainer/MarginContainer"]
+[node name="Tabs" type="TabContainer" parent="ScrollContainer/MarginContainer" unique_id=1159219234]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 current_tab = 0
 
-[node name="Quakompiler" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs"]
+[node name="Quakompiler" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs" unique_id=1992019642]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -67,10 +67,10 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler" unique_id=186425558]
 layout_mode = 2
 
-[node name="HeaderButton" type="Button" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer"]
+[node name="HeaderButton" type="Button" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer" unique_id=152153204]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 82)
 layout_mode = 2
@@ -79,7 +79,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_8yo1l")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ep3rm")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_8yo1l")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton" unique_id=819307386]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,49 +90,49 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer" unique_id=984818253]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer" unique_id=1246616444]
 layout_mode = 2
 texture = ExtResource("2_gelyk")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer" unique_id=1164880036]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1121992512]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1881093685]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quakompiler"
 
-[node name="Version" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Version" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1241977508]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "v0.2"
 
-[node name="Subtitle" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Subtitle" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/HeaderButton/MarginContainer/HBoxContainer/VBoxContainer" unique_id=265604872]
 layout_mode = 2
 text = "A Quake engine compiler GUI, made in Godot."
 text_overrun_behavior = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer" unique_id=1749331957]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/ScrollContainer" unique_id=1639602454]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="GUI" type="RichTextLabel" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="GUI" type="RichTextLabel" parent="ScrollContainer/MarginContainer/Tabs/Quakompiler/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1828214658]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -140,7 +140,7 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 fit_content = true
 
-[node name="Thanks" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs"]
+[node name="Thanks" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs" unique_id=353519646]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -149,21 +149,21 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Thanks"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Thanks" unique_id=108772007]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Thanks/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Thanks/ScrollContainer" unique_id=1050809618]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="ThanksHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Thanks/ScrollContainer/VBoxContainer"]
+[node name="ThanksHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Thanks/ScrollContainer/VBoxContainer" unique_id=755749276]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "I would like to thank..."
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/Tabs/Thanks/ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/Tabs/Thanks/ScrollContainer/VBoxContainer" unique_id=1524080161]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -172,7 +172,7 @@ text = "[b]Warren Marshall[/b]
 For helping me out with the Quake 3 launcher logic.
 "
 
-[node name="Godot Engine" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs"]
+[node name="Godot Engine" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs" unique_id=195250722]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -181,26 +181,26 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine" unique_id=1563184151]
 layout_mode = 2
 
-[node name="GodotHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine/VBoxContainer"]
+[node name="GodotHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine/VBoxContainer" unique_id=1420785021]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Godot Engine"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine/VBoxContainer" unique_id=265544447]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Godot" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine/VBoxContainer/ScrollContainer"]
+[node name="Godot" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine/VBoxContainer/ScrollContainer" unique_id=2011121060]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 autowrap_mode = 2
 
-[node name="Godot Engine Third Party" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs"]
+[node name="Godot Engine Third Party" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs" unique_id=1727115647]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -209,26 +209,26 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party" unique_id=1689962394]
 layout_mode = 2
 
-[node name="GodotThirdPartyHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer"]
+[node name="GodotThirdPartyHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer" unique_id=1849768701]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Godot Engine Third Party"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer" unique_id=1360455575]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GodotThirdParty" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer/ScrollContainer"]
+[node name="GodotThirdParty" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Godot Engine Third Party/VBoxContainer/ScrollContainer" unique_id=2013470191]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 autowrap_mode = 2
 
-[node name="Fonts" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs"]
+[node name="Fonts" type="MarginContainer" parent="ScrollContainer/MarginContainer/Tabs" unique_id=199768230]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -237,25 +237,25 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 metadata/_tab_index = 4
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Fonts"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Fonts" unique_id=1342829459]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer" unique_id=1382839609]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="FontsHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer/VBoxContainer"]
+[node name="FontsHeader" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer/VBoxContainer" unique_id=794863720]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Fonts"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer/VBoxContainer" unique_id=898642451]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Fonts" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer/VBoxContainer/ScrollContainer"]
+[node name="Fonts" type="Label" parent="ScrollContainer/MarginContainer/Tabs/Fonts/ScrollContainer/VBoxContainer/ScrollContainer" unique_id=2099153516]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

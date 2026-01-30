@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://csqg8ohcs57k5"]
+[gd_scene format=3 uid="uid://csqg8ohcs57k5"]
 
 [ext_resource type="Script" uid="uid://c6fcaj0gpqtbt" path="res://scenes/foldable_container/section.gd" id="1_jfgwp"]
 
-[node name="FoldableContainer" type="FoldableContainer"]
+[node name="FoldableContainer" type="FoldableContainer" unique_id=1583344531]
 custom_minimum_size = Vector2(400, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,10 +12,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_jfgwp")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1997401403]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1357018393]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
